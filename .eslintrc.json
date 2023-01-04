@@ -1,24 +1,48 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "plugins": ["@typescript-eslint", "prettier"],
   "extends": [
-    "eslint:recommended",
-    "airbnb",
-    "airbnb-typescript",
-    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
-  },
-  "rules": {
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "tsx": true
+    }
   },
   "settings": {
     "react": {
       "version": "detect"
     }
   },
-  "include": ["src/**/*.ts"]
+  "ignorePatterns": ["node_modules/"],
+  "rules": {
+    "react/prefer-stateless-function": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "no-nested-ternary": 0,
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "no-undef": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto",
+        "useTabs": false
+      }
+    ],
+    "indent": ["error", 2, { "ignoredNodes": ["ConditionalExpression"] }],
+    "@typescript-eslint/no-empty-interface": "off",
+    "no-empty-interface": "off"
+  },
+  "globals": {
+    "React": "writable"
+  }
 }
