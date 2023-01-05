@@ -1,7 +1,5 @@
-import React, { FC } from "react";
+import React from "react";
 
-const SpaceRentPage: FC = () => {
+export default function SpaceRentPage() {
   return <div>SpaceRentPage</div>;
-};
-
-export default SpaceRentPage;
+}

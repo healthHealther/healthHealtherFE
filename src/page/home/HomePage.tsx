@@ -1,7 +1,7 @@
-import React, { FC } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-const HomePage: FC = () => {
+export default function HomePage() {
   return (
     <div>
       HomePage
@@ -21,6 +21,4 @@ const HomePage: FC = () => {
       </div>
     </div>
   );
-};
-
-export default HomePage;
+}
