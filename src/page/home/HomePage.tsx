@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar";
+import TopBar from "../../components/TopBar";
 
 export default function HomePage() {
   return (
     <div>
+      <TopBar pageTitle="home" />
       <div>
         HomePage
         <div className="mt-4">

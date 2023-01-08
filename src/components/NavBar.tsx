@@ -8,8 +8,8 @@ import mypageOffIcon from "../assets/mypage_off.svg";
 import mypageOnIcon from "../assets/mypage_on.svg";
 import reservationListOffIcon from "../assets/reservation_list_off.svg";
 import reservattionListOnIcon from "../assets/reservation_list_on.svg";
-interface pageTitleProps {
-  pageTitle: "home" | "spaceRent" | "community" | "myPage";
+export interface pageTitleProps {
+  pageTitle: "home" | "spaceRent" | "community" | "myPage" | "login";
 }
 export default function NavBar(props: pageTitleProps) {
   const currentPage = props.pageTitle;
