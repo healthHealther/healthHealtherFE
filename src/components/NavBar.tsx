@@ -14,7 +14,7 @@ export interface pageTitleProps {
 export default function NavBar(props: pageTitleProps) {
   const currentPage = props.pageTitle;
   return (
-    <div className="fixed mx-auto left-0 right-0 bottom-0 max-w-[475px] min-w-[390px] flex justify-around ">
+    <div className="fixed mx-auto left-0 right-0 bottom-0 max-w-[475px] min-w-[320px] flex justify-around ">
       <Link
         to={"/"}
         className={`${
