@@ -50,7 +50,7 @@ export default function TopBar(props: pageTitleProps) {
     );
   };
   return (
-    <div className="max-w-[475px] min-w-[320px] h-[48px] fixed mx-auto left-0 right-0 top-0 ">
+    <div className="bg-white max-w-[475px] min-w-[320px] h-[48px] fixed mx-auto left-0 right-0 top-0 ">
       {props.pageTitle === "home" ? homeRendering() : otherRendering()}
     </div>
   );
