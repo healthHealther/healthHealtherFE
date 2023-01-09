@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        banner_1: "url('./assets/banner_1.png')",
+      },
       colors: { "selected-green": "#08BD9D", "homeGymPrice-green": "#08BD9D" },
       fontSize: {
         xs: ["10px", "12px"],
