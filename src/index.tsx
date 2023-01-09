@@ -8,6 +8,8 @@ import SpaceRentPage from "./page/spaceRent/SpaceRentPage";
 import CommunityPage from "./page/community/CommunityPage";
 import MyPage from "./page/myPage/MyPage";
 import LoginPage from "./page/login/LoginPage";
+import SpaceContentPage from "./page/spaceRent/SpaceContentPage";
+import path from "path";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/spaceRent",
     element: <SpaceRentPage />,
+  },
+  {
+    path: "spaceContent/:spaceContentId",
+    element: <SpaceContentPage />,
   },
   {
     path: "/community",
