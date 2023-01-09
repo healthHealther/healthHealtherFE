@@ -12,7 +12,7 @@ export default function BannerCarousel() {
     };
   }, [bannerIndex]);
   return (
-    <div className="px-[20px] relative">
+    <div className="px-[20px] relative mb-[32px]">
       {/* 캐러샐 컨테이너 */}
       <div className="w-full flex overflow-hidden">
         <Link
