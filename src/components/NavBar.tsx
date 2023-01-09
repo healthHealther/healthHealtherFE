@@ -8,13 +8,13 @@ import mypageOffIcon from "../assets/mypage_off.svg";
 import mypageOnIcon from "../assets/mypage_on.svg";
 import reservationListOffIcon from "../assets/reservation_list_off.svg";
 import reservattionListOnIcon from "../assets/reservation_list_on.svg";
-interface pageTitleProps {
-  pageTitle: "home" | "spaceRent" | "community" | "myPage";
+export interface pageTitleProps {
+  pageTitle: "home" | "spaceRent" | "community" | "myPage" | "login";
 }
 export default function NavBar(props: pageTitleProps) {
   const currentPage = props.pageTitle;
   return (
-    <div className="fixed mx-auto left-0 right-0 bottom-0 max-w-[475px] min-w-[390px] flex justify-around ">
+    <nav className="fixed mx-auto left-0 right-0 bottom-0 max-w-[475px] min-w-[320px] flex justify-around ">
       <Link
         to={"/"}
         className={`${
@@ -78,6 +78,6 @@ export default function NavBar(props: pageTitleProps) {
         </div>
         <p className="text-xs ">내정보</p>
       </Link>
-    </div>
+    </nav>
   );
 }
