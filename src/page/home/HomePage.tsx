@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BoardContentPreview from "../../components/community/BoardContentPreview";
 import SpaceContentPreview from "../../components/spaceRent/SpaceContentPreview";
 import NavBar from "../../components/NavBar";
 import TopBar from "../../components/TopBar";
@@ -25,6 +26,7 @@ export default function HomePage() {
           </Link>
         </div> */}
         <SpaceContentPreview />
+        <BoardContentPreview />
         <NavBar pageTitle={"home"} />
       </div>
     </div>
