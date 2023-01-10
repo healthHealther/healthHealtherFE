@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import bellIcon from "../assets/bell.svg";
 import bellActiveIcon from "../assets/bell_active.svg";
 import arrowBackIcon from "../assets/arrow_back.svg";
@@ -23,7 +23,11 @@ export default function TopBar() {
   const notification = true;
   /**알림 렌더링 */
   const BellRendering = () => {
-    return <img src={notification ? bellActiveIcon : bellIcon} alt="알림" />;
+    return (
+      <Link to={"/alarmPage"}>
+        <img src={notification ? bellActiveIcon : bellIcon} alt="알림" />
+      </Link>
+    );
   };
   /**home일 시 렌더링 */
   const homeRendering = () => {

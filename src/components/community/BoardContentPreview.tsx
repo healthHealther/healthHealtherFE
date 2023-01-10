@@ -24,7 +24,7 @@ const fakeContent = [
 ];
 export default function BoardContentPreview() {
   return (
-    <article className="w-full max-h-[340px] py-[32px] bg-[#fbfbfb] mb-[80px]">
+    <article className="w-full max-h-[340px] py-[32px] bg-[#fbfbfb] mb-[45px]">
       <div className="px-[20px] flex h-full justify-between items-center mb-[32px]">
         <p className="text-[18px] h-full font-[700]">오늘의 추천 게시글</p>
         <Link className="flex items-center h-full " to={"/community"}>
