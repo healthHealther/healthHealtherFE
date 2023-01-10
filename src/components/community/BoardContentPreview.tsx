@@ -35,7 +35,7 @@ export default function BoardContentPreview() {
         </Link>
       </div>
       {fakeContent.map((i) => {
-        return <BoardContent boardContent={i} />;
+        return <BoardContent boardContent={i} key={i.board_id} />;
       })}
     </article>
   );

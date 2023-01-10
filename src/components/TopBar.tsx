@@ -1,11 +1,23 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { pageTitleProps } from "./NavBar";
+import { useNavigate, useLocation } from "react-router-dom";
 import bellIcon from "../assets/bell.svg";
 import bellActiveIcon from "../assets/bell_active.svg";
 import arrowBackIcon from "../assets/arrow_back.svg";
 import logoIcon from "../assets/logo.svg";
-export default function TopBar(props: pageTitleProps) {
+export default function TopBar() {
+  const location = useLocation();
+  const index = location.pathname.indexOf("/", 1);
+  const currentPath =
+    index !== -1
+      ? location.pathname.slice(1, index)
+      : location.pathname.slice(1);
+  const currentPage = currentPath.toLowerCase().includes("space")
+    ? "spaceRent"
+    : currentPath.toLowerCase().includes("community")
+    ? "community"
+    : currentPath.toLowerCase().includes("mypage")
+    ? "myPage"
+    : "home";
   const navigate = useNavigate();
   //임시 알림 값
   const notification = true;
@@ -28,11 +40,11 @@ export default function TopBar(props: pageTitleProps) {
   /**home이 아닐 시 렌더링 */
   const otherRendering = () => {
     const pageStr =
-      props.pageTitle === "community"
+      currentPage === "community"
         ? "커뮤니티"
-        : props.pageTitle === "spaceRent"
+        : currentPage === "spaceRent"
         ? "홈짐 예약"
-        : props.pageTitle === "myPage"
+        : currentPage === "myPage"
         ? "내정보"
         : "로그인";
     return (
@@ -51,7 +63,7 @@ export default function TopBar(props: pageTitleProps) {
   };
   return (
     <div className="bg-white max-w-[475px] min-w-[320px] h-[48px] fixed mx-auto left-0 right-0 top-0 z-10">
-      {props.pageTitle === "home" ? homeRendering() : otherRendering()}
+      {currentPage === "home" ? homeRendering() : otherRendering()}
     </div>
   );
 }
