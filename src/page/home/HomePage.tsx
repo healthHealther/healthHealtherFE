@@ -7,7 +7,6 @@ import TopBar from "../../components/TopBar";
 import CategoryLink from "./CategoryLink";
 import BannerCarousel from "./BannerCarousel";
 
-
 export default function HomePage() {
   return (
     <div>
@@ -17,8 +16,8 @@ export default function HomePage() {
         <CategoryLink />
         <SpaceContentPreview />
         <BoardContentPreview />
-        <NavBar pageTitle={"home"} />
       </div>
+      <NavBar pageTitle={"home"} />
     </div>
   );
 }
