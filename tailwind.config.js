@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         banner_1: "url('./assets/banner_1.png')",
+        home: "url('./assets/background_1.png')",
       },
       colors: { "selected-green": "#08BD9D", "homeGymPrice-green": "#08BD9D" },
       fontSize: {
