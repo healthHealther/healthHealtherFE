@@ -4,12 +4,14 @@ import BoardContentPreview from "../../components/community/BoardContentPreview"
 import SpaceContentPreview from "../../components/spaceRent/SpaceContentPreview";
 import NavBar from "../../components/NavBar";
 import TopBar from "../../components/TopBar";
+import BannerCarousel from "./BannerCarousel";
 
 export default function HomePage() {
   return (
     <div>
       <TopBar pageTitle="home" />
       <div className="max-w-[475px] min-w-[390px] sm:mx-auto mt-[48px]">
+        <BannerCarousel />
         {/* HomePage
         <div className="mt-4">
           <Link className="mx-4" to="spaceRent">
