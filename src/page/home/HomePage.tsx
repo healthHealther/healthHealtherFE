@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
 import BoardContentPreview from "../../components/community/BoardContentPreview";
 import SpaceContentPreview from "../../components/spaceRent/SpaceContentPreview";
 import CategoryLink from "./CategoryLink";
