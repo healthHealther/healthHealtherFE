@@ -10,11 +10,16 @@ import reservationListOffIcon from "../assets/reservation_list_off.svg";
 import reservattionListOnIcon from "../assets/reservation_list_on.svg";
 export default function NavBar() {
   const location = useLocation();
-  const currentPage = location.pathname.toLowerCase().includes("space")
+  const index = location.pathname.indexOf("/", 1);
+  const currentPath =
+    index !== -1
+      ? location.pathname.slice(1, index)
+      : location.pathname.slice(1);
+  const currentPage = currentPath.toLowerCase().includes("space")
     ? "spaceRent"
-    : location.pathname.toLowerCase().includes("community")
+    : currentPath.toLowerCase().includes("community")
     ? "community"
-    : location.pathname.toLowerCase().includes("mypage")
+    : currentPath.toLowerCase().includes("mypage")
     ? "myPage"
     : "home";
   return (
