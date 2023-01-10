@@ -17,7 +17,7 @@ export default function SpaceContents() {
   useEffect(() => {
     const getSpaceList = async () => {
       try {
-        const response = await axios.get("/space");
+        const response = await axios.get("http://localhost:3001/space?_page=1");
         setHomeGym(response.data);
       } catch (error) {
         console.error(error);
@@ -27,39 +27,31 @@ export default function SpaceContents() {
   }, []);
 
   console.log(homeGym);
-  // axios
-  //   .get("http://localhost:3000/space")
-  //   .then((Response) => {
-  //     setHomeGym(Response.data);
-  //   })
-  //   .catch((Error) => console.log(Error));
 
   return (
-    <div className="flex flex-wrap gap-x-[12px]  gap-y-[24px] w-full  mx-auto mt-3">
+    <ul className="flex flex-wrap gap-x-[12px]  gap-y-[24px] w-full  mx-auto mt-3">
       {homeGym.map((item: homeGym) => (
-        <Link
-          to={`/SpaceContent/${item.id}`}
-          className="flex flex-col w-[calc(50%-6px)]"
-          key={item.id}
-        >
-          <div className="w-full h-0 pb-[57%] bg-gradient-to-b from-cyan-700 to-blue-400 bg-center bg-cover rounded-[16px]"></div>
+        <li className="flex flex-col w-[calc(50%-6px)]" key={item.id}>
+          <Link to={`/SpaceContent/${item.id}`}>
+            <div className="w-full h-0 pb-[57%] bg-gradient-to-b from-cyan-700 to-blue-400 bg-center bg-cover rounded-[16px]"></div>
 
-          {/* <img
+            {/* <img
               className="aspect-[2/1] max-h-[120px] min-h-[92px] bg-pink-100"
               src={item.img}
             /> */}
 
-          <span className="text-base font-500 mt-1.5">{item.title}</span>
-          <span className="flex gap-1 text-xs mt-1.5">
-            {item.spaceType.map((spaceType: string) => (
-              <p key={spaceType}>#{spaceType}</p>
-            ))}
-          </span>
-          <span className="text-sm font-bold mt-1.5 text-homeGymPrice-green">
-            {item.price}원
-          </span>
-        </Link>
+            <span className="text-base font-500 mt-1.5">{item.title}</span>
+            <span className="flex gap-1 text-xs mt-1.5">
+              {item.spaceType.map((spaceType: string) => (
+                <p key={spaceType}>#{spaceType}</p>
+              ))}
+            </span>
+            <span className="text-sm font-bold mt-1.5 text-homeGymPrice-green">
+              {item.price}원
+            </span>
+          </Link>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
