@@ -10,6 +10,7 @@ import MyPage from "./page/myPage/MyPage";
 import LoginPage from "./page/login/LoginPage";
 import SpaceContentPage from "./page/spaceRent/SpaceContentPage";
 import path from "path";
+import CommunityContentPage from "./page/community/CommunityContentPage";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/community",
     element: <CommunityPage />,
+  },
+  {
+    path: "community/:boardContentId",
+    element: <CommunityContentPage />,
   },
   {
     path: "/myPage",
