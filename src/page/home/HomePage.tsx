@@ -4,7 +4,9 @@ import BoardContentPreview from "../../components/community/BoardContentPreview"
 import SpaceContentPreview from "../../components/spaceRent/SpaceContentPreview";
 import NavBar from "../../components/NavBar";
 import TopBar from "../../components/TopBar";
+import CategoryLink from "./CategoryLink";
 import BannerCarousel from "./BannerCarousel";
+
 
 export default function HomePage() {
   return (
@@ -12,21 +14,7 @@ export default function HomePage() {
       <TopBar pageTitle="home" />
       <div className="max-w-[475px] min-w-[390px] sm:mx-auto mt-[48px]">
         <BannerCarousel />
-        {/* HomePage
-        <div className="mt-4">
-          <Link className="mx-4" to="spaceRent">
-            운동공간대여
-          </Link>
-          <Link className="mx-4" to="community">
-            커뮤니티
-          </Link>
-          <Link className="mx-4" to="myPage">
-            마이페이지
-          </Link>
-          <Link className="mx-4" to="login">
-            로그인
-          </Link>
-        </div> */}
+        <CategoryLink />
         <SpaceContentPreview />
         <BoardContentPreview />
         <NavBar pageTitle={"home"} />
