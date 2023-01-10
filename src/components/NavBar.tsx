@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import communtiyOffIcon from "../assets/community_off.svg";
 import communtiyOnIcon from "../assets/community_on.svg";
 import homeOffIcon from "../assets/home_off.svg";
@@ -8,11 +8,15 @@ import mypageOffIcon from "../assets/mypage_off.svg";
 import mypageOnIcon from "../assets/mypage_on.svg";
 import reservationListOffIcon from "../assets/reservation_list_off.svg";
 import reservattionListOnIcon from "../assets/reservation_list_on.svg";
-export interface pageTitleProps {
-  pageTitle: "home" | "spaceRent" | "community" | "myPage" | "login";
-}
-export default function NavBar(props: pageTitleProps) {
-  const currentPage = props.pageTitle;
+export default function NavBar() {
+  const location = useLocation();
+  const currentPage = location.pathname.toLowerCase().includes("space")
+    ? "spaceRent"
+    : location.pathname.toLowerCase().includes("community")
+    ? "community"
+    : location.pathname.toLowerCase().includes("mypage")
+    ? "myPage"
+    : "home";
   return (
     <nav className="bg-white fixed mx-auto left-0 right-0 bottom-0 max-w-[475px] min-w-[320px] flex justify-around ">
       <Link

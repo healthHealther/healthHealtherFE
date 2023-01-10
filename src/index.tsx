@@ -9,37 +9,45 @@ import CommunityPage from "./page/community/CommunityPage";
 import MyPage from "./page/myPage/MyPage";
 import LoginPage from "./page/login/LoginPage";
 import SpaceContentPage from "./page/spaceRent/SpaceContentPage";
-import path from "path";
 import CommunityContentPage from "./page/community/CommunityContentPage";
-
+import Root from "./Root";
+import NotFound from "./components/NotFound";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
-  },
-  {
-    path: "/spaceRent",
-    element: <SpaceRentPage />,
-  },
-  {
-    path: "spaceContent/:spaceContentId",
-    element: <SpaceContentPage />,
-  },
-  {
-    path: "/community",
-    element: <CommunityPage />,
-  },
-  {
-    path: "community/:boardContentId",
-    element: <CommunityContentPage />,
-  },
-  {
-    path: "/myPage",
-    element: <MyPage />,
+    element: <Root />,
+    children: [
+      {
+        path: "",
+        element: <HomePage />,
+      },
+      {
+        path: "/spaceRent",
+        element: <SpaceRentPage />,
+      },
+      {
+        path: "spaceContent/:spaceContentId",
+        element: <SpaceContentPage />,
+      },
+      {
+        path: "/community",
+        element: <CommunityPage />,
+      },
+      {
+        path: "community/:boardContentId",
+        element: <CommunityContentPage />,
+      },
+      {
+        path: "/myPage",
+        element: <MyPage />,
+      },
+    ],
+    errorElement: <NotFound />,
   },
   {
     path: "/login",
     element: <LoginPage />,
+    errorElement: <NotFound />,
   },
 ]);
 

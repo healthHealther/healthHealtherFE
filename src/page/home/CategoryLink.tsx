@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import aerobicIcon from "../../assets/aerobicExerciseIcon.png";
-// import anaerobicIcon from "../../assets/anaerobicExerciseIcon.png";
+import anaerobicIcon from "../../assets/anaerobicExerciseIcon.png";
 import gxIcon from "../../assets/gxIcon.png";
 import pilatesIcon from "../../assets/pilatesIcon.png";
 export default function CategoryLink() {
@@ -21,7 +21,7 @@ export default function CategoryLink() {
         to={"/spaceRent?category=anaerobic"}
       >
         <div className="mb-[12px]">
-          <img className="w-full" src={aerobicIcon} alt="무산소" />
+          <img className="w-full" src={anaerobicIcon} alt="무산소" />
         </div>
         <p className="text-[#a5a5a5]">무산소</p>
       </Link>
