@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 
 interface homeGym {
   id: number;
@@ -11,36 +12,27 @@ interface homeGym {
 
 export default function SpaceContents() {
   const location = useLocation();
-  const [homeGym, setHomeGym] = useState<homeGym[]>([
-    {
-      id: 1,
-      title: "홈짐 타이틀 영역",
-      price: 32000,
-      spaceType: ["유산소", "무산소"],
-      img: "",
-    },
-    {
-      id: 2,
-      title: "홈짐 타이틀 영역",
-      price: 32000,
-      spaceType: ["유산소", "무산소"],
-      img: "",
-    },
-    {
-      id: 3,
-      title: "홈짐 타이틀 영역",
-      price: 32000,
-      spaceType: ["유산소", "무산소"],
-      img: "",
-    },
-    {
-      id: 4,
-      title: "홈짐 타이틀 영역",
-      price: 32000,
-      spaceType: ["유산소", "무산소"],
-      img: "",
-    },
-  ]);
+  const [homeGym, setHomeGym] = useState<homeGym[]>([]);
+
+  useEffect(() => {
+    const getSpaceList = async () => {
+      try {
+        const response = await axios.get("/space");
+        setHomeGym(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getSpaceList();
+  }, []);
+
+  console.log(homeGym);
+  // axios
+  //   .get("http://localhost:3000/space")
+  //   .then((Response) => {
+  //     setHomeGym(Response.data);
+  //   })
+  //   .catch((Error) => console.log(Error));
 
   return (
     <div className="flex flex-wrap gap-x-[12px]  gap-y-[24px] w-full  mx-auto mt-3">
