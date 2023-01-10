@@ -4,7 +4,7 @@ import SpaceContents from "./SpaceContentsList";
 import chevronIcon from "../../assets/chevron.svg";
 export default function SpaceContentPreview() {
   return (
-    <article className="px-[20px]">
+    <article className="px-[20px] mb-[40px]">
       <div className="flex h-[24px] justify-between ">
         <div className="text-lg font-bold">오늘의 홈짐 추천</div>
         <Link to={"/spaceRent"} className="flex items-center">

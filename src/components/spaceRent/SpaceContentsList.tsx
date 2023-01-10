@@ -50,7 +50,7 @@ export default function SpaceContents() {
           className="flex flex-col w-[calc(50%-6px)]"
           key={item.id}
         >
-          <div className="w-full h-0 pb-[57%] bg-gradient-to-b from-cyan-700 to-blue-400 bg-center bg-cover"></div>
+          <div className="w-full h-0 pb-[57%] bg-gradient-to-b from-cyan-700 to-blue-400 bg-center bg-cover rounded-[16px]"></div>
 
           {/* <img
               className="aspect-[2/1] max-h-[120px] min-h-[92px] bg-pink-100"
