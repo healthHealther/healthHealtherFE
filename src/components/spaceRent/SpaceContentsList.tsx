@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+
+import InfinityScroll from "../InfinityScroll";
 
 interface homeGym {
   id: number;
@@ -10,26 +12,49 @@ interface homeGym {
   img: string;
 }
 
-export default function SpaceContents() {
+export default function SpaceContentsList() {
   const location = useLocation();
   const [homeGym, setHomeGym] = useState<homeGym[]>([]);
 
-  useEffect(() => {
-    const getSpaceList = async () => {
-      try {
-        const response = await axios.get("http://localhost:3001/space?_page=1");
-        setHomeGym(response.data);
-      } catch (error) {
-        console.error(error);
+  const [goNextPage, setGoNextPage] = useState<boolean>(true);
+  const [scroll, setScroll] = useState<boolean>(false);
+  const page = useRef<number>(1);
+
+  const getSpaceContentsList = useCallback(async () => {
+    try {
+      if (location.pathname !== "/") {
+        const { data } = await axios.get<homeGym[]>(
+          `http://localhost:3001/space?_limit=10&_page=${page.current}`
+        );
+        setHomeGym((prev) => [...prev, ...data]);
+        setGoNextPage(data.length === 10);
+        if (data.length) {
+          page.current += 1;
+        }
       }
-    };
-    getSpaceList();
+      if (location.pathname === "/") {
+        const response = await axios.get<homeGym[]>(
+          `http://localhost:3001/space?_page=1&_limit=4`
+        );
+        setHomeGym(response.data);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }, []);
 
-  console.log(homeGym);
+  useEffect(() => {
+    if (scroll && goNextPage) {
+      getSpaceContentsList();
+    }
+
+    if (location.pathname === "/") {
+      getSpaceContentsList();
+    }
+  }, [fetch, goNextPage, scroll]);
 
   return (
-    <ul className="flex flex-wrap gap-x-[12px]  gap-y-[24px] w-full  mx-auto mt-3">
+    <div className="flex flex-wrap gap-x-[12px]  gap-y-[24px] w-full  mx-auto mt-3 relative">
       {homeGym.map((item: homeGym) => (
         <li className="flex flex-col w-[calc(50%-6px)]" key={item.id}>
           <Link to={`/SpaceContent/${item.id}`}>
@@ -52,6 +77,7 @@ export default function SpaceContents() {
           </Link>
         </li>
       ))}
-    </ul>
+      {location.pathname !== "/" && <InfinityScroll setScroll={setScroll} />}
+    </div>
   );
 }

@@ -6,7 +6,7 @@ import BannerCarousel from "./BannerCarousel";
 
 export default function HomePage() {
   return (
-    <div className="max-w-[475px] min-w-[390px] sm:mx-auto mt-[48px] bg-white">
+    <div>
       <BannerCarousel />
       <CategoryLink />
       <SpaceContentPreview />
