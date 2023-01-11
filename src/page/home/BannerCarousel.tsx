@@ -53,9 +53,9 @@ export default function BannerCarousel() {
         </Link>
       </div>
       {/* 인디케이터 컨테이너 */}
-      <div className="absolute bottom-[5px] w-[22px] h-[4px] flex left-[calc(50%-11px)] ">
+      <div className="absolute bottom-[8px] w-[30px] h-[8px] flex left-[calc(50%-15px)] ">
         <button
-          className={`flex w-[5px] h-[5px] bg-white rounded-[100%] mx-[1px] ${
+          className={`flex w-[8px] h-[8px] bg-white rounded-[100%] mx-[1px] ${
             bannerIndex === 0 ? "" : "opacity-60"
           }`}
           onClick={() => {
@@ -63,7 +63,7 @@ export default function BannerCarousel() {
           }}
         ></button>
         <button
-          className={`flex w-[5px] h-[5px] bg-white rounded-[100%] mx-[1px] ${
+          className={`flex w-[8px] h-[8px] bg-white rounded-[100%] mx-[1px] ${
             bannerIndex === 1 ? "" : "opacity-60"
           }`}
           onClick={() => {
@@ -71,7 +71,7 @@ export default function BannerCarousel() {
           }}
         ></button>
         <button
-          className={`flex w-[5px] h-[5px] bg-white rounded-[100%] mx-[1px] ${
+          className={`flex w-[8px] h-[8px] bg-white rounded-[100%] mx-[1px] ${
             bannerIndex === 2 ? "" : "opacity-60"
           }`}
           onClick={() => {
