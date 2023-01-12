@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SpaceContents from "./SpaceContentsList";
+import SpaceContentsList from "./SpaceContentsList";
 import chevronIcon from "../../assets/chevron.svg";
 export default function SpaceContentPreview() {
   return (
@@ -14,7 +14,7 @@ export default function SpaceContentPreview() {
           </div>
         </Link>
       </div>
-      <SpaceContents />
+      <SpaceContentsList />
     </article>
   );
 }

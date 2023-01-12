@@ -12,6 +12,7 @@ import SpaceContentPage from "./page/spaceRent/SpaceContentPage";
 import CommunityContentPage from "./page/community/CommunityContentPage";
 import Root from "./Root";
 import NotFound from "./components/NotFound";
+import { worker } from "./mocks/worker";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
 ]);
+
+// if (process.env.NODE_ENV === "development") {
+//   worker.start();
+// }
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
