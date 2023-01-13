@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import axios from "axios";
 
 import InfinityScroll from "../InfinityScroll";
@@ -12,49 +12,74 @@ interface homeGym {
   img: string;
 }
 
-export default function SpaceContentsList() {
+interface SpaceContentsListProps {
+  spaceType?: string;
+  query?: string;
+}
+
+export default function SpaceContentsList({
+  spaceType,
+}: SpaceContentsListProps) {
   const location = useLocation();
   const [homeGym, setHomeGym] = useState<homeGym[]>([]);
-
-  const [goNextPage, setGoNextPage] = useState<boolean>(true);
+  const [gym, setGym] = useState<homeGym[]>([]);
+  const [goNextPage, setGoNextPage] = useState<boolean>(false);
   const [scroll, setScroll] = useState<boolean>(false);
   const page = useRef<number>(1);
+  const param = useRef<string>("");
+  const [pageNumber, setPageNumber] = useState<number>(1);
+  const [catagory, setCategory] = useState<string>("");
 
-  const getSpaceContentsList = useCallback(async () => {
-    try {
-      if (location.pathname !== "/") {
-        const { data } = await axios.get<homeGym[]>(
-          `http://localhost:3001/space?_limit=10&_page=${page.current}`
-        );
-        setHomeGym((prev) => [...prev, ...data]);
-        setGoNextPage(data.length === 10);
-        if (data.length) {
-          page.current += 1;
-        }
+  const [spaceRentParams] = useSearchParams();
+  const query = spaceRentParams.get("spaceType");
+
+  const getData = async () => {
+    if (!query && location.pathname !== "/") {
+      if (goNextPage === true) {
+        page.current += 1;
       }
-      if (location.pathname === "/") {
-        const response = await axios.get<homeGym[]>(
-          `http://localhost:3001/space?_page=1&_limit=4`
-        );
-        setHomeGym(response.data);
-      }
-    } catch (err) {
-      console.error(err);
+      const { data } = await axios.get<homeGym[]>(
+        `http://localhost:3001/space?_limit=10&_page=${page.current}`
+      );
+      setHomeGym((prev) => [...prev, ...data]);
+      setGoNextPage(data.length === 10);
     }
-  }, []);
+    if (!query && location.pathname === "/") {
+      const response = await axios.get<homeGym[]>(
+        `http://localhost:3001/space?_page=1&_limit=4`
+      );
+      setHomeGym(response.data);
+    }
+    if (query !== null) {
+      const { data } = await axios.get<homeGym[]>(
+        `http://localhost:3001/${query}?_limit=10&_page=${page.current}`
+      );
+      setHomeGym((prev) => [...prev, ...data]);
+      setGoNextPage(data.length === 10);
+      if (data.length) {
+        page.current += 1;
+      }
+    }
+  };
 
   useEffect(() => {
-    if (scroll && goNextPage) {
-      getSpaceContentsList();
+    if (location.pathname !== "/" && scroll && goNextPage) {
+      getData();
     }
+  }, [scroll]);
 
-    if (location.pathname === "/") {
-      getSpaceContentsList();
+  useEffect(() => {
+    if (location.pathname !== "/" && query !== null) {
+      setHomeGym([]);
+      setGoNextPage(false);
+      param.current = query;
+      page.current = 1;
     }
-  }, [fetch, goNextPage, scroll]);
+    getData();
+  }, [query]);
 
   return (
-    <div className="flex flex-wrap gap-x-[12px]  gap-y-[24px] w-full  mx-auto mt-3 relative">
+    <>
       {homeGym.map((item: homeGym) => (
         <li className="flex flex-col w-[calc(50%-6px)]" key={item.id}>
           <Link to={`/SpaceContent/${item.id}`}>
@@ -78,6 +103,6 @@ export default function SpaceContentsList() {
         </li>
       ))}
       {location.pathname !== "/" && <InfinityScroll setScroll={setScroll} />}
-    </div>
+    </>
   );
 }
