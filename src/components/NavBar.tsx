@@ -23,7 +23,7 @@ export default function NavBar() {
     ? "myPage"
     : "home";
   return (
-    <nav className="bg-white fixed mx-auto left-0 right-0 bottom-0 max-w-[475px] min-w-[320px] flex justify-around py-[5px]">
+    <nav className="bg-white fixed mx-auto left-0 right-0 bottom-0 max-w-[475px] min-w-[320px] flex justify-around py-[5px] border-t border-[#efefef]">
       <Link
         to={"/"}
         className={`${

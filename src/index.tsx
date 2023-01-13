@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { RecoilRoot } from "recoil";
 import ReactDOM from "react-dom/client";
+import { RecoilRoot } from "recoil";
 import "./index.css";
 import HomePage from "./page/home/HomePage";
 import SpaceRentPage from "./page/spaceRent/SpaceRentPage";
@@ -12,7 +12,6 @@ import SpaceContentPage from "./page/spaceRent/SpaceContentPage";
 import CommunityContentPage from "./page/community/CommunityContentPage";
 import Root from "./Root";
 import NotFound from "./components/NotFound";
-import { worker } from "./mocks/worker";
 const router = createBrowserRouter([
   {
     path: "/",
