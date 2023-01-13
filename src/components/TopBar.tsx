@@ -66,7 +66,7 @@ export default function TopBar() {
     );
   };
   return (
-    <div className="bg-white max-w-[475px] min-w-[320px] h-[48px] fixed mx-auto left-0 right-0 top-0 z-10">
+    <div className="bg-white max-w-[475px] min-w-[320px] h-[48px] fixed mx-auto left-0 right-0 top-0 z-10 border-b border-[#efefef]">
       {currentPage === "home" ? homeRendering() : otherRendering()}
     </div>
   );
