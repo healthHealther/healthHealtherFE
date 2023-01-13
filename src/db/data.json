@@ -430,5 +430,111 @@
       "spaceType": ["유산소", "무산소"],
       "img": ""
     }
+  ],
+  "pilates": [
+    {
+      "id": 31,
+      "title": "홈짐 필라테스 영역",
+      "price": 32000,
+      "spaceType": ["필라테스"],
+      "img": ""
+    }
+  ],
+  "aerobic": [
+    {
+      "id": 32,
+      "title": "홈짐 유산소 영역",
+      "price": 32000,
+      "spaceType": ["유산소"],
+      "img": ""
+    }
+  ],
+  "anaerobic": [
+    {
+      "id": 33,
+      "title": "홈짐 무산소 영역",
+      "price": 32000,
+      "spaceType": ["무산소"],
+      "img": ""
+    }
+  ],
+  "GX": [
+    {
+      "id": 34,
+      "title": "홈짐 GX 영역",
+      "price": 32000,
+      "spaceType": ["GX"],
+      "img": ""
+    },
+    {
+      "id": 36,
+      "title": "홈짐 GX 영역",
+      "price": 32000,
+      "spaceType": ["GX"],
+      "img": ""
+    },
+    {
+      "id": 37,
+      "title": "홈짐 GX 영역",
+      "price": 32000,
+      "spaceType": ["GX"],
+      "img": ""
+    },
+    {
+      "id": 38,
+      "title": "홈짐 GX 영역",
+      "price": 32000,
+      "spaceType": ["GX"],
+      "img": ""
+    },
+    {
+      "id": 39,
+      "title": "홈짐 GX 영역",
+      "price": 32000,
+      "spaceType": ["GX"],
+      "img": ""
+    },
+    {
+      "id": 40,
+      "title": "홈짐 GX 영역",
+      "price": 32000,
+      "spaceType": ["GX"],
+      "img": ""
+    },
+    {
+      "id": 41,
+      "title": "홈짐 GX 영역",
+      "price": 32000,
+      "spaceType": ["GX"],
+      "img": ""
+    },
+    {
+      "id": 42,
+      "title": "홈짐 GX 영역",
+      "price": 32000,
+      "spaceType": ["GX"],
+      "img": ""
+    },
+    {
+      "id": 43,
+      "title": "홈짐 GX 영역",
+      "price": 32000,
+      "spaceType": ["GX"],
+      "img": ""
+    },
+    {
+      "id": 44,
+      "title": "홈짐 GX 영역",
+      "price": 32000,
+      "spaceType": ["GX"],
+      "img": ""
+    },
+    {
+      "id": 45,
+      "title": "홈짐 GX 영역",
+      "price": 32000,
+      "spaceType": ["GX"],
+      "img": ""
+    }
   ]
 }

@@ -14,7 +14,9 @@ export default function SpaceContentPreview() {
           </div>
         </Link>
       </div>
-      <SpaceContentsList />
+      <div className="flex flex-wrap gap-x-[12px]  gap-y-[24px] w-full  mx-auto mt-3">
+        <SpaceContentsList />
+      </div>
     </article>
   );
 }
