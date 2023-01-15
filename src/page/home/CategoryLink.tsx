@@ -4,12 +4,12 @@ import aerobicIcon from "../../assets/aerobicExerciseIcon.png";
 import anaerobicIcon from "../../assets/anaerobicExerciseIcon.png";
 import gxIcon from "../../assets/gxIcon.png";
 import pilatesIcon from "../../assets/pilatesIcon.png";
-export default function CategoryLink() {
+export default function spaceTypeLink() {
   return (
     <div className="w-full px-[20px] flex justify-between mb-[39px]">
       <Link
         className="flex w-[calc(25%-8px)] flex-col items-center"
-        to={"/spaceRent?category=aerobic"}
+        to={"/spaceRent?spaceType=aerobic"}
       >
         <div className="mb-[12px]">
           <img className="w-full" src={aerobicIcon} alt="유산소" />
@@ -18,7 +18,7 @@ export default function CategoryLink() {
       </Link>
       <Link
         className="flex w-[calc(25%-8px)] flex-col items-center"
-        to={"/spaceRent?category=anaerobic"}
+        to={"/spaceRent?spaceType=anaerobic"}
       >
         <div className="mb-[12px]">
           <img className="w-full" src={anaerobicIcon} alt="무산소" />
@@ -27,7 +27,7 @@ export default function CategoryLink() {
       </Link>
       <Link
         className="flex w-[calc(25%-8px)] flex-col items-center"
-        to={"/spaceRent?category=pilates"}
+        to={"/spaceRent?spaceType=pilates"}
       >
         <div className="mb-[12px]">
           <img className="w-full" src={pilatesIcon} alt="필라테스" />
@@ -36,7 +36,7 @@ export default function CategoryLink() {
       </Link>
       <Link
         className="flex w-[calc(25%-8px)] flex-col items-center"
-        to={"/spaceRent?category=gx"}
+        to={"/spaceRent?spaceType=GX"}
       >
         <div className="mb-[12px]">
           <img className="w-full" src={gxIcon} alt="GX" />

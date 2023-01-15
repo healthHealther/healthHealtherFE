@@ -7,10 +7,16 @@ module.exports = {
         banner_1: "url('./assets/banner_1.png')",
         home: "url('./assets/background_1.png')",
       },
-      colors: { "selected-green": "#08BD9D", "homeGymPrice-green": "#08BD9D" },
+      colors: {
+        "selected-green": "#08BD9D",
+        "homeGymPrice-green": "#08BD9D",
+        "detail-spaceType-bg-green": "#D3EBE5",
+        "detail-spaceType-font-green": "#51776E",
+      },
       fontSize: {
         xs: ["10px", "12px"],
         sm: ["12px", "16px"],
+        m: ["14px, 18px"],
         base: ["16px", "20px"],
         lg: ["18px", "24px"],
         xl: ["24px", "32px"],

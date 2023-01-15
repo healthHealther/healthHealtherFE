@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         element: <SpaceRentPage />,
       },
       {
-        path: "spaceContent/:spaceContentId",
+        path: "spaceContent/",
         element: <SpaceContentPage />,
       },
       {

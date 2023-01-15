@@ -221,320 +221,120 @@
   ],
   "space": [
     {
-      "id": 1,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
+      "space_id": 1,
+      "member_id": "qwe",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
       "spaceType": ["유산소", "무산소"],
-      "img": ""
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": 10000,
+      "urls": [{ "url": "/Rectangle147.png" }]
     },
     {
-      "id": 2,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
+      "space_id": 2,
+      "member_id": "asd",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
       "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": "10000",
+      "urls": [{ "url": "/Rectangle148.png" }]
+    }
+  ],
+  "1": [
     {
-      "id": 3,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
+      "space_id": 1,
+      "member_id": "qwe",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
       "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": 10000,
+      "urls": [{ "url": "/Rectangle147.png" }]
+    }
+  ],
+  "2": [
     {
-      "id": 4,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
+      "space_id": 2,
+      "member_id": "asd",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
       "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 5,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 6,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 7,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 8,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 9,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 10,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 11,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 12,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 13,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 14,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 15,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 16,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 17,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 18,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 19,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 20,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 21,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 22,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 23,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 24,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 25,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 26,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 27,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 28,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 29,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
-    },
-    {
-      "id": 30,
-      "title": "홈짐 타이틀 영역",
-      "price": 32000,
-      "spaceType": ["유산소", "무산소"],
-      "img": ""
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": "10000",
+      "urls": [{ "url": "/Rectangle148.png" }]
     }
   ],
   "pilates": [
     {
-      "id": 31,
-      "title": "홈짐 필라테스 영역",
-      "price": 32000,
+      "space_id": 3,
+      "member_id": "asd",
+      "title": "필라테스 운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
       "spaceType": ["필라테스"],
-      "img": ""
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": "10000",
+      "urls": [{ "url": "/Rectangle148.png" }]
     }
   ],
   "aerobic": [
     {
-      "id": 32,
-      "title": "홈짐 유산소 영역",
-      "price": 32000,
+      "space_id": 4,
+      "member_id": "azxc",
+      "title": "유산소 운동 공간 대여",
+      "content": "유산소 운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
       "spaceType": ["유산소"],
-      "img": ""
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": "10000",
+      "urls": [{ "url": "/Rectangle148.png" }]
     }
   ],
   "anaerobic": [
     {
-      "id": 33,
-      "title": "홈짐 무산소 영역",
-      "price": 32000,
+      "space_id": 5,
+      "member_id": "vads",
+      "title": "무산소 운동 공간 대여",
+      "content": "무산소 운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
       "spaceType": ["무산소"],
-      "img": ""
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": "10000",
+      "urls": [{ "url": "/Rectangle148.png" }]
     }
   ],
   "GX": [
     {
-      "id": 34,
-      "title": "홈짐 GX 영역",
-      "price": 32000,
+      "space_id": 6,
+      "member_id": "vasd",
+      "title": "GX 운동 공간 대여",
+      "content": "GX 운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
       "spaceType": ["GX"],
-      "img": ""
-    },
-    {
-      "id": 36,
-      "title": "홈짐 GX 영역",
-      "price": 32000,
-      "spaceType": ["GX"],
-      "img": ""
-    },
-    {
-      "id": 37,
-      "title": "홈짐 GX 영역",
-      "price": 32000,
-      "spaceType": ["GX"],
-      "img": ""
-    },
-    {
-      "id": 38,
-      "title": "홈짐 GX 영역",
-      "price": 32000,
-      "spaceType": ["GX"],
-      "img": ""
-    },
-    {
-      "id": 39,
-      "title": "홈짐 GX 영역",
-      "price": 32000,
-      "spaceType": ["GX"],
-      "img": ""
-    },
-    {
-      "id": 40,
-      "title": "홈짐 GX 영역",
-      "price": 32000,
-      "spaceType": ["GX"],
-      "img": ""
-    },
-    {
-      "id": 41,
-      "title": "홈짐 GX 영역",
-      "price": 32000,
-      "spaceType": ["GX"],
-      "img": ""
-    },
-    {
-      "id": 42,
-      "title": "홈짐 GX 영역",
-      "price": 32000,
-      "spaceType": ["GX"],
-      "img": ""
-    },
-    {
-      "id": 43,
-      "title": "홈짐 GX 영역",
-      "price": 32000,
-      "spaceType": ["GX"],
-      "img": ""
-    },
-    {
-      "id": 44,
-      "title": "홈짐 GX 영역",
-      "price": 32000,
-      "spaceType": ["GX"],
-      "img": ""
-    },
-    {
-      "id": 45,
-      "title": "홈짐 GX 영역",
-      "price": 32000,
-      "spaceType": ["GX"],
-      "img": ""
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": "10000",
+      "urls": [{ "url": "/Rectangle148.png" }]
     }
   ]
 }
