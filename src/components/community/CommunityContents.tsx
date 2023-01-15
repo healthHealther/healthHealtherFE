@@ -19,11 +19,11 @@ export default function CommunityContents() {
   const getCommunityContentsList = useCallback(async () => {
     try {
       const { data } = await axios.get<contentType[]>(
-        `http://localhost:3001/community?_limit=10&_page=${page.current}`
+        `http://localhost:3001/community?_limit=15&_page=${page.current}`
       );
       window.scrollTo({ top: 0 });
       setCommunityContentList((prev) => [...prev, ...data]);
-      setGoNextPage(data.length === 10);
+      setGoNextPage(data.length === 15);
       if (data.length) page.current += 1;
     } catch (err) {
       console.log(err);
