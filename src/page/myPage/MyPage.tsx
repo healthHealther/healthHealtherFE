@@ -32,7 +32,7 @@ export default function MyPage() {
 
     return (
       <Link
-        className="py-[20px] h-[66px] flex items-center border-b border-[#efefef]"
+        className="py-[20px] h-[66px] flex items-center border-b border-[#efefef] hover:bg-[rgba(0,0,0,0.03)] transition-colors"
         to={`/myPage/${buttonType}`}
       >
         <div className="mr-[10px]">
