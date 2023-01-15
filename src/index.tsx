@@ -12,6 +12,9 @@ import SpaceContentPage from "./page/spaceRent/SpaceContentPage";
 import CommunityContentPage from "./page/community/CommunityContentPage";
 import Root from "./Root";
 import NotFound from "./components/NotFound";
+import MyRent from "./page/myPage/myPageLink/MyRent";
+import MyPost from "./page/myPage/myPageLink/MyPost";
+import Notification from "./page/myPage/myPageLink/Notification";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +43,18 @@ const router = createBrowserRouter([
       {
         path: "/myPage",
         element: <MyPage />,
+      },
+      {
+        path: "/myPage/notification",
+        element: <Notification />,
+      },
+      {
+        path: "/myPage/myRent",
+        element: <MyRent />,
+      },
+      {
+        path: "/myPage/myPost",
+        element: <MyPost />,
       },
     ],
     errorElement: <NotFound />,

@@ -7,7 +7,7 @@ export default function Root() {
   const bodyTag = document.body;
   bodyTag.className = "bg-home bg-no-repeat bg-fixed bg-cover bg-center";
   return (
-    <div className="max-w-[475px] min-w-[390px] sm:mx-auto mt-[48px] bg-white min-h-[100vh]">
+    <div className="max-w-[475px] min-w-[390px] sm:mx-auto mt-[48px] bg-white min-h-[90vh]">
       <TopBar />
       <Outlet />
       <ScrollToTop />
