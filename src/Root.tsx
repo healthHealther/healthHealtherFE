@@ -4,16 +4,18 @@ import NavBar from "./components/NavBar";
 import ScrollTopWhenMovePage from "./components/ScrollTopWhenMovePage";
 import ScrollToTop from "./components/ScrollToTop";
 import TopBar from "./components/TopBar";
+import LoginPage from "./page/login/LoginPage";
 export default function Root() {
   const bodyTag = document.body;
   bodyTag.className = "bg-home bg-no-repeat bg-fixed bg-cover bg-center";
   return (
-    <div className="max-w-[475px] min-w-[390px] sm:mx-auto mt-[48px] bg-white min-h-[90vh]">
+    <div className="relative max-w-[475px] min-w-[390px] sm:mx-auto mt-[48px] bg-white min-h-[90vh]">
       <ScrollTopWhenMovePage />
       <TopBar />
       <Outlet />
       <ScrollToTop />
       <NavBar />
+      <LoginPage />
     </div>
   );
 }
