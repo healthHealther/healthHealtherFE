@@ -8,16 +8,6 @@ export default function ScrollToTop() {
     document.documentElement.scrollHeight
   );
   const [throttle, setThrottle] = useState(false);
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     console.log(pageHeight);
-  //     setPageHeight(document.documentElement.scrollHeight);
-  //     throttle ? setThrottle(false) : setThrottle(true);
-  //   }, 500);
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // }, [throttle]);
   const handleThrottle = () => {
     if (throttle) return;
     if (!throttle) {

@@ -1,11 +1,34 @@
-import React from "react";
-import CommunityContents from "../../components/community/CommunityContents";
+import React, { useState } from "react";
+import CommunityContents from "./CommunityContents";
 import CommunitySearchBar from "./CommunitySearchBar";
+export interface contentType {
+  board_id: number;
+  nickname: string;
+  title: string;
+  content: string;
+}
 export default function CommunityPage() {
+  const [searchActive, setSearchActive] = useState<boolean>(false);
+  const [searchContext, setSearchContext] = useState("");
+  const [communityContentList, setCommunityContentList] = useState<
+    contentType[]
+  >([]);
+
   return (
     <div className="relative">
-      <CommunitySearchBar />
-      <CommunityContents />
+      <CommunitySearchBar
+        searchActive={searchActive}
+        setSearchActive={setSearchActive}
+        searchContext={searchContext}
+        setSearchContext={setSearchContext}
+        setCommunityContentList={setCommunityContentList}
+      />
+      <CommunityContents
+        searchActive={searchActive}
+        searchContext={searchContext}
+        communityContentList={communityContentList}
+        setCommunityContentList={setCommunityContentList}
+      />
     </div>
   );
 }
