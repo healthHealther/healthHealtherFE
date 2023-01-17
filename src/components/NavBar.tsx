@@ -26,7 +26,7 @@ export default function NavBar() {
   return (
     <>
       {currentPath !== "SpaceContent" ? (
-        <nav className="bg-white fixed mx-auto left-0 right-0 bottom-0 max-w-[475px] min-w-[320px] flex justify-around py-[5px] border-t border-[#efefef]">
+        <nav className="bg-white fixed mx-auto left-0 right-0 bottom-0 h-11 max-w-[475px] min-w-[320px] flex justify-around py-[5px] border-t border-[#efefef]">
           <Link
             to={"/"}
             className={`${
