@@ -15,6 +15,7 @@ import NotFound from "./components/NotFound";
 import MyRent from "./page/myPage/myPageLink/MyRent";
 import MyPost from "./page/myPage/myPageLink/MyPost";
 import Notification from "./page/myPage/myPageLink/Notification";
+import LoginRedirect from "./page/login/LoginRedirect";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -64,6 +65,14 @@ const router = createBrowserRouter([
     element: <LoginPage />,
     errorElement: <NotFound />,
   },
+  {
+    path: "/login/callback/kakao",
+    element: <LoginRedirect />,
+  },
+  // {
+  //   path: '/signUp/kakao',
+  //   element:
+  // }
 ]);
 
 // if (process.env.NODE_ENV === "development") {

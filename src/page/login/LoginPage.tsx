@@ -1,5 +1,6 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+import { KakaoAuth } from "../../components/OAuth";
 export default function LoginPage() {
   const loginBtn = [
     {
@@ -44,6 +45,7 @@ export default function LoginPage() {
             {item.coment}
           </button>
         ))}
+        <a href={KakaoAuth}>카카오 로그인 테스트</a>
         {/* 구글 */}
         {/* 카카오 */}
         {/* <button className="bg-kakao-yellow">카카오 계정으로 로그인</button> */}
