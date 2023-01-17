@@ -19,7 +19,7 @@ export default function LoginPage() {
     },
   ];
   return (
-    <div className="max-w-[475px] min-w-[375px] mx-auto my-auto mt-20">
+    <div className="max-w-[475px] min-w-[375px] mx-auto my-auto pt-20 pb-[20px] bg-white min-h-[100vh]">
       {/* 배경 이미지 */}
       <div
         className={`w-[45%] h-0 pb-[40%]   mx-auto bg-[url("./assets/login-bg.png")] bg-no-repeat bg-contain bg-center`}
@@ -35,7 +35,7 @@ export default function LoginPage() {
         </span>
       </div>
       {/* 소셜로그인 */}
-      <div className=" right-[20px] w-[calc(100%-40px)] flex flex-col gap-3 w-full mx-auto pt-[20%] ">
+      <div className=" right-[20px] w-[calc(100%-40px)] flex flex-col gap-3  mx-auto pt-[20%] ">
         {loginBtn.map((item) => (
           <button
             key={item.type}

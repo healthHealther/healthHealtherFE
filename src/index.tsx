@@ -69,7 +69,8 @@ const router = createBrowserRouter([
 // if (process.env.NODE_ENV === "development") {
 //   worker.start();
 // }
-
+const bodyTag = document.body;
+bodyTag.className = "bg-home bg-no-repeat bg-fixed bg-cover bg-center";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
