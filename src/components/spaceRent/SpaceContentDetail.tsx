@@ -6,12 +6,10 @@ import infomationIcon from "../../assets/infomationIcon.svg";
 
 interface SpaceContentDetailProps {
   spaceContentDetail: homeGym;
-  setRentTime: Dispatch<React.SetStateAction<number>>;
 }
 
 export default function SpaceContentDetail({
   spaceContentDetail,
-  setRentTime,
 }: SpaceContentDetailProps) {
   //   useEffect(() => {}, [spaceContentDetail]);
   console.log(spaceContentDetail);

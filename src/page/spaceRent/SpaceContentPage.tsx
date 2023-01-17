@@ -15,10 +15,13 @@ export default function SpaceContentPage() {
     address: "",
     detail_address: "",
     spaceType: [],
+    convenienceTypes: [],
     note: "",
     rule: "",
     price: 0,
     urls: [{ url: "" }],
+    openTime: 0,
+    closeTime: 0,
   });
   const [spaceRentParams] = useSearchParams();
   const query = spaceRentParams.get("id");
@@ -31,10 +34,7 @@ export default function SpaceContentPage() {
   }, [query]);
   return (
     <article className="w-full pb-14">
-      <SpaceContentDetail
-        spaceContentDetail={spaceContentDetail}
-        setRentTime={setRentTime}
-      />
+      <SpaceContentDetail spaceContentDetail={spaceContentDetail} />
     </article>
   );
 }
