@@ -18,7 +18,7 @@ export default function CreateNewContentBtn() {
           : currentPath === "spaceRent"
           ? "visible"
           : "hidden"
-      } fixed bottom-11 right-0`}
+      } fixed bottom-11 right-0 sm:right-[calc(50%-475px/2+9px)]`}
     >
       <Link
         to={

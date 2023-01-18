@@ -68,7 +68,7 @@ export default function ScrollToTop() {
           : currentPath === "spaceRent"
           ? "bottom-[120px]"
           : "bottom-0"
-      } right-0 `}
+      } right-0 sm:right-[calc(50%-475px/2+9px)]`}
     >
       <button onClick={handleScrollTop} className="w-full h-full">
         <img className="w-full" src={scrollToTopIcon} alt="위로가기" />
