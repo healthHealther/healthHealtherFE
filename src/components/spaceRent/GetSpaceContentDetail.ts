@@ -22,9 +22,12 @@ export default async function GetSpaceContentDetail({
     address: data[0].address,
     detail_address: data[0].detail_address,
     spaceType: data[0].spaceType,
+    convenienceTypes: data[0].convenienceTypes,
     note: data[0].note,
     rule: data[0].rule,
     price: data[0].price,
     urls: data[0].urls,
+    openTime: data[0].openTime,
+    closeTime: data[0].closeTime,
   });
 }
