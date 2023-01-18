@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import arrowTopIcon from "../assets/arrow_top.svg";
+import { useLocation } from "react-router-dom";
+import scrollToTopIcon from "../assets/scrollToTop.png";
 
 export default function ScrollToTop() {
   const [scrollYValue, setscrollYValue] = useState(0);
@@ -8,6 +9,12 @@ export default function ScrollToTop() {
     document.documentElement.scrollHeight
   );
   const [throttle, setThrottle] = useState(false);
+  const location = useLocation();
+  const index = location.pathname.indexOf("/", 1);
+  const currentPath =
+    index !== -1
+      ? location.pathname.slice(1, index)
+      : location.pathname.slice(1);
   const handleThrottle = () => {
     if (throttle) return;
     if (!throttle) {
@@ -55,10 +62,16 @@ export default function ScrollToTop() {
     <div
       className={`${scrollActive ? "opacity-100" : "opacity-0"} ${
         pageHeight > 1500 ? "visible" : "hidden"
-      } transition-opacity duration-300 fixed bottom-[30px] right-[20px] w-[56px] h-[56px]`}
+      } transition-opacity duration-300 fixed ${
+        currentPath === "community"
+          ? "bottom-[120px]"
+          : currentPath === "spaceRent"
+          ? "bottom-[120px]"
+          : "bottom-0"
+      } right-0 `}
     >
       <button onClick={handleScrollTop} className="w-full h-full">
-        <img className="w-full" src={arrowTopIcon} alt="위로가기" />
+        <img className="w-full" src={scrollToTopIcon} alt="위로가기" />
       </button>
     </div>
   );

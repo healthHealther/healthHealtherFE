@@ -1,5 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import CreateNewContentBtn from "./components/CreateNewContentBtn";
 import NavBar from "./components/NavBar";
 import ScrollTopWhenMovePage from "./components/ScrollTopWhenMovePage";
 import ScrollToTop from "./components/ScrollToTop";
@@ -11,6 +12,7 @@ export default function Root() {
       <TopBar />
       <Outlet />
       <ScrollToTop />
+      <CreateNewContentBtn />
       <NavBar />
     </div>
   );
