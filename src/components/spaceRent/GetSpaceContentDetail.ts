@@ -12,22 +12,24 @@ export default async function GetSpaceContentDetail({
   setSpaceContentDetail,
   query,
 }: GetSpaceContentDetailProps) {
-  const { data } = await axios.get<homeGym[]>(`http://localhost:3001/${query}`);
-  console.log(data[0]);
+  const { data } = await axios.get<homeGym>(
+    `http://localhost:3001/space/${query}`
+  );
+
   setSpaceContentDetail({
-    space_id: data[0].space_id,
-    member_id: data[0].member_id,
-    title: data[0].title,
-    content: data[0].content,
-    address: data[0].address,
-    detail_address: data[0].detail_address,
-    spaceType: data[0].spaceType,
-    convenienceTypes: data[0].convenienceTypes,
-    note: data[0].note,
-    rule: data[0].rule,
-    price: data[0].price,
-    urls: data[0].urls,
-    openTime: data[0].openTime,
-    closeTime: data[0].closeTime,
+    spaceId: data.spaceId,
+    memberId: data.memberId,
+    title: data.title,
+    content: data.content,
+    address: data.address,
+    detailAddress: data.detailAddress,
+    spaceType: data.spaceType,
+    convenienceTypes: data.convenienceTypes,
+    note: data.note,
+    rule: data.rule,
+    price: data.price,
+    urls: data.urls,
+    openTime: data.openTime,
+    closeTime: data.closeTime,
   });
 }

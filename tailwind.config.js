@@ -13,6 +13,8 @@ module.exports = {
         "google-red": "#DF4F3D",
         "kakao-yellow": "#FEC600",
         "naver-green": "#62BA46",
+        "detail-spaceType-font-green": "#51776E",
+        "detail-spaceType-bg-green": "#D3EBE5",
       },
       fontSize: {
         xs: ["10px", "12px"],
