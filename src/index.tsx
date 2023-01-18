@@ -16,6 +16,7 @@ import MyRent from "./page/myPage/myPageLink/MyRent";
 import MyPost from "./page/myPage/myPageLink/MyPost";
 import Notification from "./page/myPage/myPageLink/Notification";
 import LoginRedirect from "./page/login/LoginRedirect";
+import SpaceRegisterPage from "./page/spaceRent/SpaceRegisterPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/myPage/myPost",
         element: <MyPost />,
+      },
+      {
+        path: "/spaceRegister",
+        element: <SpaceRegisterPage />,
       },
     ],
     errorElement: <NotFound />,

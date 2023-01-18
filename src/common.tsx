@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { contentType } from "./components/community/CommunityContents";
+import { contentType } from "./page/community/CommunityPage";
 import { commentType } from "./page/community/comment/CommentArea";
 export const isLoggedInState = atom({
   key: "isLoggedInState",

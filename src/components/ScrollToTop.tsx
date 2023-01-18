@@ -15,16 +15,6 @@ export default function ScrollToTop() {
     index !== -1
       ? location.pathname.slice(1, index)
       : location.pathname.slice(1);
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     console.log(pageHeight);
-  //     setPageHeight(document.documentElement.scrollHeight);
-  //     throttle ? setThrottle(false) : setThrottle(true);
-  //   }, 500);
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // }, [throttle]);
   const handleThrottle = () => {
     if (throttle) return;
     if (!throttle) {
