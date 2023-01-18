@@ -151,7 +151,7 @@ export default function SpaceRegister() {
       />
       <input
         type="text"
-        {...register("detail_address", { required: true })}
+        {...register("detailAddress", { required: true })}
         placeholder="상세주소"
       />
       {/* 내용 */}

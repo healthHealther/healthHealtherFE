@@ -4,23 +4,7 @@ import axios from "axios";
 
 import InfinityScroll from "../InfinityScroll";
 
-interface homeGym {
-  space_id: number;
-  member_id: string;
-  title: string;
-  content: string;
-  address: string;
-  detail_address: string;
-  spaceType: Array<string>;
-  note: string;
-  rule: string;
-  price: number;
-  urls: img[];
-}
-
-interface img {
-  ["url"]: string;
-}
+import { homeGym } from "../../interface/space";
 
 export default function SpaceContentsList() {
   const location = useLocation();
@@ -82,8 +66,8 @@ export default function SpaceContentsList() {
   return (
     <>
       {homeGym.map((item: homeGym) => (
-        <li className="flex flex-col w-[calc(50%-6px)]" key={item.space_id}>
-          <Link to={`/SpaceContent?id=${item.space_id}`}>
+        <li className="flex flex-col w-[calc(50%-6px)]" key={item.spaceId}>
+          <Link to={`/SpaceContent?id=${item.spaceId}`}>
             <div
               style={{
                 backgroundImage: `url("${item.urls[0].url}")`,

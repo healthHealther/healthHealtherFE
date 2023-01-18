@@ -3,6 +3,7 @@ import React, { Dispatch, useEffect } from "react";
 import { homeGym } from "../../interface/space";
 
 import infomationIcon from "../../assets/infomationIcon.svg";
+import Coupon from "./Coupon";
 
 interface SpaceContentDetailProps {
   spaceContentDetail: homeGym;
@@ -12,11 +13,11 @@ export default function SpaceContentDetail({
   spaceContentDetail,
 }: SpaceContentDetailProps) {
   //   useEffect(() => {}, [spaceContentDetail]);
-  console.log(spaceContentDetail);
 
   return (
     <div className="flex flex-col">
       {/* 메인 사진 */}
+
       <div
         style={{
           backgroundImage: `url("${spaceContentDetail.urls[0].url}")`,
@@ -28,14 +29,14 @@ export default function SpaceContentDetail({
         {/* 운동 타입 */}
         <div className="flex gap-1">
           {spaceContentDetail.spaceType.map((item: string) => (
-            <p className="flex w-[49px] h-[39px] bg-detail-spaceType-bg-green text-detail-spaceType-font-green items-center justify-center rounded-[8px] text-sm ">
+            <p className="flex w-[49px] h-[30px] bg-detail-spaceType-bg-green text-detail-spaceType-font-green items-center justify-center rounded-[8px] text-sm ">
               {item}
             </p>
           ))}
         </div>
         {/* 회원 아이디 */}
         <div className="flex gap-1 text-m mt-4">
-          <span className="font-bold">{spaceContentDetail.member_id}</span>
+          <span className="font-bold">{spaceContentDetail.memberId}</span>
           <span>님의 홈짐</span>
         </div>
         {/* 제목 */}
@@ -50,7 +51,10 @@ export default function SpaceContentDetail({
         </div>
       </div>
       {/* 구역 나눔 선 */}
-      <div className="w-full h-1 bg-neutral-100 mt-8"></div>
+      <div className="w-full h-1 bg-neutral-100 mt-8" />
+      {/* 쿠폰 */}
+      {spaceContentDetail.spaceId && <Coupon id={spaceContentDetail.spaceId} />}
+
       {/* 상세 내용 영역 */}
       <div className="flex flex-col gap-4 ml-5 mt-[27px]">
         {/* 제목2 */}
@@ -63,7 +67,7 @@ export default function SpaceContentDetail({
         {/* 상세주소 */}
         <div className="flex flex-col">
           <span className="text-neutral-400">위치</span>
-          <span>{spaceContentDetail.detail_address}</span>
+          <span>{spaceContentDetail.detailAddress}</span>
         </div>
         {/* 내용 */}
         <div className="flex flex-col">
