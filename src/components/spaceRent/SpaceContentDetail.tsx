@@ -3,7 +3,13 @@ import React, { Dispatch, useEffect } from "react";
 import { homeGym } from "../../interface/space";
 
 import infomationIcon from "../../assets/infomationIcon.svg";
-import Coupon from "./Coupon";
+import Coupon from "./SpaceCoupon";
+import SpaceRule from "./SpaceRule";
+import DetailInfo from "./SpaceDetailInfo";
+import ViewMap from "./SpaceMap";
+import Review from "./SpaceReview";
+import NewReview from "./NewReview";
+import SpaceConvenience from "./SpaceConvenience";
 
 interface SpaceContentDetailProps {
   spaceContentDetail: homeGym;
@@ -15,7 +21,7 @@ export default function SpaceContentDetail({
   //   useEffect(() => {}, [spaceContentDetail]);
 
   return (
-    <div className="flex flex-col">
+    <div className="">
       {/* 메인 사진 */}
 
       <div
@@ -50,41 +56,32 @@ export default function SpaceContentDetail({
           </span>
         </div>
       </div>
+      <div className="w-full h-1 bg-neutral-100 mt-8" />
+      <SpaceConvenience />
       {/* 구역 나눔 선 */}
       <div className="w-full h-1 bg-neutral-100 mt-8" />
       {/* 쿠폰 */}
       {spaceContentDetail.spaceId && <Coupon id={spaceContentDetail.spaceId} />}
 
+      {/* 정책 내용 영역 */}
+      <SpaceRule />
+      {/* 구역 나눔 선 */}
+      <div className="w-full h-1 bg-neutral-100 mt-8" />
+
       {/* 상세 내용 영역 */}
-      <div className="flex flex-col gap-4 ml-5 mt-[27px]">
-        {/* 제목2 */}
-        <div className="flex gap-3 items-center text-base">
-          <img src={infomationIcon} alt="상세내용" />
-          <span>상세 설명</span>
-        </div>
-        {/* 예약 가능 시간 */}
-        <div></div>
-        {/* 상세주소 */}
-        <div className="flex flex-col">
-          <span className="text-neutral-400">위치</span>
-          <span>{spaceContentDetail.detailAddress}</span>
-        </div>
-        {/* 내용 */}
-        <div className="flex flex-col">
-          <span className="text-neutral-400">내용</span>
-          <span>{spaceContentDetail.content}</span>
-        </div>
-        {/* 편의사항 */}
-        <div className="flex flex-col">
-          <span className="text-neutral-400">편의사항</span>
-          <span>{spaceContentDetail.note}</span>
-        </div>
-        {/* 규칙 */}
-        <div className="flex flex-col ">
-          <span className="text-neutral-400">규칙</span>
-          <span>{spaceContentDetail.rule}</span>
-        </div>
-      </div>
+      <DetailInfo />
+      {/* 구역 나눔 선 */}
+      <div className="w-full h-1 bg-neutral-100 mt-8" />
+
+      {/* 지도 영역 */}
+      <ViewMap />
+      {/* 구역 나눔 선 */}
+      <div className="w-full h-1 bg-neutral-100 mt-8" />
+
+      {/* 리뷰 영역 */}
+      <Review />
+      {/* 구역 나눔 선 */}
+      {/* <NewReview spaceId={spaceContentDetail.spaceId} /> */}
     </div>
   );
 }

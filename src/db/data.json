@@ -8,10 +8,7 @@
       "content": "운동 공간 대여합니다.",
       "address": "주소입니다.",
       "detailAddress": "자세한 주소",
-      "spaceType": [
-        "유산소",
-        "무산소"
-      ],
+      "spaceType": ["유산소", "무산소"],
       "note": "주의사항",
       "rule": "규칙",
       "price": 10000,
@@ -29,10 +26,7 @@
       "content": "운동 공간 대여합니다.",
       "address": "주소입니다.",
       "detailAddress": "자세한 주소",
-      "spaceType": [
-        "유산소",
-        "무산소"
-      ],
+      "spaceType": ["유산소", "무산소"],
       "note": "주의사항",
       "rule": "규칙",
       "price": "10000",
@@ -43,6 +37,23 @@
       ]
     }
   ],
+  "review": [
+    {
+      "id": 1,
+      "content": "리뷰입니다.!",
+      "star": 5
+    },
+    {
+      "id": 2,
+      "content": "저도 리뷰를 달 줄은 압니다. 리뷰는 모두 다 보여야 합니다. 띄어쓰기를 하려면 textarea를 사용해야 하는데 어찌 생각하시나요? 디자인은 그렇게 잡아둘까 합니다.ㅋㅋ",
+      "star": 3
+    },
+    {
+      "id": 3,
+      "content": "asd",
+      "star": 0
+    }
+  ],
   "coupon": [
     {
       "id": 1,
@@ -50,7 +61,7 @@
       "discountAmount": 1000,
       "openDate": "2023-01-15",
       "expiredDate": "2023-01-16",
-      "amount": 9
+      "amount": 10
     },
     {
       "id": 2,
@@ -730,9 +741,7 @@
       "content": "운동 공간 대여합니다.",
       "address": "주소입니다.",
       "detail_address": "자세한 주소",
-      "spaceType": [
-        "필라테스"
-      ],
+      "spaceType": ["필라테스"],
       "note": "주의사항",
       "rule": "규칙",
       "price": "10000",
@@ -751,9 +760,7 @@
       "content": "유산소 운동 공간 대여합니다.",
       "address": "주소입니다.",
       "detail_address": "자세한 주소",
-      "spaceType": [
-        "유산소"
-      ],
+      "spaceType": ["유산소"],
       "note": "주의사항",
       "rule": "규칙",
       "price": "10000",
@@ -772,9 +779,7 @@
       "content": "무산소 운동 공간 대여합니다.",
       "address": "주소입니다.",
       "detail_address": "자세한 주소",
-      "spaceType": [
-        "무산소"
-      ],
+      "spaceType": ["무산소"],
       "note": "주의사항",
       "rule": "규칙",
       "price": "10000",
@@ -793,9 +798,7 @@
       "content": "GX 운동 공간 대여합니다.",
       "address": "주소입니다.",
       "detail_address": "자세한 주소",
-      "spaceType": [
-        "GX"
-      ],
+      "spaceType": ["GX"],
       "note": "주의사항",
       "rule": "규칙",
       "price": "10000",
