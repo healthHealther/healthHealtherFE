@@ -1,5 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  parsePath,
+  useLocation,
+  useSearchParams,
+} from "react-router-dom";
 import axios from "axios";
 
 import InfinityScroll from "../InfinityScroll";
@@ -28,39 +33,47 @@ export default function SpaceContentsList() {
   const [goNextPage, setGoNextPage] = useState<boolean>(false);
   const [scroll, setScroll] = useState<boolean>(false);
   const page = useRef<number>(1);
-  const param = useRef<string>("");
-
+  const dataFetchedRef = useRef(false);
   const [spaceRentParams] = useSearchParams();
   const query = spaceRentParams.get("spaceType");
-
   const getData = async () => {
-    if (!query && location.pathname !== "/") {
-      if (goNextPage === true) {
-        page.current += 1;
+    try {
+      if (
+        !query &&
+        location.pathname !== "/" &&
+        JSON.parse(localStorage.getItem("selectedType") || "[]")?.length === 0
+      ) {
+        if (goNextPage === true) {
+          page.current += 1;
+        }
+        const { data } = await axios.get<homeGym[]>(
+          `http://localhost:3001/space?_limit=10&_page=${page.current}`
+        );
+        setHomeGym((prev) => [...prev, ...data]);
+        setGoNextPage(data.length === 10);
       }
-      const { data } = await axios.get<homeGym[]>(
-        `http://localhost:3001/space?_limit=10&_page=${page.current}`
-      );
-      setHomeGym((prev) => [...prev, ...data]);
-      setGoNextPage(data.length === 10);
-    }
-    if (!query && location.pathname === "/") {
-      const { data } = await axios.get<homeGym[]>(
-        `http://localhost:3001/space?_page=1&_limit=4`
-      );
+      if (!query && location.pathname === "/") {
+        const { data } = await axios.get<homeGym[]>(
+          `http://localhost:3001/space?_page=1&_limit=4`
+        );
 
-      setHomeGym(data);
-    }
-    if (query !== null) {
-      const { data } = await axios.get<homeGym[]>(
-        `http://localhost:3001/${query}?_limit=10&_page=${page.current}`
-      );
-      setHomeGym((prev) => [...prev, ...data]);
-      setGoNextPage(data.length === 10);
-      if (data.length) {
-        page.current += 1;
+        setHomeGym(data);
       }
+      if (query !== null) {
+        if (page.current === 1) console.log("g");
+        const { data } = await axios.get<homeGym[]>(
+          `http://localhost:3001/${query}?_limit=10&_page=${page.current}`
+        );
+        setHomeGym((prev) => [...prev, ...data]);
+        setGoNextPage(data.length === 10);
+        if (data.length) {
+          page.current += 1;
+        }
+      }
+    } catch (err) {
+      console.error(err);
     }
+    dataFetchedRef.current = false;
   };
 
   useEffect(() => {
@@ -70,13 +83,14 @@ export default function SpaceContentsList() {
   }, [scroll]);
 
   useEffect(() => {
-    if (location.pathname !== "/" && query !== null) {
-      setHomeGym([]);
+    page.current = 1;
+    setHomeGym([]);
+    if (location.pathname !== "/") {
       setGoNextPage(false);
-      param.current = query;
-      page.current = 1;
+      if (dataFetchedRef.current) return;
+      dataFetchedRef.current = true;
+      getData();
     }
-    getData();
   }, [query]);
 
   return (

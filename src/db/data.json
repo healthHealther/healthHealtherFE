@@ -91,6 +91,12 @@
       "commentId": 9,
       "nickname": "하영",
       "comment": "논오"
+    },
+    {
+      "id": 10,
+      "commentId": 10,
+      "nickname": "하영",
+      "comment": "너무 졸려"
     }
   ],
   "boardSearch": [
@@ -485,11 +491,215 @@
           "url": "/Rectangle148.png"
         }
       ]
+    },
+    {
+      "space_id": 3,
+      "member_id": "qwe",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
+      "spaceType": ["유산소", "무산소"],
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": 10000,
+      "urls": [
+        {
+          "url": "/Rectangle147.png"
+        }
+      ]
+    },
+    {
+      "space_id": 4,
+      "member_id": "asd",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
+      "spaceType": ["유산소", "무산소"],
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": "10000",
+      "urls": [
+        {
+          "url": "/Rectangle148.png"
+        }
+      ]
+    },
+    {
+      "space_id": 5,
+      "member_id": "qwe",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
+      "spaceType": ["유산소", "무산소"],
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": 10000,
+      "urls": [
+        {
+          "url": "/Rectangle147.png"
+        }
+      ]
+    },
+    {
+      "space_id": 6,
+      "member_id": "asd",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
+      "spaceType": ["유산소", "무산소"],
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": "10000",
+      "urls": [
+        {
+          "url": "/Rectangle148.png"
+        }
+      ]
+    },
+    {
+      "space_id": 7,
+      "member_id": "qwe",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
+      "spaceType": ["유산소", "무산소"],
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": 10000,
+      "urls": [
+        {
+          "url": "/Rectangle147.png"
+        }
+      ]
+    },
+    {
+      "space_id": 8,
+      "member_id": "asd",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
+      "spaceType": ["유산소", "무산소"],
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": "10000",
+      "urls": [
+        {
+          "url": "/Rectangle148.png"
+        }
+      ]
+    },
+    {
+      "space_id": 9,
+      "member_id": "qwe",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
+      "spaceType": ["유산소", "무산소"],
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": 10000,
+      "urls": [
+        {
+          "url": "/Rectangle147.png"
+        }
+      ]
+    },
+    {
+      "space_id": 10,
+      "member_id": "asd",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
+      "spaceType": ["유산소", "무산소"],
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": "10000",
+      "urls": [
+        {
+          "url": "/Rectangle148.png"
+        }
+      ]
+    },
+    {
+      "space_id": 11,
+      "member_id": "qwe",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
+      "spaceType": ["유산소", "무산소"],
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": 10000,
+      "urls": [
+        {
+          "url": "/Rectangle147.png"
+        }
+      ]
+    },
+    {
+      "space_id": 12,
+      "member_id": "asd",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
+      "spaceType": ["유산소", "무산소"],
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": "10000",
+      "urls": [
+        {
+          "url": "/Rectangle148.png"
+        }
+      ]
+    },
+    {
+      "space_id": 13,
+      "member_id": "qwe",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
+      "spaceType": ["유산소", "무산소"],
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": 10000,
+      "urls": [
+        {
+          "url": "/Rectangle147.png"
+        }
+      ]
+    },
+    {
+      "space_id": 14,
+      "member_id": "asd",
+      "title": "운동 공간 대여",
+      "content": "운동 공간 대여합니다.",
+      "address": "주소입니다.",
+      "detail_address": "자세한 주소",
+      "spaceType": ["유산소", "무산소"],
+      "note": "주의사항",
+      "rule": "규칙",
+      "price": "10000",
+      "urls": [
+        {
+          "url": "/Rectangle148.png"
+        }
+      ]
     }
   ],
   "pilates": [
     {
-      "space_id": 3,
+      "space_id": 31,
       "member_id": "asd",
       "title": "필라테스 운동 공간 대여",
       "content": "운동 공간 대여합니다.",
@@ -508,7 +718,7 @@
   ],
   "aerobic": [
     {
-      "space_id": 4,
+      "space_id": 41,
       "member_id": "azxc",
       "title": "유산소 운동 공간 대여",
       "content": "유산소 운동 공간 대여합니다.",
@@ -527,7 +737,7 @@
   ],
   "anaerobic": [
     {
-      "space_id": 5,
+      "space_id": 51,
       "member_id": "vads",
       "title": "무산소 운동 공간 대여",
       "content": "무산소 운동 공간 대여합니다.",
@@ -546,7 +756,7 @@
   ],
   "GX": [
     {
-      "space_id": 6,
+      "space_id": 61,
       "member_id": "vasd",
       "title": "GX 운동 공간 대여",
       "content": "GX 운동 공간 대여합니다.",

@@ -49,7 +49,7 @@ export default function CommentArea(props: commentAreaProps) {
   };
 
   return (
-    <div className="">
+    <div className="pt-[32px]">
       <div className="flex items-center">
         <img className="mr-[12px]" src={informationIcon} alt="" />
         <p>댓글</p>

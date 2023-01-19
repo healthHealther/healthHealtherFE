@@ -9,7 +9,7 @@ export default function CategoryLink() {
     <div className="w-full px-[20px] flex justify-between mb-[39px]">
       <Link
         className="flex w-[calc(25%-8px)] flex-col items-center"
-        to={"/spaceRent?spaceType=aerobic"}
+        to={"/spaceRent?spaceType=AEROBIC"}
       >
         <div className="mb-[12px]">
           <img className="w-full" src={aerobicIcon} alt="유산소" />
@@ -18,7 +18,7 @@ export default function CategoryLink() {
       </Link>
       <Link
         className="flex w-[calc(25%-8px)] flex-col items-center"
-        to={"/spaceRent?spaceType=anaerobic"}
+        to={"/spaceRent?spaceType=ANAEROBIC"}
       >
         <div className="mb-[12px]">
           <img className="w-full" src={anaerobicIcon} alt="무산소" />
@@ -27,7 +27,7 @@ export default function CategoryLink() {
       </Link>
       <Link
         className="flex w-[calc(25%-8px)] flex-col items-center"
-        to={"/spaceRent?spaceType=pilates"}
+        to={"/spaceRent?spaceType=PILATES"}
       >
         <div className="mb-[12px]">
           <img className="w-full" src={pilatesIcon} alt="필라테스" />
