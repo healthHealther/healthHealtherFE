@@ -9,7 +9,6 @@ export default function CreateNewContentBtn() {
     index !== -1
       ? location.pathname.slice(1, index)
       : location.pathname.slice(1);
-  console.log(currentPath);
   return (
     <div
       className={`${

@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 import { communityState } from "../../common";
 import { useParams } from "react-router-dom";
 import CommentArea from "./comment/CommentArea";
+import LikeArea from "./LikeArea";
 
 export default function CommunityContentPage() {
   const params = useParams();
@@ -26,9 +27,10 @@ export default function CommunityContentPage() {
           {contentItem?.nickname} | {/* 생성일자 */}
         </p>
       </div>
-      <div className="pb-[80px] border-b border-[#efefef] mb-[32px]">
-        <p className="text-[16px]">{contentItem?.content}</p>
+      <div className="pb-[80px] border-b-4 border-[#efefef]">
+        <p className="text-[16px]">{contentItem?.content} 내용</p>
       </div>
+      <LikeArea />
       <CommentArea contentId={contentId} />
     </div>
   );
