@@ -24,7 +24,7 @@ export default function CreateNewContentBtn() {
           currentPath === "community"
             ? "/contentRegisterPage"
             : currentPath === "spaceRent"
-            ? "/spaceRegisterPage"
+            ? "/spaceRegister"
             : "/"
         }
       >

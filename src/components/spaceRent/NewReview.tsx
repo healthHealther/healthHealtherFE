@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Rating } from "react-simple-star-rating";
 import StarRating from "react-svg-star-rating";
 import { useRecoilState } from "recoil";
 import { reviewState } from "../../common";
@@ -45,7 +44,6 @@ export default function NewReview({ spaceId, length }: NewReviewProps) {
   useEffect(() => {
     handleRating(rating);
   }, [rating]);
-  console.log(rating);
 
   return (
     <form
@@ -60,7 +58,7 @@ export default function NewReview({ spaceId, length }: NewReviewProps) {
       />
       <div className="flex items-center">
         <textarea
-          className="p-[10px] resize-none break-words leading-[24px] min-h-[92px] w-[83%] border border-[#d9d9d9] rounded-[8px] mr-[10px]"
+          className="p-[10px] resize-none break-words leading-[24px] min-h-[92px] w-[83%] border border-[#d9d9d9] rounded-[8px] mr-[10px] "
           {...register("content", { required: true })}
         />
         <input
