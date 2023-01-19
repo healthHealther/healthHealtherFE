@@ -1,10 +1,10 @@
 export interface homeGym {
-  space_id: number;
-  member_id: string;
+  spaceId: number;
+  memberId: string;
   title: string;
   content: string;
   address: string;
-  detail_address: string;
+  detailAddress: string;
   spaceType: Array<string>;
   convenienceTypes: Array<string>;
   note: string;
@@ -19,4 +19,12 @@ export interface homeGym {
 
 interface img {
   ["url"]: string;
+}
+
+export interface couponType {
+  spaceId: number;
+  discountAmount: number;
+  openDate: string;
+  expiredDate: string;
+  amount: number;
 }

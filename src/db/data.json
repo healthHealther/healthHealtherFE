@@ -1,13 +1,17 @@
 {
-  "1": [
+  "space": [
     {
-      "space_id": 1,
-      "member_id": "qwe",
+      "id": 1,
+      "spaceId": 1,
+      "memberId": "qwe",
       "title": "운동 공간 대여",
       "content": "운동 공간 대여합니다.",
       "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
+      "detailAddress": "자세한 주소",
+      "spaceType": [
+        "유산소",
+        "무산소"
+      ],
       "note": "주의사항",
       "rule": "규칙",
       "price": 10000,
@@ -16,17 +20,19 @@
           "url": "/Rectangle147.png"
         }
       ]
-    }
-  ],
-  "2": [
+    },
     {
-      "space_id": 2,
-      "member_id": "asd",
+      "id": 2,
+      "spaceId": 2,
+      "memberId": "asd",
       "title": "운동 공간 대여",
       "content": "운동 공간 대여합니다.",
       "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
+      "detailAddress": "자세한 주소",
+      "spaceType": [
+        "유산소",
+        "무산소"
+      ],
       "note": "주의사항",
       "rule": "규칙",
       "price": "10000",
@@ -35,6 +41,24 @@
           "url": "/Rectangle148.png"
         }
       ]
+    }
+  ],
+  "coupon": [
+    {
+      "id": 1,
+      "spaceId": 1,
+      "discountAmount": 1000,
+      "openDate": "2023-01-15",
+      "expiredDate": "2023-01-16",
+      "amount": 9
+    },
+    {
+      "id": 2,
+      "spaceId": 2,
+      "discountAmount": 1000,
+      "openDate": "2023-01-15",
+      "expiredDate": "2023-01-16",
+      "amount": 10
     }
   ],
   "comment": [
@@ -457,6 +481,7 @@
       "content": "내용입니다"
     }
   ],
+
   "space": [
     {
       "space_id": 1,
@@ -705,7 +730,9 @@
       "content": "운동 공간 대여합니다.",
       "address": "주소입니다.",
       "detail_address": "자세한 주소",
-      "spaceType": ["필라테스"],
+      "spaceType": [
+        "필라테스"
+      ],
       "note": "주의사항",
       "rule": "규칙",
       "price": "10000",
@@ -724,7 +751,9 @@
       "content": "유산소 운동 공간 대여합니다.",
       "address": "주소입니다.",
       "detail_address": "자세한 주소",
-      "spaceType": ["유산소"],
+      "spaceType": [
+        "유산소"
+      ],
       "note": "주의사항",
       "rule": "규칙",
       "price": "10000",
@@ -743,7 +772,9 @@
       "content": "무산소 운동 공간 대여합니다.",
       "address": "주소입니다.",
       "detail_address": "자세한 주소",
-      "spaceType": ["무산소"],
+      "spaceType": [
+        "무산소"
+      ],
       "note": "주의사항",
       "rule": "규칙",
       "price": "10000",
@@ -762,7 +793,9 @@
       "content": "GX 운동 공간 대여합니다.",
       "address": "주소입니다.",
       "detail_address": "자세한 주소",
-      "spaceType": ["GX"],
+      "spaceType": [
+        "GX"
+      ],
       "note": "주의사항",
       "rule": "규칙",
       "price": "10000",

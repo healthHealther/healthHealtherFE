@@ -8,12 +8,12 @@ import { homeGym } from "../../interface/space";
 
 export default function SpaceContentPage() {
   const [spaceContentDetail, setSpaceContentDetail] = useState<homeGym>({
-    space_id: 0,
-    member_id: "",
+    spaceId: 0,
+    memberId: "",
     title: "",
     content: "",
     address: "",
-    detail_address: "",
+    detailAddress: "",
     spaceType: [],
     convenienceTypes: [],
     note: "",
@@ -30,7 +30,6 @@ export default function SpaceContentPage() {
 
   useEffect(() => {
     query !== null && GetSpaceContentDetail({ setSpaceContentDetail, query });
-    console.log(spaceContentDetail);
   }, [query]);
   return (
     <article className="w-full pb-14">
