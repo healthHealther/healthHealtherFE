@@ -15,6 +15,9 @@ module.exports = {
         "naver-green": "#62BA46",
         "detail-spaceType-font-green": "#51776E",
         "detail-spaceType-bg-green": "#D3EBE5",
+        "content-box-gray": "#FBFBFB",
+        "content-box-text-gray": "#8B8B8B",
+        "star-yellow": "#FEC600",
       },
       fontSize: {
         xs: ["10px", "12px"],
@@ -22,6 +25,7 @@ module.exports = {
         base: ["16px", "20px"],
         lg: ["18px", "24px"],
         xl: ["24px", "32px"],
+        content: ["13px", "18px"],
       },
       screens: {
         sm: "475px",
