@@ -3,6 +3,8 @@ import { Controller, useForm } from "react-hook-form";
 import { homeGymInfo } from "../../interface/space";
 import Select from "react-select";
 import Multiselect from "multiselect-react-dropdown";
+import DaumPostcode from "react-daum-postcode";
+import axios from "axios";
 
 // import DatePicker, { registerLocale } from "react-datepicker";
 // import dayjs from "dayjs";
@@ -27,14 +29,68 @@ export default function SpaceRegister() {
     control,
     setValue,
     getValues,
+    watch,
     formState: { errors },
   } = useForm<homeGymInfo>();
-  const onSubmit = (data: homeGymInfo) => {
-    console.log(data);
+
+  const watchAllFields = watch([
+    "title",
+    "content",
+    "address",
+    "detailAddress",
+    "spaceTypes",
+    "convenienceTypes",
+    "notice",
+    "rule",
+    "price",
+    "images",
+    "closeTime",
+    "openTime",
+  ]);
+
+  const [finish, setFinish] = useState<boolean>(false);
+
+  useEffect(() => {
+    watchAllFields.filter(
+      (item) => item === "" || item === undefined || item === Array(0)
+    ).length === 0
+      ? setFinish(true)
+      : setFinish(false);
+    console.log(
+      watchAllFields.filter((item) => item === "" || item === undefined)
+    );
+    console.log(watchAllFields);
+  }, [watchAllFields]);
+
+  const [images, setImages] = useState<image[]>([]);
+
+  const [addressModal, setAddressModal] = useState<boolean>(false);
+
+  const onSubmit = async (data: homeGymInfo) => {
+    try {
+      await axios.post<homeGymInfo>(`http://localhost:3001/spaces`, {
+        title: data.title,
+        content: data.content,
+        address: data.address,
+        detailAddress: data.detailAddress,
+        spaceTypes: data.spaceTypes,
+        convenienceTypes: data.convenienceTypes,
+        notice: data.notice,
+        rule: data.rule,
+        price: data.price,
+        images: data.images,
+        closeTime: data.closeTime,
+        openTime: data.openTime,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+  // 파일 업로드
   const fileInput = useRef<HTMLInputElement>(null);
 
+  // 시간
   const [startAMPM, setStartAMPM] = useState<string>("오전");
   const [closeAMPM, setCloseAMPM] = useState<string>("오전");
 
@@ -48,6 +104,8 @@ export default function SpaceRegister() {
     setCloseAMPM(e.currentTarget.value);
   };
 
+  // 편의 시설 객체
+
   const objectConvenienceType = [
     { value: "SHOWER", label: "샤워" },
     { value: "PARKING", label: "주차시설" },
@@ -59,6 +117,7 @@ export default function SpaceRegister() {
     { value: "TOWEL", label: "수건" },
   ];
 
+  // 운동 타입 객체
   const objectSpaceType = [
     { value: "AEROBIC", label: "유산소" },
     { value: "ANAEROBIC", label: "무산소" },
@@ -66,11 +125,10 @@ export default function SpaceRegister() {
     { value: "GX", label: "GX" },
   ];
 
-  const [image, setImage] = useState<image[]>([]);
-
+  // 이미지 업로드 함수
   const handleChange = (e: any) => {
     if (e.target.files.length) {
-      setImage((prev) => [
+      setImages((prev) => [
         ...prev,
         {
           preview: URL.createObjectURL(e.target.files[0]),
@@ -80,9 +138,27 @@ export default function SpaceRegister() {
     }
   };
 
+  useEffect(() => {
+    setValue(
+      "images",
+      images.map((item) => item)
+    );
+  }, [images]);
+
+  const onCompletePost = (data: {
+    address: string;
+    addressType: string;
+    bname: string;
+    buildingName: string;
+    zonecode: React.SetStateAction<string>;
+  }) => {
+    setValue("address", data.address);
+    // setAddress(data.zonecode);
+  };
+
   //   registerLocale("ko", ko);
   return (
-    <section className="w-full min-w-[280px] mx-auto mt-[26px] mb-20">
+    <div className="w-full min-w-[280px]  mx-auto mt-[26px] pb-10">
       <h1 className="text-xl mx-5 font-bold pt-8">홈짐 등록</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col ">
         {/* 제목 입력 */}
@@ -110,11 +186,29 @@ export default function SpaceRegister() {
             {...register("address", { required: true })}
             placeholder="주소를 입력해주세요"
             className="w-[80%] h-11 border rounded-lg p-[10px] bg-black/[.03]"
+            // disabled={true}
+            readOnly
+            onClick={() => setAddressModal(!addressModal)}
+            value={getValues("address") && getValues("address")}
           />
-          <button className="w-[20%] rounded-lg h-11 bg-homeGymPrice-green text-white">
+          <button
+            type="button"
+            className="w-[20%] rounded-lg h-11 bg-homeGymPrice-green text-white"
+            onClick={() => setAddressModal(!addressModal)}
+          >
             주소찾기
           </button>
         </div>
+        {addressModal && (
+          <div>
+            <DaumPostcode
+              autoClose
+              onComplete={onCompletePost}
+              style={{ width: "100%", height: "500px" }}
+              className="absolute z-[9999] h-[440px] top-[42.8%] left-1/2 transform -translate-x-1/2 -translate-y-[49%] bg-white border "
+            />
+          </div>
+        )}
         <input
           type="text"
           {...register("detailAddress", { required: true })}
@@ -144,6 +238,7 @@ export default function SpaceRegister() {
             isMulti
             isClearable
             placeholder="편의사항을 선택해주세요"
+            {...(register("convenienceTypes"), { required: true })}
           />
         </div>
 
@@ -195,7 +290,7 @@ export default function SpaceRegister() {
             }
             className="w-[80%] h-11 border rounded-lg p-[10px] "
             min={startAMPM === "오전" ? 0 : 12}
-            max={startAMPM === "오전" ? 12 : 24}
+            max={startAMPM === "오후" ? 12 : 24}
           />
         </div>
         <p className={subTitleStyle}>마감 시간</p>
@@ -219,47 +314,71 @@ export default function SpaceRegister() {
                 : "시간을 입력하세요    ex) 12~24"
             }
             className="w-[80%] h-11 border rounded-lg p-[10px] "
-            min={closeAMPM === "오전" ? getValues("openTime") : 12}
-            max={closeAMPM === "오전" ? getValues("openTime") : 24}
+            min={
+              closeAMPM === "오전"
+                ? Number(getValues("openTime"))
+                  ? Number(getValues("openTime")) + 1
+                  : 0
+                : 12
+            }
+            max={
+              closeAMPM === "오후"
+                ? Number(getValues("openTime"))
+                  ? Number(getValues("openTime")) + 1
+                  : 12
+                : 24
+            }
           />
         </div>
 
         {/* 공간 타입 */}
         <p className={subTitleStyle}>편의사항</p>
         <div className="mx-5 h-11 mt-2  ">
-          <Select
-            className=""
-            options={objectSpaceType} // set list of the data
-            onChange={(e) => {
-              setValue(
-                "spaceTypes",
-                Array.isArray(e) ? e.map((x) => x.value) : []
-              );
-            }} // assign onChange function
-            isMulti
-            isClearable
-            placeholder="공간타입을 선택해주세요"
-          />
+          <div>
+            <Select
+              className=""
+              options={objectSpaceType} // set list of the data
+              onChange={(e) => {
+                setValue(
+                  "spaceTypes",
+                  Array.isArray(e) ? e.map((x) => x.value) : []
+                );
+              }} // assign onChange function
+              isMulti
+              isClearable
+              placeholder="공간타입을 선택해주세요"
+            />
+          </div>
         </div>
 
         {/* 사진 입력 */}
         <p className={subTitleStyle}>이미지</p>
-        <div className="flex gap-2 mx-5">
-          {image.length > 0 &&
-            image.map((item) => (
-              <img
-                src={item.preview}
-                alt="dummy"
-                width="80"
-                height="80"
-                className="w-20 h-20 mt-2 rounded-xl"
-              />
+        <div className="flex flex-wrap gap-2 mx-5 ">
+          {images.length > 0 &&
+            images.map((item) => (
+              <div className="relative w-20 h-20 mt-2">
+                <img
+                  src={item.preview}
+                  alt="dummy"
+                  width="80"
+                  height="80"
+                  className="w-20 h-20  rounded-xl"
+                />
+                <button
+                  type="button"
+                  className="absolute -top-3 -right-2 bg-delete bg-no-repeat bg-cover bg-center w-8 h-8"
+                  onClick={() => {
+                    setImages(images.filter((i) => i.raw !== item.raw));
+                  }}
+                ></button>
+              </div>
             ))}
-          <button
+          <input
+            type="button"
             onClick={() => {
               fileInput.current && fileInput.current.click();
             }}
-            className="w-20 h-20 mx-5 mt-2 mb-8 bg-upload bg-no-repeat bg-cover bg-center"
+            className="w-20 h-20 mt-2 mb-8 bg-upload bg-no-repeat bg-cover bg-center"
           />
           <input
             type="file"
@@ -270,7 +389,15 @@ export default function SpaceRegister() {
             hidden={true}
           />
         </div>
-
+        <button
+          type="submit"
+          className={`max-w-[100% - 40px] mx-5 h-12 rounded-lg  mb-5 ${
+            finish === false ? "bg-non-selected-gray" : "bg-selected-green"
+          }`}
+          disabled={!finish}
+        >
+          등록
+        </button>
         {/* <Controller
         name="open_time"
         control={control}
@@ -329,9 +456,7 @@ export default function SpaceRegister() {
           />
         )}
       /> */}
-
-        <button type="submit">제출</button>
       </form>
-    </section>
+    </div>
   );
 }
