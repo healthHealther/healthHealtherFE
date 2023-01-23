@@ -10,6 +10,7 @@ import axios from "axios";
 // import dayjs from "dayjs";
 // import ko from "date-fns/locale/ko";
 import "react-datepicker/dist/react-datepicker.css";
+import ImagePreview from "./register/ImagePreview";
 
 interface image {
   preview: string;
@@ -48,7 +49,15 @@ export default function SpaceRegister() {
     "openTime",
   ]);
 
+  const bodyTag = document.body;
+
   const [finish, setFinish] = useState<boolean>(false);
+  const [images, setImages] = useState<image[]>([]);
+  const [addressModal, setAddressModal] = useState<boolean>(false);
+  const [startAMPM, setStartAMPM] = useState<string>("오전");
+  const [closeAMPM, setCloseAMPM] = useState<string>("오전");
+  const [imgPreviewOnOff, setImgPreviewOnOff] = useState<boolean>(false);
+  const [imgPreviewImgUrl, setImgPreviewImgUrl] = useState<string>("");
 
   useEffect(() => {
     watchAllFields.filter(
@@ -56,15 +65,7 @@ export default function SpaceRegister() {
     ).length === 0
       ? setFinish(true)
       : setFinish(false);
-    console.log(
-      watchAllFields.filter((item) => item === "" || item === undefined)
-    );
-    console.log(watchAllFields);
   }, [watchAllFields]);
-
-  const [images, setImages] = useState<image[]>([]);
-
-  const [addressModal, setAddressModal] = useState<boolean>(false);
 
   const onSubmit = async (data: homeGymInfo) => {
     try {
@@ -91,8 +92,6 @@ export default function SpaceRegister() {
   const fileInput = useRef<HTMLInputElement>(null);
 
   // 시간
-  const [startAMPM, setStartAMPM] = useState<string>("오전");
-  const [closeAMPM, setCloseAMPM] = useState<string>("오전");
 
   const AMPMOption = ["오전", "오후"];
 
@@ -153,12 +152,15 @@ export default function SpaceRegister() {
     zonecode: React.SetStateAction<string>;
   }) => {
     setValue("address", data.address);
-    // setAddress(data.zonecode);
   };
 
   //   registerLocale("ko", ko);
   return (
-    <div className="w-full min-w-[280px]  mx-auto mt-[26px] pb-10">
+    <div
+      className={`w-full min-w-[280px]  mx-auto mt-[26px] pb-10 ${
+        imgPreviewOnOff ? "overflow-y-hidden" : ""
+      }`}
+    >
       <h1 className="text-xl mx-5 font-bold pt-8">홈짐 등록</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col ">
         {/* 제목 입력 */}
@@ -186,7 +188,6 @@ export default function SpaceRegister() {
             {...register("address", { required: true })}
             placeholder="주소를 입력해주세요"
             className="w-[80%] h-11 border rounded-lg p-[10px] bg-black/[.03]"
-            // disabled={true}
             readOnly
             onClick={() => setAddressModal(!addressModal)}
             value={getValues("address") && getValues("address")}
@@ -219,13 +220,6 @@ export default function SpaceRegister() {
         {/* 편의사항 */}
         <p className={subTitleStyle}>편의사항</p>
         <div className="mx-5 h-11 mt-2  ">
-          {/* <Multiselect
-            {...register("convenienceTypes")}
-            className="w-full"
-            options={objectArray}
-            onSelect={(event) => setValue("convenienceTypes", event)}
-            placeholder="편의사항을 선택해주세요"
-          /> */}
           <Select
             className="h-11"
             options={objectConvenienceType} // set list of the data
@@ -356,21 +350,34 @@ export default function SpaceRegister() {
         <div className="flex flex-wrap gap-2 mx-5 ">
           {images.length > 0 &&
             images.map((item) => (
-              <div className="relative w-20 h-20 mt-2">
-                <img
-                  src={item.preview}
-                  alt="dummy"
-                  width="80"
-                  height="80"
-                  className="w-20 h-20  rounded-xl"
-                />
-                <button
-                  type="button"
-                  className="absolute -top-3 -right-2 bg-delete bg-no-repeat bg-cover bg-center w-8 h-8"
-                  onClick={() => {
-                    setImages(images.filter((i) => i.raw !== item.raw));
-                  }}
-                ></button>
+              <div className="mt-2">
+                <div className="relative">
+                  <img
+                    src={item.preview}
+                    alt="dummy"
+                    width="80"
+                    height="80"
+                    className="relative w-20 h-20  rounded-xl"
+                    onClick={() => {
+                      setImgPreviewImgUrl(item.preview);
+                      setImgPreviewOnOff(!imgPreviewOnOff);
+                      bodyTag.style.overflow = "hidden";
+                    }}
+                  />
+                  <button
+                    type="button"
+                    className="absolute -top-3 -right-3 bg-delete bg-no-repeat bg-cover bg-center w-8 h-8"
+                    onClick={() => {
+                      setImages(images.filter((i) => i.raw !== item.raw));
+                    }}
+                  ></button>
+                </div>
+                {imgPreviewOnOff && (
+                  <ImagePreview
+                    url={imgPreviewImgUrl}
+                    setImgPreviewOnOff={setImgPreviewOnOff}
+                  />
+                )}
               </div>
             ))}
           <input
