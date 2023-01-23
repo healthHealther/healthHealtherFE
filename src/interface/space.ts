@@ -5,8 +5,8 @@ export interface homeGym {
   content: string;
   address: string;
   detailAddress: string;
-  spaceType: Array<string>;
-  convenienceTypes: Array<string>;
+  spaceType: string[];
+  convenienceTypes: string[];
   note: string;
   rule: string;
   price: number;
@@ -24,16 +24,21 @@ export interface homeGymInfo {
   content: string;
   address: string;
   detailAddress: string;
-  spaceTypes: Array<string>;
-  convenienceTypes: Array<string>;
+  spaceTypes: string[];
+  convenienceTypes: string[];
   notice: string;
   rule: string;
   price: number;
-  images: Array<string>;
+  images: image[];
   openTime: number;
   closeTime: number;
   // open_time: Date;
   // close_time: Date;
+}
+
+interface image {
+  preview: string;
+  raw: string;
 }
 
 interface img {

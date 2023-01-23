@@ -6,6 +6,8 @@ module.exports = {
       backgroundImage: {
         banner_1: "url('./assets/banner_1.png')",
         home: "url('./assets/background_1.png')",
+        upload: "url('./assets/uploadIcon.png')",
+        delete: "url('./assets/deleteIcon.png')",
       },
       colors: {
         "selected-green": "#08BD9D",
@@ -18,6 +20,8 @@ module.exports = {
         "content-box-gray": "#FBFBFB",
         "content-box-text-gray": "#8B8B8B",
         "star-yellow": "#FEC600",
+        "register-subTitle-gray": "#8B8B8B",
+        "non-selected-gray": "#C4C4C4",
       },
       fontSize: {
         xs: ["10px", "12px"],
