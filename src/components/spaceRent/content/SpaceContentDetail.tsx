@@ -1,18 +1,18 @@
 import React, { Dispatch, useEffect } from "react";
 
-import { homeGym } from "../../interface/space";
+import { homeGymInfo } from "../../../interface/space";
 
 import infomationIcon from "../../assets/infomationIcon.svg";
-import Coupon from "./SpaceCoupon";
+import Coupon from "../SpaceCoupon";
 import SpaceRule from "./SpaceRule";
 import DetailInfo from "./SpaceDetailInfo";
 import ViewMap from "./SpaceMap";
-import Review from "./SpaceReview";
-import NewReview from "./NewReview";
+import Review from "../SpaceReview";
+import NewReview from "../NewReview";
 import SpaceConvenience from "./SpaceConvenience";
 
 interface SpaceContentDetailProps {
-  spaceContentDetail: homeGym;
+  spaceContentDetail: homeGymInfo;
 }
 
 export default function SpaceContentDetail({
@@ -23,10 +23,9 @@ export default function SpaceContentDetail({
   return (
     <div className="">
       {/* 메인 사진 */}
-
       <div
         style={{
-          backgroundImage: `url("${spaceContentDetail.urls[0].url}")`,
+          backgroundImage: `url("${spaceContentDetail.images[0]}")`,
         }}
         className="w-full h-[270px] bg-no-repeat bg-cover bg-center bg-origin-padding"
       ></div>
@@ -34,8 +33,11 @@ export default function SpaceContentDetail({
       <div className="ml-5 mt-8">
         {/* 운동 타입 */}
         <div className="flex gap-1">
-          {spaceContentDetail.spaceType.map((item: string) => (
-            <p className="flex w-[49px] h-[30px] bg-detail-spaceType-bg-green text-detail-spaceType-font-green items-center justify-center rounded-[8px] text-sm ">
+          {spaceContentDetail.spaceTypes.map((item: string) => (
+            <p
+              className="flex w-[49px] h-[30px] bg-detail-spaceType-bg-green text-detail-spaceType-font-green items-center justify-center rounded-[8px] text-sm "
+              key={item}
+            >
               {item}
             </p>
           ))}
@@ -64,22 +66,34 @@ export default function SpaceContentDetail({
       {spaceContentDetail.spaceId && <Coupon id={spaceContentDetail.spaceId} />}
 
       {/* 정책 내용 영역 */}
-      <SpaceRule />
+      <SpaceRule
+        rule={spaceContentDetail.rule}
+        openTime={spaceContentDetail.openTime}
+        closeTime={spaceContentDetail.closeTime}
+      />
       {/* 구역 나눔 선 */}
       <div className="w-full h-1 bg-neutral-100 mt-8" />
 
       {/* 상세 내용 영역 */}
-      <DetailInfo />
+      <DetailInfo
+        content={spaceContentDetail.content}
+        images={spaceContentDetail.images}
+      />
       {/* 구역 나눔 선 */}
       <div className="w-full h-1 bg-neutral-100 mt-8" />
 
       {/* 지도 영역 */}
-      <ViewMap />
+      {spaceContentDetail.address && (
+        <ViewMap
+          address={spaceContentDetail.address}
+          addressDetail={spaceContentDetail.addressDetail}
+        />
+      )}
       {/* 구역 나눔 선 */}
       <div className="w-full h-1 bg-neutral-100 mt-8" />
 
       {/* 리뷰 영역 */}
-      <Review />
+      <Review spaceId={spaceContentDetail.spaceId} />
       {/* 구역 나눔 선 */}
       {/* <NewReview spaceId={spaceContentDetail.spaceId} /> */}
     </div>

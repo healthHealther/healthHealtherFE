@@ -13,7 +13,11 @@ interface review {
   star: number;
 }
 
-export default function Review() {
+interface ReviewProps {
+  spaceId: number;
+}
+
+export default function SpaceReview({ spaceId }: ReviewProps) {
   const [review, setReview] = useRecoilState<review[]>(reviewState);
 
   const homeGymInfo = {
@@ -37,8 +41,6 @@ export default function Review() {
     spaceTypes: ["YOGA", "GX"],
   };
 
-  const spaceId = homeGymInfo.spaceId;
-
   useEffect(() => {
     GetSpaceReview({ setReview, spaceId });
   }, []);
@@ -48,7 +50,6 @@ export default function Review() {
     starCount += item.star;
   });
 
-  console.log(review);
   return (
     <section className="w-full max-w-[435px] min-w-[280px] mx-auto mt-[26px] mb-20">
       <div className="flex gap-3 items-center text-base">
@@ -70,7 +71,7 @@ export default function Review() {
       </div>
       <div className="">
         {review.map((item: review) => (
-          <div className="mt-[25px] pb-4  border-b">
+          <div className="mt-[25px] pb-4  border-b" key={item.content}>
             <span className="flex gap-1 items-center text-base text-star-yellow font-bold">
               {item.star.toFixed(1)}
               <StarRating
@@ -85,7 +86,7 @@ export default function Review() {
         ))}
       </div>
 
-      <NewReview spaceId={homeGymInfo.spaceId} length={review.length} />
+      <NewReview spaceId={spaceId} length={review.length} />
     </section>
   );
 }
