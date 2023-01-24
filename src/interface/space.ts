@@ -1,29 +1,10 @@
-export interface homeGym {
-  spaceId: number;
-  memberId: string;
-  title: string;
-  content: string;
-  address: string;
-  detailAddress: string;
-  spaceType: string[];
-  convenienceTypes: string[];
-  note: string;
-  rule: string;
-  price: number;
-  urls: img[];
-  openTime: number;
-  closeTime: number;
-  // open_time: Date;
-  // close_time: Date;
-}
-
 export interface homeGymInfo {
   spaceId: number;
   memberId: string;
   title: string;
   content: string;
   address: string;
-  detailAddress: string;
+  addressDetail: string;
   spaceTypes: string[];
   convenienceTypes: string[];
   notice: string;
@@ -36,13 +17,9 @@ export interface homeGymInfo {
   // close_time: Date;
 }
 
-interface image {
+export interface image {
   preview: string;
   raw: string;
-}
-
-interface img {
-  ["url"]: string;
 }
 
 export interface couponType {

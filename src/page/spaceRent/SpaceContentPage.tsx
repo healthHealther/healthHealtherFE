@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import GetSpaceContentDetail from "../../components/spaceRent/GetSpaceContentDetail";
-import SpaceContentDetail from "../../components/spaceRent/SpaceContentDetail";
+import SpaceContentDetail from "../../components/spaceRent/content/SpaceContentDetail";
 import SpaceRentBtn from "../../components/spaceRent/SpaceRentBtn";
 
-import { homeGym } from "../../interface/space";
+import { homeGymInfo } from "../../interface/space";
 
 export default function SpaceContentPage() {
-  const [spaceContentDetail, setSpaceContentDetail] = useState<homeGym>({
+  const [spaceContentDetail, setSpaceContentDetail] = useState<homeGymInfo>({
     spaceId: 0,
     memberId: "",
     title: "",
     content: "",
     address: "",
-    detailAddress: "",
-    spaceType: [],
+    addressDetail: "",
+    spaceTypes: [],
     convenienceTypes: [],
-    note: "",
+    notice: "",
     rule: "",
     price: 0,
-    urls: [{ url: "" }],
+    images: [],
     openTime: 0,
     closeTime: 0,
   });

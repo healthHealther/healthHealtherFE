@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { homeGymInfo } from "../../interface/space";
+import { homeGymInfo } from "../../../interface/space";
 import Select from "react-select";
 import Multiselect from "multiselect-react-dropdown";
 import DaumPostcode from "react-daum-postcode";
@@ -10,7 +10,7 @@ import axios from "axios";
 // import dayjs from "dayjs";
 // import ko from "date-fns/locale/ko";
 import "react-datepicker/dist/react-datepicker.css";
-import ImagePreview from "./register/ImagePreview";
+import ImagePreview from "./ImagePreview";
 
 interface image {
   preview: string;
@@ -38,7 +38,7 @@ export default function SpaceRegister() {
     "title",
     "content",
     "address",
-    "detailAddress",
+    "addressDetail",
     "spaceTypes",
     "convenienceTypes",
     "notice",
@@ -73,7 +73,7 @@ export default function SpaceRegister() {
         title: data.title,
         content: data.content,
         address: data.address,
-        detailAddress: data.detailAddress,
+        detailAddress: data.addressDetail,
         spaceTypes: data.spaceTypes,
         convenienceTypes: data.convenienceTypes,
         notice: data.notice,
@@ -212,7 +212,7 @@ export default function SpaceRegister() {
         )}
         <input
           type="text"
-          {...register("detailAddress", { required: true })}
+          {...register("addressDetail", { required: true })}
           placeholder="상세 주소를 입력해주세요"
           className={inputStyle}
         />
