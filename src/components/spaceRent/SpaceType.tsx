@@ -1,11 +1,18 @@
 import React, { Dispatch, useEffect, useState } from "react";
-import { Link, useSearchParams, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useSearchParams,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 
 interface SpaceTypeProps {
   setSpaceType?: Dispatch<React.SetStateAction<string>>;
 }
 
 export default function SpaceType({ setSpaceType }: SpaceTypeProps) {
+  const location = useLocation();
+
   const spaceTypeList = ["유산소", "무산소", "필라테스", "GX"];
   const categoty = ["AEROBIC", "ANAEROBIC", "PILATES", "GX"];
   const [spaceRentParams] = useSearchParams();
@@ -15,9 +22,7 @@ export default function SpaceType({ setSpaceType }: SpaceTypeProps) {
   });
   const [tempQuery, setTempQuery] = useState("");
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   query && setSelectedType([query]);
-  // }, []);
+
   useEffect(() => {
     localStorage.setItem("selectedType", JSON.stringify(selectedType));
     setTempQuery(selectedType.join(","));
@@ -37,8 +42,10 @@ export default function SpaceType({ setSpaceType }: SpaceTypeProps) {
             <li
               key={item}
               className={`px-[14px] h-9 py-[6px] border rounded-lg whitespace-nowrap ${
-                selectedType.includes(categoty[idx]) &&
-                "bg-selected-green text-white"
+                selectedType.length === 0
+                  ? "bg-white text-black"
+                  : selectedType.includes(categoty[idx]) &&
+                    "bg-selected-green text-white"
               }`}
             >
               {/* 버튼으로 바꾸고 onclick=(clicked<boolean> 경우 나눠서 하나의 state에 str[] 관리, 넘겨줄때 join으로 하나의 쿼리스트링으로 url에 담아 보내기  ) */}

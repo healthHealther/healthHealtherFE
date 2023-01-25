@@ -20,16 +20,22 @@ export default function SpaceContentsList() {
   const dataFetchedRef = useRef(false);
   const [spaceRentParams] = useSearchParams();
   const query = spaceRentParams.get("spaceType");
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem("selectedType");
+    };
+  }, []);
   const getData = async () => {
     try {
       if (
         !query &&
-        location.pathname !== "/" &&
-        JSON.parse(localStorage.getItem("selectedType") || "[]")?.length === 0
+        location.pathname !== "/"
+        // JSON.parse(localStorage.getItem("selectedType") || "[]")?.length === 0
       ) {
         if (goNextPage === true) {
           page.current += 1;
         }
+        localStorage.removeItem("selectedType");
         const { data } = await axios.get<homeGym[]>(
           `http://localhost:3001/space?_limit=10&_page=${page.current}`
         );
@@ -69,11 +75,11 @@ export default function SpaceContentsList() {
   useEffect(() => {
     page.current = 1;
     setHomeGym([]);
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
+    getData();
     if (location.pathname !== "/") {
       setGoNextPage(false);
-      if (dataFetchedRef.current) return;
-      dataFetchedRef.current = true;
-      getData();
     }
   }, [query]);
 

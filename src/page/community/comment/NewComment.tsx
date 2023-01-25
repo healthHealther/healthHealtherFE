@@ -45,7 +45,9 @@ export default function NewComment(props: NewCommentProps) {
         />
         <button
           className={`text-white rounded-[8px] w-[14%] h-[92px] ${
-            valueValidate ? "bg-[#08bd9d] hover:bg-[#009d81]" : "bg-[#c4c4c4]"
+            valueValidate
+              ? "bg-[#08bd9d] hover:bg-[#009d81]"
+              : "bg-[#c4c4c4] hover:bg-[#a5a5a5]"
           }`}
           type="button"
           //   늦게바뀌는거 손봐야함
