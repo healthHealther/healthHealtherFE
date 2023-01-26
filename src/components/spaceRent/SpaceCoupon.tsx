@@ -50,12 +50,15 @@ export default function Coupon({ id }: couponProps) {
             <p className="font-bold">{couponInfo.discountAmount}원</p>
             <p>할인 쿠폰</p>
             <p className="text-neutral-300 text-sm">
-              {couponInfo.amount}매 남음
+              {couponInfo.amount > 0 ? `${couponInfo.amount}매 남음` : "매진"}
             </p>
           </div>
           <button
             onClick={onClickHandler}
-            className="bg-selected-green text-white h-9 w-[72px] rounded-[8px]"
+            className={`bg-selected-green text-white h-9 w-[72px] rounded-[8px] ${
+              couponInfo.amount === 0 && "bg-[#A5A5A5]"
+            }`}
+            disabled={couponInfo.amount === 0}
           >
             다운받기
           </button>

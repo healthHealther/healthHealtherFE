@@ -9,11 +9,11 @@ import axios from "axios";
 
 import InfinityScroll from "../InfinityScroll";
 
-import { homeGym } from "../../interface/space";
+import { homeGymInfo } from "../../interface/space";
 
 export default function SpaceContentsList() {
   const location = useLocation();
-  const [homeGym, setHomeGym] = useState<homeGym[]>([]);
+  const [homeGym, setHomeGym] = useState<homeGymInfo[]>([]);
   const [goNextPage, setGoNextPage] = useState<boolean>(false);
   const [scroll, setScroll] = useState<boolean>(false);
   const page = useRef<number>(1);
@@ -36,14 +36,14 @@ export default function SpaceContentsList() {
           page.current += 1;
         }
         localStorage.removeItem("selectedType");
-        const { data } = await axios.get<homeGym[]>(
+        const { data } = await axios.get<homeGymInfo[]>(
           `http://localhost:3001/space?_limit=10&_page=${page.current}`
         );
         setHomeGym((prev) => [...prev, ...data]);
         setGoNextPage(data.length === 10);
       }
       if (!query && location.pathname === "/") {
-        const { data } = await axios.get<homeGym[]>(
+        const { data } = await axios.get<homeGymInfo[]>(
           `http://localhost:3001/space?_page=1&_limit=4`
         );
 
@@ -51,7 +51,7 @@ export default function SpaceContentsList() {
       }
       if (query !== null) {
         if (page.current === 1) console.log("g");
-        const { data } = await axios.get<homeGym[]>(
+        const { data } = await axios.get<homeGymInfo[]>(
           `http://localhost:3001/${query}?_limit=10&_page=${page.current}`
         );
         setHomeGym((prev) => [...prev, ...data]);
@@ -85,12 +85,12 @@ export default function SpaceContentsList() {
 
   return (
     <>
-      {homeGym.map((item: homeGym) => (
+      {homeGym.map((item: homeGymInfo) => (
         <li className="flex flex-col w-[calc(50%-6px)]" key={item.spaceId}>
           <Link to={`/SpaceContent?id=${item.spaceId}`}>
             <div
               style={{
-                backgroundImage: `url("${item.urls[0].url}")`,
+                backgroundImage: `url("${item.images[0]}")`,
               }}
               className={`w-full h-0 pb-[57%] bg-no-repeat bg-cover bg-center bg-gradient-to-b from-cyan-700 to-blue-400 rounded-[16px]`}
             ></div>
@@ -102,7 +102,7 @@ export default function SpaceContentsList() {
 
             <span className="text-base font-500 mt-1.5">{item.title}</span>
             <span className="flex gap-1 text-xs mt-1.5">
-              {item.spaceType.map((spaceType: string) => (
+              {item.spaceTypes.map((spaceType: string) => (
                 <p key={spaceType}>#{spaceType}</p>
               ))}
             </span>

@@ -18,6 +18,7 @@ import Notification from "./page/myPage/myPageLink/Notification";
 import LoginRedirect from "./page/login/LoginRedirect";
 import SpaceRegisterPage from "./page/spaceRent/SpaceRegisterPage";
 import CommunityRegisterPage from "./page/community/CommunityRegisterPage";
+import SpaceReservation from "./page/spaceRent/SpaceReservation";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "/spaceRegister",
         element: <SpaceRegisterPage />,
+      },
+      {
+        path: "/spaceReservation",
+        element: <SpaceReservation />,
       },
     ],
     errorElement: <NotFound />,
