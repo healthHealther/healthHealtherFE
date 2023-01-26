@@ -17,7 +17,7 @@ import MyPost from "./page/myPage/myPageLink/MyPost";
 import Notification from "./page/myPage/myPageLink/Notification";
 import LoginRedirect from "./page/login/LoginRedirect";
 import SpaceRegisterPage from "./page/spaceRent/SpaceRegisterPage";
-import SpaceReservation from "./page/spaceRent/SpaceReservation";
+import SpaceReservation from "./page/spaceRent/SpaceReservationPage";
 const router = createBrowserRouter([
   {
     path: "/",

@@ -1,7 +1,7 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 import { contentType } from "./page/community/CommunityPage";
 import { commentType } from "./page/community/comment/CommentArea";
-import { couponType, review } from "./interface/space";
+import { couponType, homeGymInfo, review } from "./interface/space";
 export const isLoggedInState = atom({
   key: "isLoggedInState",
   default: false,
@@ -29,4 +29,41 @@ export const coupon = atom<couponType>({
 export const reviewState = atom<review[]>({
   key: "reviewState", // unique ID (with respect to other atoms/selectors)
   default: [], // default value (aka initial value)
+});
+
+export const spaceContentDetailState = atom<homeGymInfo>({
+  key: "spaceContentDetail",
+  default: {
+    spaceId: 0,
+    memberId: "",
+    title: "",
+    content: "",
+    address: "",
+    addressDetail: "",
+    spaceTypes: [],
+    convenienceTypes: [],
+    notice: "",
+    rule: "",
+    price: 0,
+    images: [],
+    openTime: 0,
+    closeTime: 0,
+  },
+});
+
+export const spaceContentDetailLabelState = selector({
+  key: "spaceContentDetailLabelState",
+  get: ({ get }) => {
+    const spaceContentDetailInfo = get(spaceContentDetailState);
+
+    return spaceContentDetailInfo;
+  },
+});
+
+export const couponLabelState = selector<couponType>({
+  key: "couponLabelState", // unique ID (with respect to other atoms/selectors)
+  get: ({ get }) => {
+    const couponInfo = get(coupon);
+    return couponInfo;
+  }, // default value (aka initial value)
 });

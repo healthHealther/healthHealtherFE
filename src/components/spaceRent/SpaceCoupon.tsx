@@ -10,7 +10,7 @@ interface couponProps {
   id: number;
 }
 export default function Coupon({ id }: couponProps) {
-  const [couponInfo, setCouponInfo] = useRecoilState(coupon);
+  const [couponInfo, setCouponInfo] = useRecoilState<couponType>(coupon);
 
   const getCoupon = async () => {
     try {
