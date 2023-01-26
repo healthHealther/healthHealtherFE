@@ -73,7 +73,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: "community/register",
+    path: "/community/register",
     element: <CommunityRegisterPage />,
   },
   {

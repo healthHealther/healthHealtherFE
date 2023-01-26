@@ -1,4 +1,104 @@
 {
+  "63": {
+    "id": 63,
+    "spaceId": 63,
+    "memberId": "kkkkk",
+    "title": "헬스장1",
+    "content": "1. 오픈 1년이 된 프리미엄 급 기구 필라테스, 요가 스튜디오입니다. 2. 기구 필라테스 개인 룸 2개, 6:1 그룹 룸 - 타워 리포머 룸 1개, 바렐&체어 룸 1개 3. 요가룸 1개 – 최대 10명 이 이용할수 있는 공간 4. 여성 느낌의 휴게실과 개인 룸 형식의 부스룸 3개 편안하고 따뜻한 공간을 맘 편하게 이용하세요. 하남 미사 헬스장, 필라테스장, 요가원 대관 진행합니다. 많이들 오셔서 이용해주세요^^",
+    "address": "경기 하남시 망월동 979-1",
+    "addressDetail": "청담프라자 4층",
+    "convenienceTypes": ["WIFI", "SHOWER"],
+    "notice": "하남 미사 헬스장, 필라테스장, 요가원 대관 진행합니다. 많이들 오셔서 이용해주세요^^",
+    "rule": "1.사용하신 기구는 제자리에 놓아주세요. 2.센터 내에서 고객 영업은 불가능합니다. 3.비매너 무책임한 행동 금지 4.사전에 공지 없이 사용시 패널티 부과 (1회 요금의 10배 배상) 5. 토삭스,양말 또는 맨발 이용 6.시설,장비의 파손시 손해배상 청구",
+    "price": 30000,
+    "images": [
+      "https://user-images.githubusercontent.com/64088250/212278828-9121d983-df26-4340-9e64-893f78cd6643.png",
+      "https://user-images.githubusercontent.com/64088250/212278869-00925805-a752-4ff1-a1e3-0719e0191ec9.png"
+    ],
+    "openTime": 9,
+    "closeTime": 22,
+    "spaceTypes": ["GX"]
+  },
+  "spaces": [
+    {
+      "title": "1",
+      "content": "1",
+      "address": "충북 청주시 청원구 1순환로 42",
+      "detailAddress": "1",
+      "spaceTypes": ["AEROBIC"],
+      "convenienceTypes": ["FULLBODYMIROR"],
+      "notice": "1",
+      "rule": "1",
+      "price": "1",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/e29e73c3-5196-4cd5-add8-bc353ae34dad",
+          "raw": {}
+        }
+      ],
+      "closeTime": "2",
+      "openTime": "1",
+      "id": 1
+    },
+    {
+      "title": "1",
+      "content": "1",
+      "address": "충북 청주시 청원구 1순환로 42",
+      "detailAddress": "1",
+      "spaceTypes": ["AEROBIC"],
+      "convenienceTypes": ["FULLBODYMIROR"],
+      "notice": "1",
+      "rule": "1",
+      "price": "1",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/e29e73c3-5196-4cd5-add8-bc353ae34dad",
+          "raw": {}
+        }
+      ],
+      "closeTime": "2",
+      "openTime": "1",
+      "id": 2
+    },
+    {
+      "title": "ㅁㄴㅇ",
+      "content": "ㅁㄴㅇ",
+      "address": "충북 청주시 서원구 1순환로 632",
+      "detailAddress": "1",
+      "spaceTypes": ["AEROBIC"],
+      "convenienceTypes": ["SHOWER"],
+      "notice": "1",
+      "rule": "1",
+      "price": "12",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/10159359-c3ae-4a02-840e-35bbe6fd47ff",
+          "raw": {}
+        }
+      ],
+      "closeTime": "2",
+      "openTime": "1",
+      "id": 3
+    }
+  ],
+  "space": [],
+  "review": [
+    {
+      "id": 1,
+      "content": "리뷰입니다.!",
+      "star": 5
+    },
+    {
+      "id": 2,
+      "content": "저도 리뷰를 달 줄은 압니다. 리뷰는 모두 다 보여야 합니다. 띄어쓰기를 하려면 textarea를 사용해야 하는데 어찌 생각하시나요? 디자인은 그렇게 잡아둘까 합니다.ㅋㅋ",
+      "star": 3
+    },
+    {
+      "id": 3,
+      "content": "asd",
+      "star": 0
+    }
+  ],
   "coupon": [
     {
       "id": 1,
@@ -475,320 +575,25 @@
       "content": "내용입니다"
     }
   ],
-  "space": [
-    {
-      "space_id": 1,
-      "member_id": "qwe",
-      "title": "운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": 10000,
-      "urls": [
-        {
-          "url": "/Rectangle147.png"
-        }
-      ]
-    },
-    {
-      "space_id": 2,
-      "member_id": "asd",
-      "title": "운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": "10000",
-      "urls": [
-        {
-          "url": "/Rectangle148.png"
-        }
-      ]
-    },
-    {
-      "space_id": 3,
-      "member_id": "qwe",
-      "title": "운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": 10000,
-      "urls": [
-        {
-          "url": "/Rectangle147.png"
-        }
-      ]
-    },
-    {
-      "space_id": 4,
-      "member_id": "asd",
-      "title": "운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": "10000",
-      "urls": [
-        {
-          "url": "/Rectangle148.png"
-        }
-      ]
-    },
-    {
-      "space_id": 5,
-      "member_id": "qwe",
-      "title": "운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": 10000,
-      "urls": [
-        {
-          "url": "/Rectangle147.png"
-        }
-      ]
-    },
-    {
-      "space_id": 6,
-      "member_id": "asd",
-      "title": "운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": "10000",
-      "urls": [
-        {
-          "url": "/Rectangle148.png"
-        }
-      ]
-    },
-    {
-      "space_id": 7,
-      "member_id": "qwe",
-      "title": "운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": 10000,
-      "urls": [
-        {
-          "url": "/Rectangle147.png"
-        }
-      ]
-    },
-    {
-      "space_id": 8,
-      "member_id": "asd",
-      "title": "운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": "10000",
-      "urls": [
-        {
-          "url": "/Rectangle148.png"
-        }
-      ]
-    },
-    {
-      "space_id": 9,
-      "member_id": "qwe",
-      "title": "운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": 10000,
-      "urls": [
-        {
-          "url": "/Rectangle147.png"
-        }
-      ]
-    },
-    {
-      "space_id": 10,
-      "member_id": "asd",
-      "title": "운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": "10000",
-      "urls": [
-        {
-          "url": "/Rectangle148.png"
-        }
-      ]
-    },
-    {
-      "space_id": 11,
-      "member_id": "qwe",
-      "title": "운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": 10000,
-      "urls": [
-        {
-          "url": "/Rectangle147.png"
-        }
-      ]
-    },
-    {
-      "space_id": 12,
-      "member_id": "asd",
-      "title": "운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": "10000",
-      "urls": [
-        {
-          "url": "/Rectangle148.png"
-        }
-      ]
-    },
-    {
-      "space_id": 13,
-      "member_id": "qwe",
-      "title": "운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": 10000,
-      "urls": [
-        {
-          "url": "/Rectangle147.png"
-        }
-      ]
-    },
-    {
-      "space_id": 14,
-      "member_id": "asd",
-      "title": "운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소", "무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": "10000",
-      "urls": [
-        {
-          "url": "/Rectangle148.png"
-        }
-      ]
-    }
-  ],
-  "pilates": [
-    {
-      "space_id": 31,
-      "member_id": "asd",
-      "title": "필라테스 운동 공간 대여",
-      "content": "운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["필라테스"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": "10000",
-      "urls": [
-        {
-          "url": "/Rectangle148.png"
-        }
-      ]
-    }
-  ],
-  "aerobic": [
-    {
-      "space_id": 41,
-      "member_id": "azxc",
-      "title": "유산소 운동 공간 대여",
-      "content": "유산소 운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["유산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": "10000",
-      "urls": [
-        {
-          "url": "/Rectangle148.png"
-        }
-      ]
-    }
-  ],
-  "anaerobic": [
-    {
-      "space_id": 51,
-      "member_id": "vads",
-      "title": "무산소 운동 공간 대여",
-      "content": "무산소 운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["무산소"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": "10000",
-      "urls": [
-        {
-          "url": "/Rectangle148.png"
-        }
-      ]
-    }
-  ],
   "GX": [
     {
-      "space_id": 61,
-      "member_id": "vasd",
-      "title": "GX 운동 공간 대여",
-      "content": "GX 운동 공간 대여합니다.",
-      "address": "주소입니다.",
-      "detail_address": "자세한 주소",
-      "spaceType": ["GX"],
-      "note": "주의사항",
-      "rule": "규칙",
-      "price": "10000",
-      "urls": [
-        {
-          "url": "/Rectangle148.png"
-        }
-      ]
+      "id": 63,
+      "spaceId": 63,
+      "title": "헬스장1",
+      "content": "1. 오픈 1년이 된 프리미엄 급 기구 필라테스, 요가 스튜디오입니다. 2. 기구 필라테스 개인 룸 2개, 6:1 그룹 룸 - 타워 리포머 룸 1개, 바렐&체어 룸 1개 3. 요가룸 1개 – 최대 10명 이 이용할수 있는 공간 4. 여성 느낌의 휴게실과 개인 룸 형식의 부스룸 3개 편안하고 따뜻한 공간을 맘 편하게 이용하세요. 하남 미사 헬스장, 필라테스장, 요가원 대관 진행합니다. 많이들 오셔서 이용해주세요^^",
+      "address": "경기 하남시 망월동 979-1",
+      "addressDetail": "청담프라자 4층",
+      "convenienceTypes": ["WIFI", "SHOWER"],
+      "notice": "하남 미사 헬스장, 필라테스장, 요가원 대관 진행합니다. 많이들 오셔서 이용해주세요^^",
+      "rule": "1.사용하신 기구는 제자리에 놓아주세요. 2.센터 내에서 고객 영업은 불가능합니다. 3.비매너 무책임한 행동 금지 4.사전에 공지 없이 사용시 패널티 부과 (1회 요금의 10배 배상) 5. 토삭스,양말 또는 맨발 이용 6.시설,장비의 파손시 손해배상 청구",
+      "price": 30000,
+      "images": [
+        "https://user-images.githubusercontent.com/64088250/212278828-9121d983-df26-4340-9e64-893f78cd6643.png",
+        "https://user-images.githubusercontent.com/64088250/212278869-00925805-a752-4ff1-a1e3-0719e0191ec9.png"
+      ],
+      "openTime": 9,
+      "closeTime": 22,
+      "spaceTypes": ["GX"]
     }
   ]
 }

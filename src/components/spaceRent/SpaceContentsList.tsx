@@ -6,7 +6,6 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import axios from "axios";
-
 import InfinityScroll from "../InfinityScroll";
 
 import { homeGymInfo } from "../../interface/space";
