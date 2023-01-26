@@ -10,6 +10,11 @@ interface SpaceReservationForm {
   coupon: couponType;
 }
 
+interface label {
+  value: number;
+  label: string;
+}
+
 interface ReservationCouponProps {
   control: Control<SpaceReservationForm>;
   spaceId: number;
@@ -66,7 +71,7 @@ export default function ReservationCoupon({
           <Select
             options={selectOption}
             value={selectOption.find(
-              (c: { value: unknown }) => c.value === value
+              (c: { value: number; label: string }) => c.value === value.spaceId
             )}
             onChange={(val) => {
               onChange(val);

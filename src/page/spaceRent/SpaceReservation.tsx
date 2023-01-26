@@ -59,11 +59,6 @@ export default function SpaceReservation() {
     } catch (error) {
       console.log(error);
     }
-    // console.log(
-    //   data.date.toISOString().split("T")[0],
-    //   data.reservationTime,
-    //   data.coupon
-    // );
   };
 
   return (
