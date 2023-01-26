@@ -10,6 +10,7 @@ import ViewMap from "./SpaceMap";
 import Review from "../SpaceReview";
 import NewReview from "../NewReview";
 import SpaceConvenience from "./SpaceConvenience";
+import SpaceRentBtn from "../SpaceRentBtn";
 
 interface SpaceContentDetailProps {
   spaceContentDetail: homeGymInfo;
@@ -96,6 +97,7 @@ export default function SpaceContentDetail({
       <Review spaceId={spaceContentDetail.spaceId} />
       {/* 구역 나눔 선 */}
       {/* <NewReview spaceId={spaceContentDetail.spaceId} /> */}
+      <SpaceRentBtn />
     </div>
   );
 }
