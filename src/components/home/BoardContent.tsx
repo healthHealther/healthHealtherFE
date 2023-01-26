@@ -11,20 +11,23 @@ export interface boardContentProps {
 export default function BoardContent(props: boardContentProps) {
   const contentItem = props.boardContent;
   return (
-    <article className="px-[20px]   hover:bg-[rgba(0,0,0,0.1)] hover:duration-300 rounded-md">
-      <div className="border-b-[1px] border-[#a5a5a5] py-[18px]">
-        <Link
-          className="w-full h-[82px] "
-          to={`/community/${contentItem.board_id}`}
-        >
+    <article className="px-[20px] hover:bg-[rgba(0,0,0,0.1)] hover:duration-300 rounded-md">
+      <Link
+        className="w-full h-[82px] border-b-[1px] border-[#a5a5a5] py-[18px] flex justify-between items-center"
+        to={`/community/${contentItem.board_id}`}
+      >
+        <div>
           <p className="w-full items-center font-[500] text-[16px] max-h-[48px] leading-[24px] overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">
             {contentItem.title}
           </p>
           <p className=" items-center text-[13px] text-[#a5a5a5]">
             {contentItem.nickname} | 2022-02-09
           </p>
-        </Link>
-      </div>
+        </div>
+        <div className="w-9 h-9 flex justify-center items-center rounded-[100%] rounded-bl-none border-[2px] border-[#d3ebe5] text-[#08bd9d] font-[700]">
+          1
+        </div>
+      </Link>
     </article>
   );
 }

@@ -64,9 +64,9 @@ export default function ScrollToTop() {
         pageHeight > 1500 ? "visible" : "hidden"
       } transition-opacity duration-300 fixed ${
         currentPath === "community"
-          ? "bottom-[120px]"
+          ? "bottom-[132px]"
           : currentPath === "spaceRent"
-          ? "bottom-[120px]"
+          ? "bottom-[132px]"
           : "bottom-0"
       } right-0 sm:right-[calc(50%-475px/2+9px)]`}
     >

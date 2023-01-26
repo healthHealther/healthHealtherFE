@@ -17,6 +17,7 @@ import MyPost from "./page/myPage/myPageLink/MyPost";
 import Notification from "./page/myPage/myPageLink/Notification";
 import LoginRedirect from "./page/login/LoginRedirect";
 import SpaceRegisterPage from "./page/spaceRent/SpaceRegisterPage";
+import CommunityRegisterPage from "./page/community/CommunityRegisterPage";
 import SpaceReservation from "./page/spaceRent/SpaceReservation";
 const router = createBrowserRouter([
   {
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
         path: "community/:boardContentId",
         element: <CommunityContentPage />,
       },
+
       {
         path: "/myPage",
         element: <MyPage />,
@@ -69,6 +71,10 @@ const router = createBrowserRouter([
       },
     ],
     errorElement: <NotFound />,
+  },
+  {
+    path: "community/register",
+    element: <CommunityRegisterPage />,
   },
   {
     path: "/login",

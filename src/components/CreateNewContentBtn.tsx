@@ -5,24 +5,26 @@ import createRentButton from "../assets/createButton_1.png";
 export default function CreateNewContentBtn() {
   const location = useLocation();
   const index = location.pathname.indexOf("/", 1);
+  console.log(location.pathname);
   const currentPath =
     index !== -1
       ? location.pathname.slice(1, index)
       : location.pathname.slice(1);
+  console.log(currentPath);
   return (
     <div
       className={`${
-        currentPath === "community"
+        location.pathname === "/community"
           ? "visible"
-          : currentPath === "spaceRent"
+          : location.pathname === "/spaceRent"
           ? "visible"
           : "hidden"
-      } fixed bottom-11 right-0 sm:right-[calc(50%-475px/2+9px)]`}
+      } fixed bottom-[40px] right-0 sm:right-[calc(50%-475px/2+9px)]`}
     >
       <Link
         to={
           currentPath === "community"
-            ? "/contentRegisterPage"
+            ? "/community/register"
             : currentPath === "spaceRent"
             ? "/spaceRegister"
             : "/"
