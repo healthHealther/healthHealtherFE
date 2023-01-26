@@ -19,14 +19,6 @@
     "closeTime": 22,
     "spaceTypes": ["GX"]
   },
-  "reservations": {
-    "spaceId": 63,
-    "reservationDate": "2023-01-30",
-    "reservationTime": {
-      "value": 11,
-      "label": "11시"
-    }
-  },
   "spaces": [
     {
       "title": "1",
@@ -126,11 +118,11 @@
     },
     {
       "id": 63,
-      "spaceId": 63,
+      "spaceId": 2,
       "discountAmount": 10000,
       "openDate": "2023-01-15",
       "expiredDate": "2023-01-16",
-      "amount": 10
+      "amount": 9
     }
   ],
   "comment": [
@@ -373,180 +365,210 @@
   ],
   "board": [
     {
+      "id": 1,
       "board_id": 1,
       "nickname": "하영",
       "title": "제목1입니다",
       "content": "내용입니다 내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다"
     },
     {
+      "id": 2,
       "board_id": 2,
       "nickname": "이영",
       "title": "제목2입니다",
       "content": "내용입니다"
     },
     {
+      "id": 3,
       "board_id": 3,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 4,
       "board_id": 4,
       "nickname": "하영",
       "title": "제목1입니다",
       "content": "내용입니다"
     },
     {
+      "id": 5,
       "board_id": 5,
       "nickname": "이영",
       "title": "제목2입니다",
       "content": "내용입니다"
     },
     {
+      "id": 6,
       "board_id": 6,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 7,
       "board_id": 7,
       "nickname": "하영",
       "title": "제목1입니다",
       "content": "내용입니다"
     },
     {
+      "id": 8,
       "board_id": 8,
       "nickname": "이영",
       "title": "제목2입니다",
       "content": "내용입니다"
     },
     {
+      "id": 9,
       "board_id": 9,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 10,
       "board_id": 10,
       "nickname": "하영",
       "title": "제목1입니다",
       "content": "내용입니다"
     },
     {
+      "id": 11,
       "board_id": 11,
       "nickname": "이영",
       "title": "제목2입니다",
       "content": "내용입니다"
     },
     {
+      "id": 12,
       "board_id": 12,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 13,
       "board_id": 13,
       "nickname": "하영",
       "title": "제목1입니다",
       "content": "내용입니다"
     },
     {
+      "id": 14,
       "board_id": 14,
       "nickname": "이영",
       "title": "제목2입니다",
       "content": "내용입니다"
     },
     {
+      "id": 15,
       "board_id": 15,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 16,
       "board_id": 16,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 17,
       "board_id": 17,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 18,
       "board_id": 18,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 19,
       "board_id": 19,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 20,
       "board_id": 20,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 21,
       "board_id": 21,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 22,
       "board_id": 22,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 23,
       "board_id": 23,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 24,
       "board_id": 24,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 25,
       "board_id": 25,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 26,
       "board_id": 26,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 27,
       "board_id": 27,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 28,
       "board_id": 28,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 29,
       "board_id": 29,
       "nickname": "삼영",
       "title": "제목3입니다",
       "content": "내용입니다"
     },
     {
+      "id": 30,
       "board_id": 30,
       "nickname": "삼영",
       "title": "제목3입니다",
