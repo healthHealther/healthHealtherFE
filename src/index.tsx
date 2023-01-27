@@ -19,6 +19,7 @@ import LoginRedirect from "./page/login/LoginRedirect";
 import SpaceRegisterPage from "./page/spaceRent/SpaceRegisterPage";
 import CommunityRegisterPage from "./page/community/CommunityRegisterPage";
 import SpaceReservation from "./page/spaceRent/SpaceReservation";
+import InputMemberInfo from "./page/login/InputMemberInfo";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
   {
     path: "/login/callback/kakao",
     element: <LoginRedirect />,
+  },
+  {
+    path: "/login/signUp",
+    element: <InputMemberInfo />,
   },
   // {
   //   path: '/signUp/kakao',
