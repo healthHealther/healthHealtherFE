@@ -7,7 +7,10 @@
     "content": "1. 오픈 1년이 된 프리미엄 급 기구 필라테스, 요가 스튜디오입니다. 2. 기구 필라테스 개인 룸 2개, 6:1 그룹 룸 - 타워 리포머 룸 1개, 바렐&체어 룸 1개 3. 요가룸 1개 – 최대 10명 이 이용할수 있는 공간 4. 여성 느낌의 휴게실과 개인 룸 형식의 부스룸 3개 편안하고 따뜻한 공간을 맘 편하게 이용하세요. 하남 미사 헬스장, 필라테스장, 요가원 대관 진행합니다. 많이들 오셔서 이용해주세요^^",
     "address": "경기 하남시 망월동 979-1",
     "addressDetail": "청담프라자 4층",
-    "convenienceTypes": ["WIFI", "SHOWER"],
+    "convenienceTypes": [
+      "WIFI",
+      "SHOWER"
+    ],
     "notice": "하남 미사 헬스장, 필라테스장, 요가원 대관 진행합니다. 많이들 오셔서 이용해주세요^^",
     "rule": "1.사용하신 기구는 제자리에 놓아주세요. 2.센터 내에서 고객 영업은 불가능합니다. 3.비매너 무책임한 행동 금지 4.사전에 공지 없이 사용시 패널티 부과 (1회 요금의 10배 배상) 5. 토삭스,양말 또는 맨발 이용 6.시설,장비의 파손시 손해배상 청구",
     "price": 30000,
@@ -17,42 +20,86 @@
     ],
     "openTime": 9,
     "closeTime": 22,
-    "spaceTypes": ["GX"]
+    "spaceTypes": [
+      "GX"
+    ]
   },
-  "spaces": [
+  "reservations": [
     {
-      "title": "1",
-      "content": "1",
-      "address": "충북 청주시 청원구 1순환로 42",
-      "detailAddress": "1",
-      "spaceTypes": ["AEROBIC"],
-      "convenienceTypes": ["FULLBODYMIROR"],
-      "notice": "1",
-      "rule": "1",
-      "price": "1",
-      "images": [
-        {
-          "preview": "blob:http://localhost:3000/e29e73c3-5196-4cd5-add8-bc353ae34dad",
-          "raw": {}
-        }
-      ],
-      "closeTime": "2",
-      "openTime": "1",
+      "spaceId": 63,
+      "reservationDate": "2023-01-26",
+      "reservationTime": {
+        "value": 10,
+        "label": "10시"
+      },
       "id": 1
     },
     {
-      "title": "1",
-      "content": "1",
-      "address": "충북 청주시 청원구 1순환로 42",
-      "detailAddress": "1",
-      "spaceTypes": ["AEROBIC"],
-      "convenienceTypes": ["FULLBODYMIROR"],
-      "notice": "1",
-      "rule": "1",
+      "spaceId": 63,
+      "reservationDate": "2023-01-26",
+      "reservationTime": {
+        "value": 9,
+        "label": "9시"
+      },
+      "id": 2
+    },
+    {
+      "spaceId": 63,
+      "reservationDate": "2023-01-26",
+      "reservationTime": {
+        "value": 10,
+        "label": "10시"
+      },
+      "id": 3
+    },
+    {
+      "spaceId": 63,
+      "reservationDate": "2023-01-26",
+      "reservationTime": {
+        "value": 9,
+        "label": "9시"
+      },
+      "id": 4
+    }
+  ],
+  "spaces": [
+    {
+      "content": "ddda",
+      "address": "충북 청주시 서원구 1순환로 632",
+      "detailAddress": "aaaa",
+      "spaceTypes": [
+        "ANAEROBIC"
+      ],
+      "convenienceTypes": [
+        "CHANGINGROOM"
+      ],
+      "notice": "a",
+      "rule": "a",
       "price": "1",
       "images": [
         {
-          "preview": "blob:http://localhost:3000/e29e73c3-5196-4cd5-add8-bc353ae34dad",
+          "preview": "blob:http://localhost:3000/71e0c113-f29c-471e-b9b5-045eda793f9e",
+          "raw": {}
+        }
+      ],
+      "closeTime": "4",
+      "openTime": "2",
+      "id": 1
+    },
+    {
+      "title": "안되나요",
+      "content": "안되나요",
+      "address": "충북 청주시 흥덕구 1순환로 392",
+      "detailAddress": "안되나요",
+      "convenienceTypes": [
+        "ANAEROBIC"
+      ],
+      "notice": "안되나요",
+      "rule": "안되나요",
+      "price": "1233",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/abde18d0-d48e-4bdc-b76e-772fd1fca7dc",
           "raw": {}
         }
       ],
@@ -61,24 +108,424 @@
       "id": 2
     },
     {
-      "title": "ㅁㄴㅇ",
-      "content": "ㅁㄴㅇ",
-      "address": "충북 청주시 서원구 1순환로 632",
-      "detailAddress": "1",
-      "spaceTypes": ["AEROBIC"],
-      "convenienceTypes": ["SHOWER"],
-      "notice": "1",
-      "rule": "1",
-      "price": "12",
+      "title": "123123",
+      "content": "123123",
+      "address": "서울 강동구 양재대로123길 7",
+      "addressDetail": "123",
+      "convenienceTypes": [
+        "AEROBIC"
+      ],
+      "notice": "123",
+      "rule": "123",
+      "price": "5",
       "images": [
         {
-          "preview": "blob:http://localhost:3000/10159359-c3ae-4a02-840e-35bbe6fd47ff",
+          "preview": "blob:http://localhost:3000/44e63194-4da2-4995-9661-1eca4d19bd07",
           "raw": {}
         }
       ],
-      "closeTime": "2",
+      "closeTime": "3",
       "openTime": "1",
       "id": 3
+    },
+    {
+      "title": "123123",
+      "content": "123123",
+      "address": "서울 강동구 양재대로123길 7",
+      "addressDetail": "123",
+      "convenienceTypes": [
+        "AEROBIC"
+      ],
+      "notice": "123",
+      "rule": "123",
+      "price": "5",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/44e63194-4da2-4995-9661-1eca4d19bd07",
+          "raw": {}
+        }
+      ],
+      "closeTime": "3",
+      "openTime": "1",
+      "id": 4
+    },
+    {
+      "title": "가격을 컨트롤로 컨트롤해요",
+      "content": "가격을 컨트롤로 컨트롤해요",
+      "address": "서울 강북구 4.19로12길 5",
+      "addressDetail": "가격을 컨트롤로 컨트롤해요",
+      "convenienceTypes": [
+        "ANAEROBIC"
+      ],
+      "notice": "가격을 컨트롤로 컨트롤해요",
+      "rule": "가격을 컨트롤로 컨트롤해요",
+      "price": "123,123,123",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/3616c227-5037-4431-97b4-4395a42a6a3e",
+          "raw": {}
+        }
+      ],
+      "closeTime": "3",
+      "openTime": "1",
+      "id": 5
+    },
+    {
+      "title": "왜 버튼 색이 안변할까여?",
+      "content": "왜 버튼 색이 안변할까여?",
+      "address": "서울 강남구 봉은사로111길 5",
+      "addressDetail": "왜 버튼 색이 안변할까여?",
+      "convenienceTypes": [
+        "PILATES"
+      ],
+      "notice": "왜 버튼 색이 안변할까여?",
+      "rule": "왜 버튼 색이 안변할까여?",
+      "price": "1,222,222",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/c95ba737-e176-4af4-b671-ab25c33fe314",
+          "raw": {}
+        }
+      ],
+      "closeTime": "4",
+      "openTime": "1",
+      "id": 6
+    },
+    {
+      "title": "드디어 다 쪼갰네여",
+      "content": "드디어 다 쪼갰네여",
+      "address": "서울 강북구 4.19로12길 5",
+      "addressDetail": "드디어 다 쪼갰네여",
+      "spaceTypes": [
+        "AEROBIC"
+      ],
+      "convenienceTypes": [
+        "WIFI"
+      ],
+      "notice": "드디어 다 쪼갰네여",
+      "rule": "드디어 다 쪼갰네여",
+      "price": "44,444",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/e53907ad-faa9-4412-aa8a-5d92626cfec0",
+          "raw": {}
+        }
+      ],
+      "closeTime": "11",
+      "openTime": "2",
+      "id": 7
+    },
+    {
+      "title": "드디어 다 쪼갰네여",
+      "content": "드디어 다 쪼갰네여",
+      "address": "서울 강북구 4.19로12길 5",
+      "addressDetail": "드디어 다 쪼갰네여",
+      "spaceTypes": [
+        "AEROBIC"
+      ],
+      "convenienceTypes": [
+        "WIFI"
+      ],
+      "notice": "드디어 다 쪼갰네여",
+      "rule": "드디어 다 쪼갰네여",
+      "price": "44,444",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/6c05873a-f9c8-4679-afb0-fa37afc0ade4",
+          "raw": {}
+        }
+      ],
+      "closeTime": "11",
+      "openTime": "2",
+      "id": 8
+    },
+    {
+      "title": "aa",
+      "content": "a",
+      "address": "부산 해운대구 APEC로 17",
+      "addressDetail": "aa",
+      "spaceTypes": [
+        "ANAEROBIC"
+      ],
+      "convenienceTypes": [
+        "PARKING"
+      ],
+      "notice": "aaaa",
+      "rule": "222",
+      "price": "3,333",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/62c3bf05-cd36-4574-b285-5bff533a8362",
+          "raw": {}
+        }
+      ],
+      "closeTime": "3",
+      "openTime": "1",
+      "id": 9
+    },
+    {
+      "title": "aa",
+      "content": "a",
+      "address": "부산 해운대구 APEC로 17",
+      "addressDetail": "aa",
+      "spaceTypes": [
+        "ANAEROBIC"
+      ],
+      "convenienceTypes": [
+        "PARKING"
+      ],
+      "notice": "aaaa",
+      "rule": "222",
+      "price": "3,333",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/62c3bf05-cd36-4574-b285-5bff533a8362",
+          "raw": {}
+        }
+      ],
+      "closeTime": "3",
+      "openTime": "1",
+      "id": 10
+    },
+    {
+      "title": "aa",
+      "content": "a",
+      "address": "부산 해운대구 APEC로 17",
+      "addressDetail": "aa",
+      "spaceTypes": [
+        "ANAEROBIC"
+      ],
+      "convenienceTypes": [
+        "PARKING"
+      ],
+      "notice": "aaaa",
+      "rule": "222",
+      "price": "3,333",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/62c3bf05-cd36-4574-b285-5bff533a8362",
+          "raw": {}
+        }
+      ],
+      "closeTime": "3",
+      "openTime": "1",
+      "id": 11
+    },
+    {
+      "title": "aa",
+      "content": "a",
+      "address": "부산 해운대구 APEC로 17",
+      "addressDetail": "aa",
+      "spaceTypes": [
+        "ANAEROBIC"
+      ],
+      "convenienceTypes": [
+        "PARKING"
+      ],
+      "notice": "aaaa",
+      "rule": "222",
+      "price": "3,333",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/62c3bf05-cd36-4574-b285-5bff533a8362",
+          "raw": {}
+        }
+      ],
+      "closeTime": "3",
+      "openTime": "1",
+      "id": 12
+    },
+    {
+      "title": "44",
+      "content": "44",
+      "address": "서울 강북구 4.19로11길 6",
+      "addressDetail": "4",
+      "spaceTypes": [
+        "AEROBIC"
+      ],
+      "convenienceTypes": [
+        "FOOD"
+      ],
+      "notice": "44",
+      "rule": "44",
+      "price": "44",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/3a921900-fe3b-4a1a-a74c-a1a866e2c85a",
+          "raw": {}
+        }
+      ],
+      "closeTime": "5",
+      "openTime": "4",
+      "id": 13
+    },
+    {
+      "title": "44",
+      "content": "44",
+      "address": "서울 강북구 4.19로11길 6",
+      "addressDetail": "4",
+      "spaceTypes": [
+        "AEROBIC"
+      ],
+      "convenienceTypes": [
+        "FOOD"
+      ],
+      "notice": "44",
+      "rule": "44",
+      "price": "44",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/3a921900-fe3b-4a1a-a74c-a1a866e2c85a",
+          "raw": {}
+        }
+      ],
+      "closeTime": "5",
+      "openTime": "4",
+      "id": 14
+    },
+    {
+      "title": "끝?",
+      "content": "끝?",
+      "address": "서울 은평구 가좌로12길 13",
+      "addressDetail": "끝?",
+      "spaceTypes": [
+        "ANAEROBIC"
+      ],
+      "convenienceTypes": [
+        "SHOWER"
+      ],
+      "notice": "끝?",
+      "rule": "끝?",
+      "price": "11",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/069ee927-c552-4c8f-af7a-0af5a17c3c56",
+          "raw": {}
+        }
+      ],
+      "closeTime": "5",
+      "openTime": "1",
+      "id": 15
+    },
+    {
+      "title": "끝?",
+      "content": "끝?",
+      "address": "서울 은평구 가좌로12길 13",
+      "addressDetail": "끝?",
+      "spaceTypes": [
+        "ANAEROBIC"
+      ],
+      "convenienceTypes": [
+        "SHOWER"
+      ],
+      "notice": "끝?",
+      "rule": "끝?",
+      "price": "11",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/069ee927-c552-4c8f-af7a-0af5a17c3c56",
+          "raw": {}
+        }
+      ],
+      "closeTime": "5",
+      "openTime": "1",
+      "id": 16
+    },
+    {
+      "title": "ㅁㅁㄴㅇ",
+      "content": "ㅁㄴㅇ",
+      "address": "서울 강북구 삼양로123길 1",
+      "addressDetail": "132",
+      "spaceTypes": [
+        "AEROBIC"
+      ],
+      "convenienceTypes": [
+        "FULLBODYMIROR"
+      ],
+      "notice": "123",
+      "rule": "123",
+      "price": "1",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/d328c6ef-41d5-4eaa-af57-31091353de6d",
+          "raw": {}
+        }
+      ],
+      "closeTime": "3",
+      "openTime": "1",
+      "id": 17
+    },
+    {
+      "title": "ㅁㄴㅇ",
+      "content": "ㅁㄴㅇ",
+      "address": "서울 강북구 삼양로123길 1",
+      "addressDetail": "1",
+      "spaceTypes": [
+        "ANAEROBIC"
+      ],
+      "convenienceTypes": [
+        "PARKING"
+      ],
+      "notice": "1",
+      "rule": "1",
+      "price": "1",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/68fd6320-a33d-4867-9edb-19e0776f91cc",
+          "raw": {}
+        }
+      ],
+      "closeTime": "14",
+      "openTime": "13",
+      "id": 18
+    },
+    {
+      "title": "1",
+      "content": "1",
+      "address": "충북 청주시 흥덕구 1순환로 385",
+      "addressDetail": "1",
+      "spaceTypes": [
+        "ANAEROBIC"
+      ],
+      "convenienceTypes": [
+        "SHOWER"
+      ],
+      "notice": "1",
+      "rule": "1",
+      "price": "1",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/f053a6b2-920e-45d9-a7fb-5a7055898866",
+          "raw": {}
+        }
+      ],
+      "closeTime": "13",
+      "openTime": "13",
+      "id": 19
+    },
+    {
+      "title": "1",
+      "content": "2",
+      "address": "경기 화성시 우정읍 3.1만세로 5-3",
+      "addressDetail": "4",
+      "spaceTypes": [
+        "AEROBIC"
+      ],
+      "convenienceTypes": [
+        "FULLBODYMIROR"
+      ],
+      "notice": "5",
+      "rule": "5",
+      "price": "5",
+      "images": [
+        {
+          "preview": "blob:http://localhost:3000/9be26512-cd3f-4bad-9568-86a029ed2738",
+          "raw": {}
+        }
+      ],
+      "closeTime": "13",
+      "openTime": "12",
+      "id": 20
     }
   ],
   "space": [],
@@ -97,6 +544,11 @@
       "id": 3,
       "content": "asd",
       "star": 0
+    },
+    {
+      "id": 4,
+      "content": "ㅁㄴㅇ",
+      "star": 4.5
     }
   ],
   "coupon": [
@@ -122,7 +574,7 @@
       "discountAmount": 10000,
       "openDate": "2023-01-15",
       "expiredDate": "2023-01-16",
-      "amount": 9
+      "amount": 7
     }
   ],
   "comment": [
@@ -583,7 +1035,10 @@
       "content": "1. 오픈 1년이 된 프리미엄 급 기구 필라테스, 요가 스튜디오입니다. 2. 기구 필라테스 개인 룸 2개, 6:1 그룹 룸 - 타워 리포머 룸 1개, 바렐&체어 룸 1개 3. 요가룸 1개 – 최대 10명 이 이용할수 있는 공간 4. 여성 느낌의 휴게실과 개인 룸 형식의 부스룸 3개 편안하고 따뜻한 공간을 맘 편하게 이용하세요. 하남 미사 헬스장, 필라테스장, 요가원 대관 진행합니다. 많이들 오셔서 이용해주세요^^",
       "address": "경기 하남시 망월동 979-1",
       "addressDetail": "청담프라자 4층",
-      "convenienceTypes": ["WIFI", "SHOWER"],
+      "convenienceTypes": [
+        "WIFI",
+        "SHOWER"
+      ],
       "notice": "하남 미사 헬스장, 필라테스장, 요가원 대관 진행합니다. 많이들 오셔서 이용해주세요^^",
       "rule": "1.사용하신 기구는 제자리에 놓아주세요. 2.센터 내에서 고객 영업은 불가능합니다. 3.비매너 무책임한 행동 금지 4.사전에 공지 없이 사용시 패널티 부과 (1회 요금의 10배 배상) 5. 토삭스,양말 또는 맨발 이용 6.시설,장비의 파손시 손해배상 청구",
       "price": 30000,
@@ -593,7 +1048,9 @@
       ],
       "openTime": 9,
       "closeTime": 22,
-      "spaceTypes": ["GX"]
+      "spaceTypes": [
+        "GX"
+      ]
     }
   ]
 }

@@ -95,7 +95,7 @@ export default function ReservationTimeSelect({
                         item.value < spaceContentDetailLabel.closeTime;
                 })}
                 value={timeOption.find(
-                  (c: { value: unknown }) => c.value === value
+                  (c: { value: number }) => c.value === value
                 )}
                 onChange={(val) => onChange(val)}
                 styles={{
