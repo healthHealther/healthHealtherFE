@@ -6,6 +6,8 @@ import logoutIcon from "../../assets/logoutIcon.svg";
 import messageIcon from "../../assets/messageIcon.png";
 import rentIcon from "../../assets/rentIcon.png";
 import writeIcon from "../../assets/writeIcon.png";
+import axios from "axios";
+import { getCookie } from "../../components/login/cookie";
 export default function MyPage() {
   interface buttonRenderingType {
     buttonType: "notification" | "myRent" | "myPost";
@@ -16,6 +18,8 @@ export default function MyPage() {
     "myPost",
   ];
   const MyPageButtonRendering = (props: buttonRenderingType) => {
+    const sessionStorage = window.sessionStorage;
+
     const { buttonType } = props;
     const icon =
       buttonType === "notification"
@@ -42,6 +46,28 @@ export default function MyPage() {
       </Link>
     );
   };
+
+  const deleteHandler = async () => {
+    const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
+    console.log(token);
+    try {
+      await axios
+        .get(
+          "https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/members/",
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="px-[20px]">
       <div className="py-[32px] border-b border-[#efefef]">
@@ -61,6 +87,7 @@ export default function MyPage() {
           <img className="mr-[4px]" src={logoutIcon} alt="" />
           <p className="font-[500] text-[13px]">로그아웃</p>
         </button>
+        <button onClick={deleteHandler}>탈퇴</button>
       </div>
       {renderingArr.map((i) => {
         return <MyPageButtonRendering buttonType={i} key={i} />;

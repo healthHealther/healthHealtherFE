@@ -20,6 +20,7 @@ import SpaceRegisterPage from "./page/spaceRent/SpaceRegisterPage";
 import CommunityRegisterPage from "./page/community/CommunityRegisterPage";
 import SpaceReservation from "./page/spaceRent/SpaceReservation";
 import InputMemberInfo from "./page/login/InputMemberInfo";
+import { CookiesProvider } from "react-cookie";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -107,7 +108,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <>
     <RecoilRoot>
-      <RouterProvider router={router} />
+      <CookiesProvider>
+        <RouterProvider router={router} />
+      </CookiesProvider>
     </RecoilRoot>
   </>
 );

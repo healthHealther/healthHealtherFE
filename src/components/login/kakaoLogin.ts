@@ -18,6 +18,8 @@ export default async function kakaoLogin(
   kakaoAuthCode: string,
   navigate: NavigateFunction
 ) {
+  const sessionStorage = window.sessionStorage;
+
   try {
     await axios
       .post(
@@ -27,6 +29,8 @@ export default async function kakaoLogin(
         console.log(res);
         setCookie("accessToken", res.data.accessToken);
         setCookie("refreshToken", res.data.refreshToken);
+        sessionStorage.setItem("accessToken", res.data.accessToken);
+        sessionStorage.setItem("refreshToken", res.data.refreshToken);
         navigate("/");
       });
   } catch (err) {

@@ -13,25 +13,25 @@ interface formData {
 }
 
 export default function InputMemberInfo() {
-  const { handleSubmit, register } = useForm<formData>();
-  const cookie = getCookie("token");
+  const { handleSubmit, register, setValue } = useForm<formData>();
+  const cookie = getCookie("oauthId");
   const navigate = useNavigate();
 
-  const regExp = /^\d{2,3}-\d{3,4}-\d{4}$/;
-  const onSubmit = async (formData: formData) => {
+  const onSubmit = async (data: formData) => {
     try {
       await axios
         .post(
           "https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/members/signUp",
           {
             oauthId: cookie,
-            name: formData.name,
-            nickName: formData.nickName,
-            phone: formData.phone.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"),
+            name: data.name,
+            nickName: data.nickName,
+            phone: data.phone,
           }
         )
         .then(() => navigate("/login"));
     } catch (err) {
+      console.log(data.name);
       console.log(err);
     }
   };
