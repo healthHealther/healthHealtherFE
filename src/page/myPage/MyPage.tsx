@@ -122,7 +122,12 @@ export default function MyPage() {
           <img className="mr-[4px]" src={logoutIcon} alt="" />
           <p className="font-[500] text-[13px]">로그아웃</p>
         </button>
-        <button onClick={deleteHandler}>탈퇴</button>
+        <button
+          onClick={deleteHandler}
+          className="ml-5 mt-2 flex items-center text-[#a5a5a5] font-[500] text-[13px]"
+        >
+          회원 탈퇴
+        </button>
       </div>
       {renderingArr.map((i) => {
         return <MyPageButtonRendering buttonType={i} key={i} />;

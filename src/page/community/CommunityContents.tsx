@@ -52,7 +52,7 @@ export default function CommunityContents(props: searchProps) {
     <div className="max-w-[475px] min-w-[390px]  sm:mx-auto  bg-white">
       {communityContentList.length === 0 ? (
         <div className="flex flex-col items-center">
-          <p className="text-[#a5a5a5] text-[14px] leading-7">
+          <p className="text-[#a5a5a5] text-[14px] leading-7 pt-7">
             {searchActive
               ? "찾으시는 게시글이 없습니다"
               : "등록된 게시글이 없습니다."}
