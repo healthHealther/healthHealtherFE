@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
 // import axios, { AxiosError } from "axios";
 // import { useForm } from "react-hook-form";
 // import { inputStyle } from "../../components/spaceRent/register/style";
-import kakaoLogin from "../../components/login/kakaoLogin";
+import OAuthLogin from "../../components/login/OAuthLogin";
 // import { getCookie, setCookie } from "../../components/login/cookie";
 // import { useCookies } from "react-cookie";
 
@@ -20,7 +20,12 @@ export default function LoginRedirect() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    kakaoLogin(authCode as string, navigate);
+    console.log(location);
+    if (location.pathname === "/login/callback/kakao") {
+      OAuthLogin(authCode as string, navigate, "kakao");
+    } else {
+      OAuthLogin(authCode as string, navigate, "google");
+    }
   }, []);
   return <div></div>;
 }

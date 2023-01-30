@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { NavigateFunction } from "react-router-dom";
-import { body } from "./kakaoLogin";
+import { body } from "./OAuthLogin";
 
 export default async function googleLogin(
   googleAuthCode: string,
