@@ -37,15 +37,19 @@ export default function LoginPage() {
       </div>
       {/* 소셜로그인 */}
       <div className=" right-[20px] w-[calc(100%-40px)] flex flex-col gap-3  mx-auto pt-[20%] ">
-        {loginBtn.map((item) => (
-          <button
-            key={item.type}
-            className={` ${item.color} h-12 rounded-[16px] hover:scale-[1.02]`}
-          >
-            {item.coment}
-          </button>
-        ))}
-        <a href={KakaoAuth}>카카오 로그인 테스트</a>
+        <a
+          href={KakaoAuth}
+          className="bg-kakao-yellow text-black h-12 rounded-[16px] hover:scale-[1.02] text-center items-center leading-[48px]"
+        >
+          카카오 계정으로 로그인
+        </a>
+        <a
+          href={""}
+          className="bg-google-red text-white h-12 rounded-[16px] hover:scale-[1.02] text-center items-center leading-[48px]"
+        >
+          구글 계정으로 로그인
+        </a>
+
         {/* 구글 */}
         {/* 카카오 */}
         {/* <button className="bg-kakao-yellow">카카오 계정으로 로그인</button> */}

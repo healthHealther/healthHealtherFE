@@ -20,7 +20,6 @@ import SpaceRegisterPage from "./page/spaceRent/SpaceRegisterPage";
 import CommunityRegisterPage from "./page/community/CommunityRegisterPage";
 import SpaceReservation from "./page/spaceRent/SpaceReservation";
 import InputMemberInfo from "./page/login/InputMemberInfo";
-import { CookiesProvider } from "react-cookie";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,10 +42,13 @@ const router = createBrowserRouter([
         element: <CommunityPage />,
       },
       {
-        path: "community/:boardContentId",
+        path: "/community/:boardContentId",
         element: <CommunityContentPage />,
       },
-
+      {
+        path: "/community/register",
+        element: <CommunityRegisterPage />,
+      },
       {
         path: "/myPage",
         element: <MyPage />,
@@ -74,10 +76,7 @@ const router = createBrowserRouter([
     ],
     errorElement: <NotFound />,
   },
-  {
-    path: "/community/register",
-    element: <CommunityRegisterPage />,
-  },
+
   {
     path: "/login",
     element: <LoginPage />,
@@ -108,9 +107,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <>
     <RecoilRoot>
-      <CookiesProvider>
-        <RouterProvider router={router} />
-      </CookiesProvider>
+      <RouterProvider router={router} />
     </RecoilRoot>
   </>
 );

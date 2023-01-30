@@ -1,14 +1,7 @@
 import axios, { AxiosError } from "axios";
-import { Dispatch } from "react";
-import {
-  useLocation,
-  useNavigate,
-  useSearchParams,
-  NavigateFunction,
-} from "react-router-dom";
-import { setCookie } from "../../components/login/cookie";
+import { NavigateFunction } from "react-router-dom";
 
-interface body {
+export interface body {
   name: string;
   nickName: string;
   oauthId: string;
@@ -27,9 +20,8 @@ export default async function kakaoLogin(
       )
       .then((res) => {
         console.log(res);
-        setCookie("accessToken", res.data.accessToken);
-        setCookie("refreshToken", res.data.refreshToken);
         sessionStorage.setItem("accessToken", res.data.accessToken);
+        sessionStorage.setItem("expiredTime", res.data.expiredTime);
         sessionStorage.setItem("refreshToken", res.data.refreshToken);
         navigate("/");
       });
@@ -37,7 +29,7 @@ export default async function kakaoLogin(
     const { response } = err as unknown as AxiosError;
     if (response) {
       const { name, oauthId } = response.data as body;
-      setCookie("token", oauthId);
+      sessionStorage.setItem("token", oauthId);
       name === null && navigate("/login/signUp");
     }
   }

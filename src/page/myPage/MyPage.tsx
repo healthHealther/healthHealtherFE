@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import randomProfileMan from "../../assets/randomProfileMan.png";
 import randomProfileWoman from "../../assets/randomProfileWoman.png";
 import logoutIcon from "../../assets/logoutIcon.svg";
@@ -12,14 +12,13 @@ export default function MyPage() {
   interface buttonRenderingType {
     buttonType: "notification" | "myRent" | "myPost";
   }
+  const navigate = useNavigate();
   const renderingArr: ["notification", "myRent", "myPost"] = [
     "notification",
     "myRent",
     "myPost",
   ];
   const MyPageButtonRendering = (props: buttonRenderingType) => {
-    const sessionStorage = window.sessionStorage;
-
     const { buttonType } = props;
     const icon =
       buttonType === "notification"
@@ -48,26 +47,59 @@ export default function MyPage() {
   };
 
   const deleteHandler = async () => {
-    const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
-    console.log(token);
-    try {
-      await axios
-        .get(
-          "https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/members/",
-          {
-            headers: {
-              Authorization: token,
-            },
-          }
-        )
-        .then((res) => {
-          console.log(res);
-        });
-    } catch (err) {
-      console.log(err);
+    if (window.confirm("정말로 탈퇴하시겠습니까?")) {
+      const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
+      console.log(token);
+      try {
+        await axios
+          .delete(
+            "https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/members",
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          )
+          .then(() => {
+            //탈퇴후 스토리지에 있는 토큰 값 날리기
+            window.alert("회원 탈퇴가 되었습니다");
+            sessionStorage.removeItem("accessToken");
+            sessionStorage.removeItem("expiredTime");
+            sessionStorage.removeItem("refreshToken");
+            navigate("/login");
+          });
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
-
+  const handleLogout = async () => {
+    if (window.confirm("로그아웃 하시겠습니까?")) {
+      const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
+      console.log(token);
+      try {
+        await axios
+          .post(
+            "https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/members/logout/me",
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          )
+          .then(() => {
+            //탈퇴후 스토리지에 있는 토큰 값 날리기
+            sessionStorage.removeItem("accessToken");
+            sessionStorage.removeItem("expiredTime");
+            sessionStorage.removeItem("refreshToken");
+            window.alert("로그아웃이 되었습니다");
+            navigate("/login");
+          });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
   return (
     <div className="px-[20px]">
       <div className="py-[32px] border-b border-[#efefef]">
@@ -83,7 +115,10 @@ export default function MyPage() {
           <p className="font-[700] text-[20px] mr-[2px]">홍길동</p>
           <p className="font-[700] text-[16px]">님</p>
         </div>
-        <button className="flex items-center text-[#a5a5a5]">
+        <button
+          className="flex items-center text-[#a5a5a5]"
+          onClick={handleLogout}
+        >
           <img className="mr-[4px]" src={logoutIcon} alt="" />
           <p className="font-[500] text-[13px]">로그아웃</p>
         </button>

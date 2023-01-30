@@ -56,8 +56,7 @@ export default function CommunityRegisterPage() {
   return (
     <div className="relative max-w-[475px] min-w-[390px] sm:mx-auto  bg-white min-h-[100vh]">
       <ConfirmPopUp active={filled} />
-      <TopBar />
-      <div className="px-[20px] pt-[48px]">
+      <div className="px-[20px] pt-[4px]">
         <p className="pt-[32px] font-bold text-[24px] mb-6">커뮤니티 등록</p>
         <form action="">
           <div className="mb-[24px]">
@@ -102,7 +101,7 @@ export default function CommunityRegisterPage() {
           <button
             type="button"
             onClick={handlePostBtn}
-            className={`fixed bottom-5 w-[435px] h-[48px] rounded-[8px] text-white ${
+            className={`fixed bottom-[60px] w-[435px] h-[48px] rounded-[8px] text-white ${
               active
                 ? "bg-[#08bd9d] hover:bg-[#009d81]"
                 : "bg-[#c4c4c4] hover:bg-[#a5a5a5]"
