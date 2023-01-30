@@ -15,7 +15,7 @@ export default function SpaceContentsList() {
   const [homeGym, setHomeGym] = useState<homeGymInfo[]>([]);
   const [goNextPage, setGoNextPage] = useState<boolean>(false);
   const [scroll, setScroll] = useState<boolean>(false);
-  const page = useRef<number>(1);
+  const page = useRef<number>(0);
   const dataFetchedRef = useRef(false);
   const [spaceRentParams] = useSearchParams();
   const query = spaceRentParams.get("spaceType");
@@ -36,22 +36,22 @@ export default function SpaceContentsList() {
         }
         localStorage.removeItem("selectedType");
         const { data } = await axios.get<homeGymInfo[]>(
-          `http://localhost:3001/space?_limit=10&_page=${page.current}`
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page.current}&size=10`
         );
         setHomeGym((prev) => [...prev, ...data]);
         setGoNextPage(data.length === 10);
       }
       if (!query && location.pathname === "/") {
         const { data } = await axios.get<homeGymInfo[]>(
-          `http://localhost:3001/space?_page=1&_limit=4`
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=0&size=4`
         );
 
         setHomeGym(data);
       }
       if (query !== null) {
-        if (page.current === 1) console.log("g");
+        if (page.current === 0) console.log("g");
         const { data } = await axios.get<homeGymInfo[]>(
-          `http://localhost:3001/${query}?_limit=10&_page=${page.current}`
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?spaceType=${query}&size=10&page=${page.current}`
         );
         setHomeGym((prev) => [...prev, ...data]);
         setGoNextPage(data.length === 10);
@@ -72,7 +72,7 @@ export default function SpaceContentsList() {
   }, [scroll]);
 
   useEffect(() => {
-    page.current = 1;
+    page.current = 0;
     setHomeGym([]);
     if (dataFetchedRef.current) return;
     dataFetchedRef.current = true;
