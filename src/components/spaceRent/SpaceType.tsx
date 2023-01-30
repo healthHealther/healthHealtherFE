@@ -1,4 +1,4 @@
-import React, { Dispatch, useEffect, useState } from "react";
+import React, { Dispatch, useEffect, useState, useRef } from "react";
 import {
   Link,
   useSearchParams,
@@ -11,6 +11,7 @@ interface SpaceTypeProps {
 }
 
 export default function SpaceType({ setSpaceType }: SpaceTypeProps) {
+  const ref = useRef(0);
   const location = useLocation();
   const spaceTypeList = ["유산소", "무산소", "필라테스", "GX"];
   const categoty = ["AEROBIC", "ANAEROBIC", "PILATES", "GX"];
@@ -31,8 +32,11 @@ export default function SpaceType({ setSpaceType }: SpaceTypeProps) {
       navigate(`/spaceRent?spaceType=${tempQuery}`);
       console.log("location", location);
     } else {
-      // if (location.pathname !== "/spaceRent")
       navigate("/spaceRent");
+      if (ref.current === 0) {
+        navigate(-1);
+        ref.current = 1;
+      }
     }
   }, [tempQuery]);
   return (
