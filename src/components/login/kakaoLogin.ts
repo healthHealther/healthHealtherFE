@@ -8,7 +8,7 @@ export interface body {
 }
 
 export default async function kakaoLogin(
-  kakaoAuthCode: string,
+  authCode: string,
   navigate: NavigateFunction
 ) {
   const sessionStorage = window.sessionStorage;
@@ -16,7 +16,7 @@ export default async function kakaoLogin(
   try {
     await axios
       .post(
-        `http://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/members/login/callback/kakao?code=${kakaoAuthCode}`
+        `http://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/members/login/callback/kakao?code=${authCode}`
       )
       .then((res) => {
         console.log(res);

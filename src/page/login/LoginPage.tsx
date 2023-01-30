@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { KakaoAuth } from "../../components/OAuth";
+import { KakaoAuth, GoogleAuth } from "../../components/OAuth";
 export default function LoginPage() {
   const loginBtn = [
     {
@@ -44,7 +44,7 @@ export default function LoginPage() {
           카카오 계정으로 로그인
         </a>
         <a
-          href={""}
+          href={GoogleAuth}
           className="bg-google-red text-white h-12 rounded-[16px] hover:scale-[1.02] text-center items-center leading-[48px]"
         >
           구글 계정으로 로그인
