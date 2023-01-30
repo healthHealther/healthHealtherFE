@@ -8,15 +8,16 @@ export interface body {
 }
 
 export default async function kakaoLogin(
-  kakaoAuthCode: string,
-  navigate: NavigateFunction
+  authCode: string,
+  navigate: NavigateFunction,
+  loginType: string
 ) {
   const sessionStorage = window.sessionStorage;
 
   try {
     await axios
       .post(
-        `http://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/members/login/callback/kakao?code=${kakaoAuthCode}`
+        `http://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/members/login/callback/${loginType}?code=${authCode}`
       )
       .then((res) => {
         console.log(res);
@@ -30,7 +31,7 @@ export default async function kakaoLogin(
     if (response) {
       const { name, oauthId } = response.data as body;
       sessionStorage.setItem("token", oauthId);
-      name === null && navigate("/login/signUp");
+      navigate("/login/signUp");
     }
   }
 }

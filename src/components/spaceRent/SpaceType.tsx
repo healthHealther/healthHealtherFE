@@ -12,7 +12,6 @@ interface SpaceTypeProps {
 
 export default function SpaceType({ setSpaceType }: SpaceTypeProps) {
   const location = useLocation();
-
   const spaceTypeList = ["유산소", "무산소", "필라테스", "GX"];
   const categoty = ["AEROBIC", "ANAEROBIC", "PILATES", "GX"];
   const [spaceRentParams] = useSearchParams();
@@ -30,7 +29,9 @@ export default function SpaceType({ setSpaceType }: SpaceTypeProps) {
   useEffect(() => {
     if (tempQuery.length > 0) {
       navigate(`/spaceRent?spaceType=${tempQuery}`);
+      console.log("location", location);
     } else {
+      // if (location.pathname !== "/spaceRent")
       navigate("/spaceRent");
     }
   }, [tempQuery]);

@@ -87,6 +87,10 @@ const router = createBrowserRouter([
     element: <LoginRedirect />,
   },
   {
+    path: "/login/callback/google",
+    element: <LoginRedirect />,
+  },
+  {
     path: "/login/signUp",
     element: <InputMemberInfo />,
   },

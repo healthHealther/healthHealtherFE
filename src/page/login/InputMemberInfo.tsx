@@ -63,7 +63,7 @@ export default function InputMemberInfo() {
           placeholder="이름"
           type="text"
           {...register("name", { minLength: 2, required: true })}
-          className="border border-[#d9d9d9] rounded-lg h-10"
+          className="border border-[#d9d9d9] rounded-lg h-10 px-3"
         />
         <label className="relative" htmlFor="memberNickName">
           닉네임
@@ -74,7 +74,7 @@ export default function InputMemberInfo() {
           placeholder="닉네임"
           type="text"
           {...register("nickName", { minLength: 2, required: true })}
-          className="border border-[#d9d9d9] rounded-lg h-10"
+          className="border border-[#d9d9d9] rounded-lg h-10 px-3"
         />
         <label className="relative" htmlFor="memberPhone">
           전화번호
@@ -87,7 +87,7 @@ export default function InputMemberInfo() {
           {...register("phone", {
             required: true,
           })}
-          className="border border-[#d9d9d9] rounded-lg h-10"
+          className="border border-[#d9d9d9] rounded-lg h-10 px-3"
         />
 
         <button
