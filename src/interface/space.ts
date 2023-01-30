@@ -13,8 +13,10 @@ export interface homeGymInfo {
   images: image[];
   openTime: number;
   closeTime: number;
-  // open_time: Date;
-  // close_time: Date;
+  discountAmount: number;
+  amount: number;
+  openDate: Date;
+  expiredDate: Date;
 }
 
 export interface image {

@@ -37,5 +37,9 @@ export default async function GetSpaceContentDetail({
     images: data.images,
     openTime: data.openTime,
     closeTime: data.closeTime,
+    discountAmount: data.discountAmount,
+    amount: data.amount,
+    openDate: data.openDate,
+    expiredDate: data.expiredDate,
   });
 }
