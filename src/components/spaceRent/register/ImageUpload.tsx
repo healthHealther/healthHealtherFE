@@ -13,7 +13,7 @@ export default function ImageUpload({
   setImgPreviewOnOff,
   imgPreviewOnOff,
 }: ImageUploadProps) {
-  const { register, setValue, getValues } = useFormContext();
+  const { setValue } = useFormContext();
 
   const [imgPreviewImgUrl, setImgPreviewImgUrl] = useState<string>("");
   const [images, setImages] = useState<string[]>([]);
