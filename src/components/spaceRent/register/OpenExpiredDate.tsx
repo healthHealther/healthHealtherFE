@@ -3,11 +3,11 @@ import { Control, Controller } from "react-hook-form";
 import DatePicker, { registerLocale } from "react-datepicker";
 import ko from "date-fns/locale/ko";
 import dayjs from "dayjs";
-import { homeGymInfo } from "../../../interface/space";
+import { homeGymInfo, submitHomeGymInfo } from "../../../interface/space";
 import { inputStyle } from "./style";
 
 interface OpenExpiredDateProps {
-  control: Control<homeGymInfo>;
+  control: Control<submitHomeGymInfo>;
 }
 
 export default function OpenExpiredDate({ control }: OpenExpiredDateProps) {

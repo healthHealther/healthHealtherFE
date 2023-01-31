@@ -12,14 +12,14 @@ import SelectTime from "./SelectTime";
 import ImageUpload from "./ImageUpload";
 import RegisterBtn from "./RegisterBtn";
 
-import { homeGymInfo } from "../../../interface/space";
+import { homeGymInfo, submitHomeGymInfo } from "../../../interface/space";
 import SelectCoupon from "./SelectCoupon";
 import OpenExpiredDate from "./OpenExpiredDate";
+import { baseUrl } from "../../common/common";
 
 export default function SpaceRegister() {
-  const methods = useForm<homeGymInfo>();
+  const methods = useForm<submitHomeGymInfo>();
   const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
-
   const [imgPreviewOnOff, setImgPreviewOnOff] = useState<boolean>(false);
 
   const { watch, handleSubmit, control } = methods;
@@ -60,10 +60,10 @@ export default function SpaceRegister() {
       : setFinish(false);
   }, [watchAllFields]);
 
-  const onSubmit = async (data: homeGymInfo) => {
+  const onSubmit = async (data: submitHomeGymInfo) => {
     try {
       await axios.post(
-        `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces`,
+        `${baseUrl}/spaces`,
         {
           title: data.title,
           content: data.content,
@@ -89,10 +89,10 @@ export default function SpaceRegister() {
         }
       );
       navigate("/spaceRent");
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
-    console.log(data);
   };
 
   // 운동 타입 객체

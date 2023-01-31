@@ -41,7 +41,11 @@ export default function SelectCoupon() {
         <button
           type="button"
           className="w-[20%] rounded-lg h-11 bg-homeGymPrice-green text-white"
-          onClick={() => setCouponModal(!couponModal)}
+          onClick={() =>
+            getValues("amount") > 0 &&
+            getValues("discountAmount") > 0 &&
+            setCouponModal(!couponModal)
+          }
         >
           등록
         </button>
@@ -56,14 +60,14 @@ export default function SelectCoupon() {
                 className={inputStyle}
                 placeholder="할인 가격을 입력해주세요."
                 type="number"
-                {...register("discountAmount")}
+                {...register("discountAmount", { valueAsNumber: true })}
               />
               <p className={`${subTitleStyle} mx-0`}>쿠폰수량</p>
               <input
                 className={inputStyle}
                 placeholder="쿠폰 수량을 입력해주세요."
                 type="number"
-                {...register("amount", { min: 1 })}
+                {...register("amount", { min: 1, valueAsNumber: true })}
               />
               <div className="mt-8">
                 <button

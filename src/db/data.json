@@ -451,6 +451,21 @@
       "closeTime": "13",
       "openTime": "12",
       "id": 20
+    },
+    {
+      "title": "제발",
+      "content": "`http://localhost:3001/spaces`",
+      "address": "충북 청주시 청원구 1순환로 42",
+      "addressDetail": "제발",
+      "convenienceTypes": ["FULLBODYMIROR"],
+      "openTime": 9,
+      "closeTime": 10,
+      "spaceTypes": ["GX"],
+      "discountAmount": "10000",
+      "amount": "",
+      "openDate": "2023-01-30",
+      "expiredDate": "2023-02-03",
+      "id": 21
     }
   ],
   "space": [],

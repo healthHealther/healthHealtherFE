@@ -9,16 +9,20 @@ import axios from "axios";
 import InfinityScroll from "../InfinityScroll";
 
 import { homeGymInfo } from "../../interface/space";
+import { baseUrl } from "../common/common";
 
 export default function SpaceContentsList() {
   const location = useLocation();
   const [homeGym, setHomeGym] = useState<homeGymInfo[]>([]);
   const [goNextPage, setGoNextPage] = useState<boolean>(false);
   const [scroll, setScroll] = useState<boolean>(false);
-  const page = useRef<number>(1);
+  const [page, setPage] = useState<number>(0);
   const dataFetchedRef = useRef(false);
   const [spaceRentParams] = useSearchParams();
   const query = spaceRentParams.get("spaceType");
+  const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
+
+  const text = "";
   useEffect(() => {
     return () => {
       localStorage.removeItem("selectedType");
@@ -31,15 +35,22 @@ export default function SpaceContentsList() {
         location.pathname !== "/"
         // JSON.parse(localStorage.getItem("selectedType") || "[]")?.length === 0
       ) {
+        console.log(page);
         if (goNextPage === true) {
-          page.current += 1;
+          setPage(page + 1);
         }
         localStorage.removeItem("selectedType");
-        const { data } = await axios.get<homeGymInfo[]>(
-          `http://localhost:3001/space?_limit=10&_page=${page.current}`
+        const { data } = await axios.get(
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchTexts=${text}&spaceType=AEROBIC`,
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
         );
-        setHomeGym((prev) => [...prev, ...data]);
-        setGoNextPage(data.length === 10);
+        console.log(data);
+        setHomeGym((prev) => [...prev, ...data.content]);
+        setGoNextPage(data.content.length === 10);
       }
       if (!query && location.pathname === "/") {
         const { data } = await axios.get<homeGymInfo[]>(
@@ -49,14 +60,13 @@ export default function SpaceContentsList() {
         setHomeGym(data);
       }
       if (query !== null) {
-        if (page.current === 1) console.log("g");
         const { data } = await axios.get<homeGymInfo[]>(
-          `http://localhost:3001/${query}?_limit=10&_page=${page.current}`
+          `http://localhost:3001/${query}?_limit=10&_page=${page}`
         );
         setHomeGym((prev) => [...prev, ...data]);
         setGoNextPage(data.length === 10);
         if (data.length) {
-          page.current += 1;
+          setPage(page + 1);
         }
       }
     } catch (err) {
@@ -72,7 +82,7 @@ export default function SpaceContentsList() {
   }, [scroll]);
 
   useEffect(() => {
-    page.current = 1;
+    setPage(0);
     setHomeGym([]);
     if (dataFetchedRef.current) return;
     dataFetchedRef.current = true;

@@ -1,14 +1,8 @@
-import React, {
-  ChangeEvent,
-  Dispatch,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { Dispatch, useEffect, useRef, useState } from "react";
 import { useFormContext } from "react-hook-form";
-import imageCompression from "browser-image-compression";
-import { subTitleStyle } from "./style";
+import { image } from "../../../interface/space";
 import Portal from "../../../Portal";
+import { subTitleStyle } from "./style";
 
 interface ImageUploadProps {
   setImgPreviewOnOff: Dispatch<React.SetStateAction<boolean>>;
@@ -19,51 +13,33 @@ export default function ImageUpload({
   setImgPreviewOnOff,
   imgPreviewOnOff,
 }: ImageUploadProps) {
-  const { setValue } = useFormContext();
+  const { register, setValue, getValues } = useFormContext();
 
   const [imgPreviewImgUrl, setImgPreviewImgUrl] = useState<string>("");
+  const [images, setImages] = useState<string[]>([]);
   const fileInput = useRef<HTMLInputElement>(null);
-  const [base64File, setBase64File] = useState<string[]>([]);
 
-  const options = {
-    maxSizeMB: 2,
-    maxWidthOrHeight: 1020,
-    useWebWorker: true,
-  };
+  const bodyTag = document.body;
 
-  const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    const convertBase64 = (file: File) => {
-      return new Promise((resolve, reject) => {
-        const fileReader = new FileReader();
-
-        fileReader.onload = () => {
-          resolve(
-            setBase64File((prev) => [...prev, fileReader.result as string])
-          );
-        };
-
-        fileReader.readAsDataURL(file);
-        fileReader.onerror = reject;
-      });
-    };
-    const compressedFile =
-      e.target.files && (await imageCompression(e.target.files[0], options));
-    compressedFile && convertBase64(compressedFile);
+  const handleChange = (e: any) => {
+    if (e.target.files.length) {
+      setImages((prev) => [...prev, URL.createObjectURL(e.target.files[0])]);
+    }
   };
 
   useEffect(() => {
     setValue(
       "images",
-      base64File.map((item) => item)
+      images.map((item) => item)
     );
-  }, [base64File]);
+  }, [images]);
   return (
     <div>
       <p className={subTitleStyle}>이미지</p>
       <div className="flex flex-wrap gap-2 mx-5 ">
-        {base64File.length > 0 &&
-          base64File.map((item) => (
-            <div className="mt-2">
+        {images.length > 0 &&
+          images.map((item) => (
+            <div className="mt-2" key={item}>
               <div className="relative">
                 <img
                   src={item}
@@ -74,13 +50,14 @@ export default function ImageUpload({
                   onClick={() => {
                     setImgPreviewImgUrl(item);
                     setImgPreviewOnOff(!imgPreviewOnOff);
+                    bodyTag.style.overflow = "hidden";
                   }}
                 />
                 <button
                   type="button"
                   className="absolute -top-3 -right-3 bg-delete bg-no-repeat bg-cover bg-center w-8 h-8"
                   onClick={() => {
-                    setBase64File(base64File.filter((i) => i !== item));
+                    setImages(images.filter((i) => i !== item));
                   }}
                 ></button>
               </div>

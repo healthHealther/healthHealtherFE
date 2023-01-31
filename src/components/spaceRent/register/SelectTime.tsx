@@ -7,7 +7,7 @@ export default function SelectTime() {
   const [closeAMPM, setCloseAMPM] = useState<string>("오전");
   const AMPMOption = ["오전", "오후"];
 
-  const { register, getValues } = useFormContext();
+  const { register, getValues, setValue } = useFormContext();
 
   return (
     <div>
@@ -25,15 +25,16 @@ export default function SelectTime() {
         </select>
         <input
           type="number"
-          {...register("openTime", { required: true })}
+          {...register("openTime", { required: true, valueAsNumber: true })}
           placeholder={
             startAMPM === "오전"
-              ? "시간을 입력하세요    ex) 0~12"
-              : "시간을 입력하세요    ex) 13~24"
+              ? "시간을 입력하세요    ex) 0~11"
+              : "시간을 입력하세요    ex) 13~23"
           }
           className="w-[80%] h-11 border rounded-lg p-[10px] "
           min={startAMPM === "오전" ? 0 : 12}
           max={startAMPM === "오후" ? 23 : 12}
+          defaultValue={getValues("openTime")}
         />
       </div>
       <p className={subTitleStyle}>마감 시간</p>
@@ -50,15 +51,16 @@ export default function SelectTime() {
         </select>
         <input
           type="number"
-          {...register("closeTime", { required: true })}
+          {...register("closeTime", { required: true, valueAsNumber: true })}
           placeholder={
             closeAMPM === "오전"
               ? "시간을 입력하세요    ex) 0~11"
-              : "시간을 입력하세요    ex) 12~24"
+              : "시간을 입력하세요    ex) 12~23"
           }
           className="w-[80%] h-11 border rounded-lg p-[10px] "
           min={closeAMPM === "오전" ? Number(getValues("openTime")) + 1 : 11}
-          max={closeAMPM === "오후" ? 24 : 12}
+          max={closeAMPM === "오후" ? 23 : 12}
+          defaultValue={getValues("closeTime")}
         />
       </div>
     </div>
