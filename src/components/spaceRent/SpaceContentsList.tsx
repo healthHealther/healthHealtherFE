@@ -10,6 +10,13 @@ import InfinityScroll from "../InfinityScroll";
 
 import { homeGymInfo, submitHomeGymInfo } from "../../interface/space";
 import { baseUrl } from "../common/common";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { searchTitleLabelState, spaceContentListState } from "../../common";
+import { useFormContext } from "react-hook-form";
+
+interface searchForm {
+  search: string;
+}
 
 export default function SpaceContentsList() {
   const location = useLocation();
@@ -19,10 +26,15 @@ export default function SpaceContentsList() {
   const [page, setPage] = useState<number>(0);
   const dataFetchedRef = useRef(false);
   const [spaceRentParams] = useSearchParams();
-  const query = spaceRentParams.get("spaceType");
+  const query =
+    spaceRentParams.get("spaceType") !== null
+      ? spaceRentParams.get("spaceType")
+      : "";
   const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
-
-  const text = "";
+  const [spaceContentList, setSpaceContentList] = useRecoilState<
+    submitHomeGymInfo[]
+  >(spaceContentListState);
+  const searchTitleLabel = useRecoilValue<string>(searchTitleLabelState);
   useEffect(() => {
     return () => {
       localStorage.removeItem("selectedType");
@@ -41,14 +53,14 @@ export default function SpaceContentsList() {
         }
         localStorage.removeItem("selectedType");
         const { data } = await axios.get(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchTexts=${text}&spaceType=${query}`,
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchText=${searchTitleLabel}&spaceType=${query}`,
           {
             headers: {
               Authorization: token,
             },
           }
         );
-        setHomeGym((prev) => [...prev, ...data.content]);
+        setSpaceContentList((prev) => [...prev, ...data.content]);
         setGoNextPage(data.content.length === 10);
       }
       if (!query && location.pathname === "/") {
@@ -60,7 +72,7 @@ export default function SpaceContentsList() {
       }
       if (query !== null) {
         const { data } = await axios.get(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchTexts=${text}&spaceType=${query}`,
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchText=${searchTitleLabel}&spaceType=${query}`,
           {
             headers: {
               Authorization: token,
@@ -69,7 +81,7 @@ export default function SpaceContentsList() {
         );
         console.log(data);
 
-        setHomeGym((prev) => [...prev, ...data.content]);
+        setSpaceContentList((prev) => [...prev, ...data.content]);
         setGoNextPage(data.content.length === 10);
         if (data.length) {
           setPage(page + 1);
@@ -96,11 +108,12 @@ export default function SpaceContentsList() {
     if (location.pathname !== "/") {
       setGoNextPage(false);
     }
+    setSpaceContentList([]);
   }, [query]);
 
   return (
     <>
-      {homeGym.map((item: submitHomeGymInfo) => (
+      {spaceContentList.map((item: submitHomeGymInfo) => (
         <li className="flex flex-col w-[calc(50%-6px)]" key={item.spaceId}>
           <Link to={`/SpaceContent?id=${item.spaceId}`}>
             <div
