@@ -7,7 +7,11 @@ import { useRecoilValue } from "recoil";
 import Select from "react-select";
 import { spaceContentDetailLabelState } from "../../../common";
 
-import { couponType, homeGymInfo } from "../../../interface/space";
+import {
+  couponType,
+  homeGymInfo,
+  submitHomeGymInfo,
+} from "../../../interface/space";
 
 interface SpaceReservationForm {
   date: Date;
@@ -23,7 +27,7 @@ export default function ReservationTimeSelect({
   control,
 }: ReservationTimeSelectProps) {
   const [startAMPM, setStartAMPM] = useState<string>("오전");
-  const spaceContentDetailLabel = useRecoilValue<homeGymInfo>(
+  const spaceContentDetailLabel = useRecoilValue<submitHomeGymInfo>(
     spaceContentDetailLabelState
   );
 

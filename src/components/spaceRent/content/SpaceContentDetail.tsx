@@ -11,22 +11,46 @@ import Review from "../SpaceReview";
 import NewReview from "../NewReview";
 import SpaceConvenience from "./SpaceConvenience";
 import SpaceRentBtn from "../SpaceRentBtn";
+import axios from "axios";
+import { baseUrl } from "../../common/common";
+import { useRecoilState } from "recoil";
+import { spaceContentDetailState, spaceIdState } from "../../../common";
+import { useSearchParams } from "react-router-dom";
 
-interface SpaceContentDetailProps {
-  spaceContentDetail: homeGymInfo;
-}
-
-export default function SpaceContentDetail({
-  spaceContentDetail,
-}: SpaceContentDetailProps) {
+export default function SpaceContentDetail() {
   //   useEffect(() => {}, [spaceContentDetail]);
+
+  const [spaceIdParam] = useSearchParams();
+  const [spaceId, setSpaceId] = useRecoilState(spaceIdState);
+  const [spaceContentDetailInfo, setSpaceContentDetailInfo] = useRecoilState(
+    spaceContentDetailState
+  );
+
+  // useEffect(() => {
+  //   spaceIdParam.get("id") !== null &&
+  //     setSpaceId(Number(spaceIdParam.get("id")));
+  // }, []);
+
+  // const getSpaceDetailData = async () => {
+  //   try {
+  //     await axios.get(`${baseUrl}/spaces/${spaceId}`).then((res) => {
+  //       setSpaceContentDetailInfo(res.data.content);
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getSpaceDetailData();
+  // }, [spaceId]);
 
   return (
     <div className="">
       {/* 메인 사진 */}
       <div
         style={{
-          backgroundImage: `url("${spaceContentDetail.images[0]}")`,
+          backgroundImage: `url("${spaceContentDetailInfo.images[0]}")`,
         }}
         className="w-full h-[270px] bg-no-repeat bg-cover bg-center bg-origin-padding"
       ></div>
@@ -34,7 +58,7 @@ export default function SpaceContentDetail({
       <div className="ml-5 mt-8">
         {/* 운동 타입 */}
         <div className="flex gap-1">
-          {spaceContentDetail.spaceTypes.map((item: string) => (
+          {spaceContentDetailInfo.spaceTypes.map((item: string) => (
             <p
               className="flex w-[49px] h-[30px] bg-detail-spaceType-bg-green text-detail-spaceType-font-green items-center justify-center rounded-[8px] text-sm "
               key={item}
@@ -45,17 +69,19 @@ export default function SpaceContentDetail({
         </div>
         {/* 회원 아이디 */}
         <div className="flex gap-1 text-m mt-4">
-          <span className="font-bold">{spaceContentDetail.memberId}</span>
+          <span className="font-bold">{spaceContentDetailInfo.memberId}</span>
           <span>님의 홈짐</span>
         </div>
         {/* 제목 */}
         <div className="mt-1">
-          <span className="text-xl font-bold">{spaceContentDetail.title}</span>
+          <span className="text-xl font-bold">
+            {spaceContentDetailInfo.title}
+          </span>
         </div>
         {/* 가격 */}
         <div>
           <span className="text-sm font-bold mt-4 text-homeGymPrice-green">
-            {spaceContentDetail.price}원
+            {spaceContentDetailInfo.price}원
           </span>
         </div>
       </div>
@@ -64,37 +90,39 @@ export default function SpaceContentDetail({
       {/* 구역 나눔 선 */}
       <div className="w-full h-1 bg-neutral-100 mt-8" />
       {/* 쿠폰 */}
-      {spaceContentDetail.spaceId && <Coupon id={spaceContentDetail.spaceId} />}
+      {spaceContentDetailInfo.spaceId && (
+        <Coupon id={spaceContentDetailInfo.spaceId} />
+      )}
 
       {/* 정책 내용 영역 */}
       <SpaceRule
-        rule={spaceContentDetail.rule}
-        openTime={spaceContentDetail.openTime}
-        closeTime={spaceContentDetail.closeTime}
+        rule={spaceContentDetailInfo.rule}
+        openTime={spaceContentDetailInfo.openTime}
+        closeTime={spaceContentDetailInfo.closeTime}
       />
       {/* 구역 나눔 선 */}
       <div className="w-full h-1 bg-neutral-100 mt-8" />
 
       {/* 상세 내용 영역 */}
       <DetailInfo
-        content={spaceContentDetail.content}
-        images={spaceContentDetail.images}
+        content={spaceContentDetailInfo.content}
+        images={spaceContentDetailInfo.images}
       />
       {/* 구역 나눔 선 */}
       <div className="w-full h-1 bg-neutral-100 mt-8" />
 
       {/* 지도 영역 */}
-      {spaceContentDetail.address && (
+      {spaceContentDetailInfo.address && (
         <ViewMap
-          address={spaceContentDetail.address}
-          addressDetail={spaceContentDetail.addressDetail}
+          address={spaceContentDetailInfo.address}
+          addressDetail={spaceContentDetailInfo.addressDetail}
         />
       )}
       {/* 구역 나눔 선 */}
       <div className="w-full h-1 bg-neutral-100 mt-8" />
 
       {/* 리뷰 영역 */}
-      <Review spaceId={spaceContentDetail.spaceId} />
+      <Review spaceId={spaceContentDetailInfo.spaceId} />
       {/* 구역 나눔 선 */}
       {/* <NewReview spaceId={spaceContentDetail.spaceId} /> */}
       <SpaceRentBtn />

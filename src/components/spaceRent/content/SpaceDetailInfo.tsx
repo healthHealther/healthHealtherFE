@@ -5,7 +5,7 @@ import { image } from "../../../interface/space";
 
 interface DetailInfoProps {
   content: string;
-  images: image[];
+  images: string[];
 }
 
 export default function DetailInfo({ content, images }: DetailInfoProps) {
@@ -22,7 +22,7 @@ export default function DetailInfo({ content, images }: DetailInfoProps) {
       <div className="mt-4">
         {images.map((item, idx) => (
           <img
-            src={item.preview as string}
+            src={item as string}
             alt="상세이미지"
             key={idx}
             className="mb-4"

@@ -118,7 +118,7 @@ export default function SpaceContentsList() {
           <Link to={`/SpaceContent?id=${item.spaceId}`}>
             <div
               style={{
-                backgroundImage: `url("${item.images[0]}")`,
+                backgroundImage: `url("${item.images}")`,
               }}
               className={`w-full h-0 pb-[57%] bg-no-repeat bg-cover bg-center bg-gradient-to-b from-cyan-700 to-blue-400 rounded-[16px]`}
             ></div>
