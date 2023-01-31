@@ -6,18 +6,23 @@ export interface commentTypeProps {
     nickName: string;
     comment: string;
   };
+  getCommentList: () => Promise<void>;
 }
 export default function CommentItem(props: commentTypeProps) {
   const comment = props.commentItem;
   const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
   const handleDelete = async () => {
     try {
-      await axios.delete(
-        `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/comment/${comment.commentId}`,
-        {
-          headers: { Authorization: token },
-        }
-      );
+      await axios
+        .delete(
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/comment/${comment.commentId}`,
+          {
+            headers: { Authorization: token },
+          }
+        )
+        .then(() => {
+          props.getCommentList();
+        });
     } catch (err) {
       console.error(err);
     }

@@ -12,7 +12,7 @@ interface LikeAreaProps {
 }
 export default function LikeArea(props: LikeAreaProps) {
   const { contentId, isLiked, setIsLiked } = props;
-
+  const [likeCount, setLikeCount] = useState<number>(0);
   const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
   const handleLikeBtn = async () => {
     if (!isLiked) {
@@ -47,7 +47,22 @@ export default function LikeArea(props: LikeAreaProps) {
         });
     }
   };
-
+  const getLikeCount = useCallback(async () => {
+    try {
+      await axios
+        .get(
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/${contentId}/likecount`,
+          {
+            headers: { Authorization: token },
+          }
+        )
+        .then((res) => {
+          setLikeCount(res.data.likeCount);
+        });
+    } catch (err) {
+      console.error(err);
+    }
+  }, []);
   const getLikeInfo = useCallback(async () => {
     try {
       await axios
@@ -64,6 +79,9 @@ export default function LikeArea(props: LikeAreaProps) {
   }, []);
   useEffect(() => {
     getLikeInfo();
+  }, []);
+  useEffect(() => {
+    getLikeCount();
   }, [isLiked]);
   return (
     <div className="py-[26px] border-b-4 border-[#efefef] flex justify-between items-center">
@@ -72,7 +90,7 @@ export default function LikeArea(props: LikeAreaProps) {
           <img src={likeIcon} alt="" />
         </div>
         <p className="font-[700]">추천&nbsp;</p>
-        <p className="text-[#08bd9d] font-[700]">2</p>
+        <p className="text-[#08bd9d] font-[700]">{likeCount}</p>
       </div>
       <div>
         <button>

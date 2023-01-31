@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { communityState } from "../../common";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import CommentArea from "./comment/CommentArea";
 import axios from "axios";
 import { contentType } from "./CommunityPage";
 import LikeArea from "./LikeArea";
 
 export default function CommunityContentPage() {
+  const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
   const params = useParams();
+  const navigate = useNavigate();
   const [isLiked, setIsLiked] = useState(false);
   const contentId = Number(params.boardContentId);
   const [contentItem, setContentItem] = useState<contentType>({
@@ -22,7 +24,8 @@ export default function CommunityContentPage() {
     try {
       await axios
         .get<contentType>(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/${contentId}`
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/${contentId}`,
+          { headers: { Authorization: token } }
         )
         .then((res) => {
           console.log(res.data);
@@ -35,7 +38,20 @@ export default function CommunityContentPage() {
   useEffect(() => {
     getContentItem();
   }, []);
-
+  const handleDelete = async () => {
+    try {
+      await axios
+        .delete(
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/${contentId}`,
+          { headers: { Authorization: token } }
+        )
+        .then(() => {
+          navigate("/community");
+        });
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <div className="px-[20px] max-w-[475px] min-w-[390px] min-h-screen sm:mx-auto mt-[48px] bg-white m">
       <div className="py-[32px] border-b-4 border-[#efefef] mb-[40px]">
@@ -52,6 +68,7 @@ export default function CommunityContentPage() {
       <div className="pb-[80px] border-b-4 border-[#efefef]">
         <p className="text-[16px]">{contentItem?.content}</p>
       </div>
+      <button onClick={handleDelete}>삭제</button>
       <LikeArea
         contentId={contentId}
         isLiked={isLiked}

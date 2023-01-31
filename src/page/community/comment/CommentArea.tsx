@@ -16,9 +16,11 @@ interface commentAreaProps {
 }
 export default function CommentArea(props: commentAreaProps) {
   const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
-  const { contentId, commentCount } = props;
+  const { contentId } = props;
+  const [commentCount, setCommentCount] = useState<number>(0);
   const [commentList, setCommentList] =
     useRecoilState<commentType[]>(commentListState);
+
   const getCommentList = useCallback(async () => {
     try {
       const { data } = await axios.get<commentType[]>(
@@ -31,13 +33,22 @@ export default function CommentArea(props: commentAreaProps) {
     }
   }, []);
   useEffect(() => {
+    setCommentCount(commentList.length);
+  }, [commentList]);
+  useEffect(() => {
     getCommentList();
   }, []);
   const renderingComments = () => {
     return (
       <ul className=" mb-[20px]">
         {commentList.map((i) => {
-          return <CommentItem commentItem={i} key={i.commentId} />;
+          return (
+            <CommentItem
+              commentItem={i}
+              key={i.commentId}
+              getCommentList={getCommentList}
+            />
+          );
         })}
       </ul>
     );
