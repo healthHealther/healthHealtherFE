@@ -7,10 +7,7 @@
     "content": "1. 오픈 1년이 된 프리미엄 급 기구 필라테스, 요가 스튜디오입니다. 2. 기구 필라테스 개인 룸 2개, 6:1 그룹 룸 - 타워 리포머 룸 1개, 바렐&체어 룸 1개 3. 요가룸 1개 – 최대 10명 이 이용할수 있는 공간 4. 여성 느낌의 휴게실과 개인 룸 형식의 부스룸 3개 편안하고 따뜻한 공간을 맘 편하게 이용하세요. 하남 미사 헬스장, 필라테스장, 요가원 대관 진행합니다. 많이들 오셔서 이용해주세요^^",
     "address": "경기 하남시 망월동 979-1",
     "addressDetail": "청담프라자 4층",
-    "convenienceTypes": [
-      "WIFI",
-      "SHOWER"
-    ],
+    "convenienceTypes": ["WIFI", "SHOWER"],
     "notice": "하남 미사 헬스장, 필라테스장, 요가원 대관 진행합니다. 많이들 오셔서 이용해주세요^^",
     "rule": "1.사용하신 기구는 제자리에 놓아주세요. 2.센터 내에서 고객 영업은 불가능합니다. 3.비매너 무책임한 행동 금지 4.사전에 공지 없이 사용시 패널티 부과 (1회 요금의 10배 배상) 5. 토삭스,양말 또는 맨발 이용 6.시설,장비의 파손시 손해배상 청구",
     "price": 30000,
@@ -20,9 +17,7 @@
     ],
     "openTime": 9,
     "closeTime": 22,
-    "spaceTypes": [
-      "GX"
-    ]
+    "spaceTypes": ["GX"]
   },
   "reservations": [
     {
@@ -67,12 +62,8 @@
       "content": "ddda",
       "address": "충북 청주시 서원구 1순환로 632",
       "detailAddress": "aaaa",
-      "spaceTypes": [
-        "ANAEROBIC"
-      ],
-      "convenienceTypes": [
-        "CHANGINGROOM"
-      ],
+      "spaceTypes": ["ANAEROBIC"],
+      "convenienceTypes": ["CHANGINGROOM"],
       "notice": "a",
       "rule": "a",
       "price": "1",
@@ -91,9 +82,7 @@
       "content": "안되나요",
       "address": "충북 청주시 흥덕구 1순환로 392",
       "detailAddress": "안되나요",
-      "convenienceTypes": [
-        "ANAEROBIC"
-      ],
+      "convenienceTypes": ["ANAEROBIC"],
       "notice": "안되나요",
       "rule": "안되나요",
       "price": "1233",
@@ -112,9 +101,7 @@
       "content": "123123",
       "address": "서울 강동구 양재대로123길 7",
       "addressDetail": "123",
-      "convenienceTypes": [
-        "AEROBIC"
-      ],
+      "convenienceTypes": ["AEROBIC"],
       "notice": "123",
       "rule": "123",
       "price": "5",
@@ -133,9 +120,7 @@
       "content": "123123",
       "address": "서울 강동구 양재대로123길 7",
       "addressDetail": "123",
-      "convenienceTypes": [
-        "AEROBIC"
-      ],
+      "convenienceTypes": ["AEROBIC"],
       "notice": "123",
       "rule": "123",
       "price": "5",
@@ -154,9 +139,7 @@
       "content": "가격을 컨트롤로 컨트롤해요",
       "address": "서울 강북구 4.19로12길 5",
       "addressDetail": "가격을 컨트롤로 컨트롤해요",
-      "convenienceTypes": [
-        "ANAEROBIC"
-      ],
+      "convenienceTypes": ["ANAEROBIC"],
       "notice": "가격을 컨트롤로 컨트롤해요",
       "rule": "가격을 컨트롤로 컨트롤해요",
       "price": "123,123,123",
@@ -175,9 +158,7 @@
       "content": "왜 버튼 색이 안변할까여?",
       "address": "서울 강남구 봉은사로111길 5",
       "addressDetail": "왜 버튼 색이 안변할까여?",
-      "convenienceTypes": [
-        "PILATES"
-      ],
+      "convenienceTypes": ["PILATES"],
       "notice": "왜 버튼 색이 안변할까여?",
       "rule": "왜 버튼 색이 안변할까여?",
       "price": "1,222,222",
@@ -196,12 +177,8 @@
       "content": "드디어 다 쪼갰네여",
       "address": "서울 강북구 4.19로12길 5",
       "addressDetail": "드디어 다 쪼갰네여",
-      "spaceTypes": [
-        "AEROBIC"
-      ],
-      "convenienceTypes": [
-        "WIFI"
-      ],
+      "spaceTypes": ["AEROBIC"],
+      "convenienceTypes": ["WIFI"],
       "notice": "드디어 다 쪼갰네여",
       "rule": "드디어 다 쪼갰네여",
       "price": "44,444",
@@ -220,12 +197,8 @@
       "content": "드디어 다 쪼갰네여",
       "address": "서울 강북구 4.19로12길 5",
       "addressDetail": "드디어 다 쪼갰네여",
-      "spaceTypes": [
-        "AEROBIC"
-      ],
-      "convenienceTypes": [
-        "WIFI"
-      ],
+      "spaceTypes": ["AEROBIC"],
+      "convenienceTypes": ["WIFI"],
       "notice": "드디어 다 쪼갰네여",
       "rule": "드디어 다 쪼갰네여",
       "price": "44,444",
@@ -244,12 +217,8 @@
       "content": "a",
       "address": "부산 해운대구 APEC로 17",
       "addressDetail": "aa",
-      "spaceTypes": [
-        "ANAEROBIC"
-      ],
-      "convenienceTypes": [
-        "PARKING"
-      ],
+      "spaceTypes": ["ANAEROBIC"],
+      "convenienceTypes": ["PARKING"],
       "notice": "aaaa",
       "rule": "222",
       "price": "3,333",
@@ -268,12 +237,8 @@
       "content": "a",
       "address": "부산 해운대구 APEC로 17",
       "addressDetail": "aa",
-      "spaceTypes": [
-        "ANAEROBIC"
-      ],
-      "convenienceTypes": [
-        "PARKING"
-      ],
+      "spaceTypes": ["ANAEROBIC"],
+      "convenienceTypes": ["PARKING"],
       "notice": "aaaa",
       "rule": "222",
       "price": "3,333",
@@ -292,12 +257,8 @@
       "content": "a",
       "address": "부산 해운대구 APEC로 17",
       "addressDetail": "aa",
-      "spaceTypes": [
-        "ANAEROBIC"
-      ],
-      "convenienceTypes": [
-        "PARKING"
-      ],
+      "spaceTypes": ["ANAEROBIC"],
+      "convenienceTypes": ["PARKING"],
       "notice": "aaaa",
       "rule": "222",
       "price": "3,333",
@@ -316,12 +277,8 @@
       "content": "a",
       "address": "부산 해운대구 APEC로 17",
       "addressDetail": "aa",
-      "spaceTypes": [
-        "ANAEROBIC"
-      ],
-      "convenienceTypes": [
-        "PARKING"
-      ],
+      "spaceTypes": ["ANAEROBIC"],
+      "convenienceTypes": ["PARKING"],
       "notice": "aaaa",
       "rule": "222",
       "price": "3,333",
@@ -340,12 +297,8 @@
       "content": "44",
       "address": "서울 강북구 4.19로11길 6",
       "addressDetail": "4",
-      "spaceTypes": [
-        "AEROBIC"
-      ],
-      "convenienceTypes": [
-        "FOOD"
-      ],
+      "spaceTypes": ["AEROBIC"],
+      "convenienceTypes": ["FOOD"],
       "notice": "44",
       "rule": "44",
       "price": "44",
@@ -364,12 +317,8 @@
       "content": "44",
       "address": "서울 강북구 4.19로11길 6",
       "addressDetail": "4",
-      "spaceTypes": [
-        "AEROBIC"
-      ],
-      "convenienceTypes": [
-        "FOOD"
-      ],
+      "spaceTypes": ["AEROBIC"],
+      "convenienceTypes": ["FOOD"],
       "notice": "44",
       "rule": "44",
       "price": "44",
@@ -388,12 +337,8 @@
       "content": "끝?",
       "address": "서울 은평구 가좌로12길 13",
       "addressDetail": "끝?",
-      "spaceTypes": [
-        "ANAEROBIC"
-      ],
-      "convenienceTypes": [
-        "SHOWER"
-      ],
+      "spaceTypes": ["ANAEROBIC"],
+      "convenienceTypes": ["SHOWER"],
       "notice": "끝?",
       "rule": "끝?",
       "price": "11",
@@ -412,12 +357,8 @@
       "content": "끝?",
       "address": "서울 은평구 가좌로12길 13",
       "addressDetail": "끝?",
-      "spaceTypes": [
-        "ANAEROBIC"
-      ],
-      "convenienceTypes": [
-        "SHOWER"
-      ],
+      "spaceTypes": ["ANAEROBIC"],
+      "convenienceTypes": ["SHOWER"],
       "notice": "끝?",
       "rule": "끝?",
       "price": "11",
@@ -436,12 +377,8 @@
       "content": "ㅁㄴㅇ",
       "address": "서울 강북구 삼양로123길 1",
       "addressDetail": "132",
-      "spaceTypes": [
-        "AEROBIC"
-      ],
-      "convenienceTypes": [
-        "FULLBODYMIROR"
-      ],
+      "spaceTypes": ["AEROBIC"],
+      "convenienceTypes": ["FULLBODYMIROR"],
       "notice": "123",
       "rule": "123",
       "price": "1",
@@ -460,12 +397,8 @@
       "content": "ㅁㄴㅇ",
       "address": "서울 강북구 삼양로123길 1",
       "addressDetail": "1",
-      "spaceTypes": [
-        "ANAEROBIC"
-      ],
-      "convenienceTypes": [
-        "PARKING"
-      ],
+      "spaceTypes": ["ANAEROBIC"],
+      "convenienceTypes": ["PARKING"],
       "notice": "1",
       "rule": "1",
       "price": "1",
@@ -484,12 +417,8 @@
       "content": "1",
       "address": "충북 청주시 흥덕구 1순환로 385",
       "addressDetail": "1",
-      "spaceTypes": [
-        "ANAEROBIC"
-      ],
-      "convenienceTypes": [
-        "SHOWER"
-      ],
+      "spaceTypes": ["ANAEROBIC"],
+      "convenienceTypes": ["SHOWER"],
       "notice": "1",
       "rule": "1",
       "price": "1",
@@ -508,12 +437,8 @@
       "content": "2",
       "address": "경기 화성시 우정읍 3.1만세로 5-3",
       "addressDetail": "4",
-      "spaceTypes": [
-        "AEROBIC"
-      ],
-      "convenienceTypes": [
-        "FULLBODYMIROR"
-      ],
+      "spaceTypes": ["AEROBIC"],
+      "convenienceTypes": ["FULLBODYMIROR"],
       "notice": "5",
       "rule": "5",
       "price": "5",
@@ -526,6 +451,21 @@
       "closeTime": "13",
       "openTime": "12",
       "id": 20
+    },
+    {
+      "title": "제발",
+      "content": "`http://localhost:3001/spaces`",
+      "address": "충북 청주시 청원구 1순환로 42",
+      "addressDetail": "제발",
+      "convenienceTypes": ["FULLBODYMIROR"],
+      "openTime": 9,
+      "closeTime": 10,
+      "spaceTypes": ["GX"],
+      "discountAmount": "10000",
+      "amount": "",
+      "openDate": "2023-01-30",
+      "expiredDate": "2023-02-03",
+      "id": 21
     }
   ],
   "space": [],
@@ -1035,10 +975,7 @@
       "content": "1. 오픈 1년이 된 프리미엄 급 기구 필라테스, 요가 스튜디오입니다. 2. 기구 필라테스 개인 룸 2개, 6:1 그룹 룸 - 타워 리포머 룸 1개, 바렐&체어 룸 1개 3. 요가룸 1개 – 최대 10명 이 이용할수 있는 공간 4. 여성 느낌의 휴게실과 개인 룸 형식의 부스룸 3개 편안하고 따뜻한 공간을 맘 편하게 이용하세요. 하남 미사 헬스장, 필라테스장, 요가원 대관 진행합니다. 많이들 오셔서 이용해주세요^^",
       "address": "경기 하남시 망월동 979-1",
       "addressDetail": "청담프라자 4층",
-      "convenienceTypes": [
-        "WIFI",
-        "SHOWER"
-      ],
+      "convenienceTypes": ["WIFI", "SHOWER"],
       "notice": "하남 미사 헬스장, 필라테스장, 요가원 대관 진행합니다. 많이들 오셔서 이용해주세요^^",
       "rule": "1.사용하신 기구는 제자리에 놓아주세요. 2.센터 내에서 고객 영업은 불가능합니다. 3.비매너 무책임한 행동 금지 4.사전에 공지 없이 사용시 패널티 부과 (1회 요금의 10배 배상) 5. 토삭스,양말 또는 맨발 이용 6.시설,장비의 파손시 손해배상 청구",
       "price": 30000,
@@ -1048,9 +985,7 @@
       ],
       "openTime": 9,
       "closeTime": 22,
-      "spaceTypes": [
-        "GX"
-      ]
+      "spaceTypes": ["GX"]
     }
   ]
 }

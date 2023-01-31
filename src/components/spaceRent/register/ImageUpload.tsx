@@ -1,7 +1,7 @@
 import React, { Dispatch, useEffect, useRef, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { image } from "../../../interface/space";
-import ImagePreview from "./ImagePreview";
+import Portal from "../../../Portal";
 import { subTitleStyle } from "./style";
 
 interface ImageUploadProps {
@@ -16,20 +16,14 @@ export default function ImageUpload({
   const { register, setValue, getValues } = useFormContext();
 
   const [imgPreviewImgUrl, setImgPreviewImgUrl] = useState<string>("");
-  const [images, setImages] = useState<image[]>([]);
+  const [images, setImages] = useState<string[]>([]);
   const fileInput = useRef<HTMLInputElement>(null);
 
   const bodyTag = document.body;
 
   const handleChange = (e: any) => {
     if (e.target.files.length) {
-      setImages((prev) => [
-        ...prev,
-        {
-          preview: URL.createObjectURL(e.target.files[0]),
-          raw: e.target.files[0],
-        },
-      ]);
+      setImages((prev) => [...prev, URL.createObjectURL(e.target.files[0])]);
     }
   };
 
@@ -45,16 +39,16 @@ export default function ImageUpload({
       <div className="flex flex-wrap gap-2 mx-5 ">
         {images.length > 0 &&
           images.map((item) => (
-            <div className="mt-2">
+            <div className="mt-2" key={item}>
               <div className="relative">
                 <img
-                  src={item.preview}
+                  src={item}
                   alt="dummy"
                   width="80"
                   height="80"
                   className="relative w-20 h-20  rounded-xl"
                   onClick={() => {
-                    setImgPreviewImgUrl(item.preview);
+                    setImgPreviewImgUrl(item);
                     setImgPreviewOnOff(!imgPreviewOnOff);
                     bodyTag.style.overflow = "hidden";
                   }}
@@ -63,15 +57,17 @@ export default function ImageUpload({
                   type="button"
                   className="absolute -top-3 -right-3 bg-delete bg-no-repeat bg-cover bg-center w-8 h-8"
                   onClick={() => {
-                    setImages(images.filter((i) => i.raw !== item.raw));
+                    setImages(images.filter((i) => i !== item));
                   }}
                 ></button>
               </div>
               {imgPreviewOnOff && (
-                <ImagePreview
-                  url={imgPreviewImgUrl}
-                  setImgPreviewOnOff={setImgPreviewOnOff}
-                />
+                <Portal setState={setImgPreviewOnOff} state={imgPreviewOnOff}>
+                  <div
+                    style={{ backgroundImage: `url("${imgPreviewImgUrl}")` }}
+                    className="absolute z-[9999] h-0 pb-[30%] max-w-[70%] bg-no-repeat bg-contain bg-center w-full h-0 pb-[100%] bg-white "
+                  />
+                </Portal>
               )}
             </div>
           ))}

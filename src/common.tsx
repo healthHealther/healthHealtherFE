@@ -48,6 +48,10 @@ export const spaceContentDetailState = atom<homeGymInfo>({
     images: [],
     openTime: 0,
     closeTime: 0,
+    discountAmount: 0,
+    amount: 0,
+    openDate: new Date(),
+    expiredDate: new Date(),
   },
 });
 
@@ -65,5 +69,18 @@ export const couponLabelState = selector<couponType>({
   get: ({ get }) => {
     const couponInfo = get(coupon);
     return couponInfo;
+  }, // default value (aka initial value)
+});
+
+export const modalOnOffState = atom<boolean>({
+  key: "modalOnOffState",
+  default: false,
+});
+
+export const modalOnOffLabelState = selector<boolean>({
+  key: "modalOnOffLabelState", // unique ID (with respect to other atoms/selectors)
+  get: ({ get }) => {
+    const modalOnOffLabel = get(modalOnOffState);
+    return modalOnOffLabel;
   }, // default value (aka initial value)
 });

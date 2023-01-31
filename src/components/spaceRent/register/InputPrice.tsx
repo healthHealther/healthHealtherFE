@@ -2,10 +2,10 @@ import React from "react";
 import { Control, Controller, useFormContext } from "react-hook-form";
 import { inputStyle, maxWidth, subTitleStyle } from "./style";
 import { NumericFormat } from "react-number-format";
-import { homeGymInfo } from "../../../interface/space";
+import { homeGymInfo, submitHomeGymInfo } from "../../../interface/space";
 
 interface InputPriceProps {
-  control: Control<homeGymInfo>;
+  control: Control<submitHomeGymInfo>;
 }
 
 export default function InputPrice({ control }: InputPriceProps) {
@@ -16,12 +16,13 @@ export default function InputPrice({ control }: InputPriceProps) {
       <p className={subTitleStyle}>가격</p>
       <div className={maxWidth}>
         <Controller
-          render={({ field }) => (
+          render={({ field: { onChange, value } }) => (
             <NumericFormat
-              {...field}
               thousandSeparator
               placeholder="가격을 입력해주세요"
               className={inputStyle}
+              onValueChange={(values) => onChange(values.floatValue)}
+              value={value}
             />
           )}
           name="price"

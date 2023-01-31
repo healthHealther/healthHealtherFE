@@ -1,24 +1,19 @@
-import React, { useState } from "react";
-import {
-  Control,
-  Controller,
-  useFormContext,
-  UseFormGetValues,
-  UseFormSetValue,
-} from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import { useFormContext } from "react-hook-form";
 import DaumPostcode from "react-daum-postcode";
 import { homeGymInfo } from "../../../interface/space";
 import { inputStyle, maxWidth, subTitleStyle } from "./style";
-
-interface InputAddressProps {
-  control: Control<homeGymInfo>;
-  setValue: UseFormSetValue<homeGymInfo>;
-  getValues: UseFormGetValues<homeGymInfo>;
-}
+import Portal from "../../../Portal";
 
 export default function InputAddress() {
-  const { register, setValue, getValues } = useFormContext();
-  const [addressModal, setAddressModal] = useState<boolean>(false);
+  const { register, setValue, getValues } = useFormContext<homeGymInfo>();
+  const [addressOnOff, setAddressOnOff] = useState<boolean>(false);
+
+  useEffect(() => {
+    addressOnOff === true
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "unset");
+  }, [addressOnOff]);
 
   const onCompletePost = (data: {
     address: string;
@@ -28,6 +23,7 @@ export default function InputAddress() {
     zonecode: React.SetStateAction<string>;
   }) => {
     setValue("address", data.address);
+    setAddressOnOff(!addressOnOff);
   };
   return (
     <div>
@@ -40,26 +36,26 @@ export default function InputAddress() {
           className="w-[80%] h-11 border rounded-lg p-[10px] bg-black/[.03]"
           {...register("address", { required: true })}
           readOnly
-          onClick={() => setAddressModal(!addressModal)}
+          onClick={() => setAddressOnOff(!addressOnOff)}
           value={getValues("address") && getValues("address")}
         />
         <button
           type="button"
           className="w-[20%] rounded-lg h-11 bg-homeGymPrice-green text-white"
-          onClick={() => setAddressModal(!addressModal)}
+          onClick={() => setAddressOnOff(!addressOnOff)}
         >
           주소찾기
         </button>
       </div>
-      {addressModal && (
-        <div>
+      {addressOnOff && (
+        <Portal setState={setAddressOnOff} state={addressOnOff}>
           <DaumPostcode
             autoClose
             onComplete={onCompletePost}
             style={{ width: "100%", height: "500px" }}
-            className="absolute z-[9999] h-[440px] top-[42.8%] left-1/2 transform -translate-x-1/2 -translate-y-[49%] bg-white border "
+            className="absolute max-w-[435px] z-[9999] h-[440px] top-[42.8%] left-1/2 transform -translate-x-1/2 -translate-y-[49%] bg-white border "
           />
-        </div>
+        </Portal>
       )}
 
       <div className={maxWidth}>

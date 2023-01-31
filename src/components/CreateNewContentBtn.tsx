@@ -5,7 +5,7 @@ import createRentButton from "../assets/createButton_1.png";
 export default function CreateNewContentBtn() {
   const location = useLocation();
   const index = location.pathname.indexOf("/", 1);
-  console.log(location.pathname);
+  // console.log(location.pathname);
   const currentPath =
     index !== -1
       ? location.pathname.slice(1, index)

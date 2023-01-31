@@ -13,8 +13,31 @@ export interface homeGymInfo {
   images: image[];
   openTime: number;
   closeTime: number;
-  // open_time: Date;
-  // close_time: Date;
+  discountAmount: number;
+  amount: number;
+  openDate: Date;
+  expiredDate: Date;
+}
+
+export interface submitHomeGymInfo {
+  spaceId: number;
+  memberId: string;
+  title: string;
+  content: string;
+  address: string;
+  addressDetail: string;
+  spaceTypes: string[];
+  convenienceTypes: string[];
+  notice: string;
+  rule: string;
+  price: number;
+  images: string[];
+  openTime: number;
+  closeTime: number;
+  discountAmount: number;
+  amount: number;
+  openDate: Date;
+  expiredDate: Date;
 }
 
 export interface image {

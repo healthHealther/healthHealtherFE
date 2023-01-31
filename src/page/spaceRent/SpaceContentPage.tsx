@@ -24,6 +24,10 @@ export default function SpaceContentPage() {
     images: [],
     openTime: 0,
     closeTime: 0,
+    discountAmount: 0,
+    amount: 0,
+    openDate: new Date(),
+    expiredDate: new Date(),
   });
   const [spaceContentDetailInfo, setSpaceContentDetailInfo] = useRecoilState(
     spaceContentDetailState
@@ -31,8 +35,6 @@ export default function SpaceContentPage() {
 
   const [spaceRentParams] = useSearchParams();
   const query = spaceRentParams.get("id");
-
-  const [rentTime, setRentTime] = useState<number>(0);
 
   useEffect(() => {
     query !== null &&

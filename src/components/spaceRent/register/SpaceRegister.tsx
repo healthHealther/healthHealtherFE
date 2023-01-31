@@ -12,11 +12,14 @@ import SelectTime from "./SelectTime";
 import ImageUpload from "./ImageUpload";
 import RegisterBtn from "./RegisterBtn";
 
-import { homeGymInfo } from "../../../interface/space";
+import { homeGymInfo, submitHomeGymInfo } from "../../../interface/space";
+import SelectCoupon from "./SelectCoupon";
+import OpenExpiredDate from "./OpenExpiredDate";
+import { baseUrl } from "../../common/common";
 
 export default function SpaceRegister() {
-  const methods = useForm<homeGymInfo>();
-
+  const methods = useForm<submitHomeGymInfo>();
+  const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
   const [imgPreviewOnOff, setImgPreviewOnOff] = useState<boolean>(false);
 
   const { watch, handleSubmit, control } = methods;
@@ -36,6 +39,12 @@ export default function SpaceRegister() {
     "openTime",
   ]);
 
+  useEffect(() => {
+    imgPreviewOnOff === true
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "unset");
+  }, [imgPreviewOnOff]);
+
   const [finish, setFinish] = useState<boolean>(false);
 
   const navigate = useNavigate();
@@ -49,30 +58,41 @@ export default function SpaceRegister() {
     ).length === 0
       ? setFinish(true)
       : setFinish(false);
-    console.log(watchAllFields);
   }, [watchAllFields]);
 
-  const onSubmit = async (data: homeGymInfo) => {
+  const onSubmit = async (data: submitHomeGymInfo) => {
     try {
-      await axios.post<homeGymInfo>(`http://localhost:3001/spaces`, {
-        title: data.title,
-        content: data.content,
-        address: data.address,
-        addressDetail: data.addressDetail,
-        spaceTypes: data.spaceTypes,
-        convenienceTypes: data.convenienceTypes,
-        notice: data.notice,
-        rule: data.rule,
-        price: data.price,
-        images: data.images,
-        closeTime: data.closeTime,
-        openTime: data.openTime,
-      });
+      await axios.post(
+        `${baseUrl}/spaces`,
+        {
+          title: data.title,
+          content: data.content,
+          address: data.address,
+          addressDetail: data.addressDetail,
+          convenienceTypes: data.convenienceTypes,
+          notice: data.notice,
+          rule: data.rule,
+          price: data.price,
+          images: data.images,
+          openTime: data.openTime,
+          closeTime: data.closeTime,
+          spaceTypes: data.spaceTypes,
+          discountAmount: data.discountAmount,
+          amount: data.amount,
+          openDate: data.openDate.toISOString().split("T")[0],
+          expiredDate: data.expiredDate.toISOString().split("T")[0],
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
       navigate("/spaceRent");
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
-    console.log(data);
   };
 
   // 운동 타입 객체
@@ -113,6 +133,8 @@ export default function SpaceRegister() {
           {/* 주소 */}
           <InputAddress />
 
+          <OpenExpiredDate control={control} />
+
           {/* 편의사항 */}
           <RegisterSelectBox
             option={objectConvenienceType}
@@ -140,6 +162,9 @@ export default function SpaceRegister() {
             spaceType="spaceTypes"
             spaceTypeTitle="공간타입"
           />
+
+          {/* 쿠폰 */}
+          <SelectCoupon />
 
           {/* 사진 입력 */}
           <ImageUpload
