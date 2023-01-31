@@ -20,6 +20,7 @@ export default function CommunitySearchBar(props: setSearchProps) {
   const handleSearchBtn = () => {
     if (typeof ref.current?.value === "string") {
       const value = ref.current.value;
+
       if (value.length > 0 && searchContext !== value) {
         setCommunityContentList([]);
         setSearchActive(true);

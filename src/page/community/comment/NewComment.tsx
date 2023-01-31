@@ -3,9 +3,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 interface NewCommentProps {
   getCommentList: () => Promise<void>;
-  commentId: number;
+  contentId: number;
 }
 export default function NewComment(props: NewCommentProps) {
+  const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
   const [valueValidate, setValueValidate] = useState(false);
   const [textBox, setTextBox] = useState("");
   useEffect(() => {
@@ -15,12 +16,11 @@ export default function NewComment(props: NewCommentProps) {
     if (textBox.length !== 0) {
       try {
         return await axios
-          .post(`http://localhost:3001/comment`, {
-            id: props.commentId,
-            commentId: props.commentId,
-            nickname: "하영",
-            comment: textBox,
-          })
+          .post(
+            `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/${props.contentId}/comment`,
+            { context: textBox },
+            { headers: { Authorization: token } }
+          )
           .then(() => {
             setTextBox("");
             props.getCommentList();

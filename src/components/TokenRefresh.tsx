@@ -5,19 +5,15 @@ export default function TokenRefresh() {
   const navigate = useNavigate();
   const refresh = async () => {
     if (sessionStorage.getItem("accessToken")) {
-      console.log("refresh");
       const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
       const refreshToken = sessionStorage.getItem("refreshToken");
       axios.defaults.headers.common["Authorization"] = token;
-      const expiredTime = await new Date("2023-01-29 21:24:00");
-      const currentTime = await new Date("2023-01-29 21:23:55");
-      const diffTime = await (expiredTime.getTime() - currentTime.getTime());
-      console.log(diffTime);
-      if (diffTime < 10000) {
-        axios.defaults.headers.common["X-Refresh-Token"] =
-          sessionStorage.getItem("refreshToken");
-        console.log(token);
-        console.log(refreshToken);
+      const expiredStorage = sessionStorage.getItem("expiredTime");
+      const expiredTime = new Date(expiredStorage as string);
+      const currentTime = new Date();
+      const diffTime = expiredTime.getTime() - currentTime.getTime();
+      if (diffTime < 15000) {
+        axios.defaults.headers.common["X-Refresh-Token"] = refreshToken;
         await axios
           .post(
             "https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/members/reissue",

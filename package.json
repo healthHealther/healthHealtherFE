@@ -31,6 +31,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.7.0",
     "react-simple-star-rating": "^5.1.7",
+    "react-spinners": "^0.13.8",
     "react-svg-star-rating": "^2.1.2",
     "recoil": "^0.7.6",
     "tailwind-scrollbar-hide": "^1.1.7",

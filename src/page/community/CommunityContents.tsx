@@ -15,7 +15,8 @@ export default function CommunityContents(props: searchProps) {
       window.scrollTo(0, 0);
     };
   }, []);
-  const page = useRef<number>(1);
+  const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
+  const page = useRef<number>(0);
   const {
     searchActive,
     searchContext,
@@ -25,15 +26,21 @@ export default function CommunityContents(props: searchProps) {
   const [goNextPage, setGoNextPage] = useState(true);
   const [scroll, setScroll] = useState(false);
   useEffect(() => {
-    page.current = 1;
+    page.current = 0;
     if (communityContentList.length === 0) getCommunityContentsList();
   }, [searchContext]);
   const getCommunityContentsList = useCallback(async () => {
+    console.log(searchContext);
     try {
       const { data } = await axios.get<contentType[]>(
         searchActive
-          ? `http://localhost:3001/boardSearch?_title=${searchContext}&_limit=15&_page=${page.current}`
-          : `http://localhost:3001/board?_limit=15&_page=${page.current}`
+          ? `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/search?page=${page.current}&size=15&keyword=${searchContext}`
+          : `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board?page=${page.current}&size=15`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
       );
       setCommunityContentList((prev) => [...prev, ...data]);
       setGoNextPage(data.length === 15);
@@ -64,7 +71,7 @@ export default function CommunityContents(props: searchProps) {
       ) : (
         <div className="w-full py-[20px] mb-[45px]">
           {communityContentList.map((i: contentType) => {
-            return <BoardContent boardContent={i} key={i.board_id} />;
+            return <BoardContent boardContent={i} key={i.boardId} />;
           })}
         </div>
       )}

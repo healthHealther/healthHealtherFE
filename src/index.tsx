@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
@@ -15,11 +15,13 @@ import NotFound from "./components/NotFound";
 import MyRent from "./page/myPage/myPageLink/MyRent";
 import MyPost from "./page/myPage/myPageLink/MyPost";
 import Notification from "./page/myPage/myPageLink/Notification";
-import LoginRedirect from "./page/login/LoginRedirect";
+// import LoginRedirect from "./page/login/LoginRedirect";
 import SpaceRegisterPage from "./page/spaceRent/SpaceRegisterPage";
 import CommunityRegisterPage from "./page/community/CommunityRegisterPage";
 import SpaceReservation from "./page/spaceRent/SpaceReservation";
 import InputMemberInfo from "./page/login/InputMemberInfo";
+import Spinner from "./components/Spinner";
+const LoginRedirect = lazy(() => import("./page/login/LoginRedirect"));
 const router = createBrowserRouter([
   {
     path: "/",
@@ -111,7 +113,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <>
     <RecoilRoot>
-      <RouterProvider router={router} />
+      <Suspense fallback={<Spinner />}>
+        <RouterProvider router={router} />
+      </Suspense>
     </RecoilRoot>
   </>
 );

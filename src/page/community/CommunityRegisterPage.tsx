@@ -5,6 +5,7 @@ import TopBar from "../../components/TopBar";
 import ConfirmPopUp from "../../components/ConfirmPopUp";
 
 export default function CommunityRegisterPage() {
+  const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
   const navigate = useNavigate();
   const [active, setActive] = useState(false);
   const [filled, setFilled] = useState(false);
@@ -37,14 +38,16 @@ export default function CommunityRegisterPage() {
     ) {
       try {
         return await axios
-          .post("http://localhost:3001/board", {
-            id: 100,
-            board_id: 100,
-            nickname: "하영",
-            title: title,
-            content: description,
-            // createdAt: new Date(),
-          })
+          .post(
+            "https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board",
+            {
+              title: title,
+              content: description,
+            },
+            {
+              headers: { Authorization: token },
+            }
+          )
           .then(() => {
             navigate("/community");
           });
