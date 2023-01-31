@@ -1,7 +1,12 @@
 import { atom, selector } from "recoil";
 import { contentType } from "./page/community/CommunityPage";
 import { commentType } from "./page/community/comment/CommentArea";
-import { couponType, homeGymInfo, review } from "./interface/space";
+import {
+  couponType,
+  homeGymInfo,
+  review,
+  submitHomeGymInfo,
+} from "./interface/space";
 export const isLoggedInState = atom({
   key: "isLoggedInState",
   default: false,
@@ -52,6 +57,25 @@ export const spaceContentDetailState = atom<homeGymInfo>({
     amount: 0,
     openDate: new Date(),
     expiredDate: new Date(),
+  },
+});
+
+export const spaceContentListState = atom<submitHomeGymInfo[]>({
+  key: "spaceContentList",
+  default: [],
+});
+
+export const searchTitleState = atom<string>({
+  key: "searchTitle",
+  default: "",
+});
+
+export const searchTitleLabelState = selector({
+  key: "searchTitleLabelState",
+  get: ({ get }) => {
+    const searchTitleValue = get(searchTitleState);
+
+    return searchTitleValue;
   },
 });
 
