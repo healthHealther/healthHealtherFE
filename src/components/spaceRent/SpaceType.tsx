@@ -1,4 +1,4 @@
-import React, { Dispatch, useEffect, useState } from "react";
+import React, { Dispatch, useEffect, useState, useRef } from "react";
 import {
   Link,
   useSearchParams,
@@ -11,11 +11,11 @@ interface SpaceTypeProps {
 }
 
 export default function SpaceType({ setSpaceType }: SpaceTypeProps) {
+  const ref = useRef(0);
   const location = useLocation();
   const spaceTypeList = ["유산소", "무산소", "필라테스", "GX"];
   const categoty = ["AEROBIC", "ANAEROBIC", "PILATES", "GX"];
   const [spaceRentParams] = useSearchParams();
-  console.log({ spaceRentParams });
   const query = spaceRentParams.get("spaceType");
   const [selectedType, setSelectedType] = useState<string[]>(() => {
     return JSON.parse(localStorage.getItem("selectedType") || "[]");
@@ -30,11 +30,13 @@ export default function SpaceType({ setSpaceType }: SpaceTypeProps) {
   useEffect(() => {
     if (tempQuery.length > 0) {
       navigate(`/spaceRent?spaceType=${tempQuery}`);
-    }
-    if (tempQuery.length === 0) {
-      navigate(`/spaceRent`);
+      console.log("location", location);
     } else {
-      navigate(-1);
+      navigate("/spaceRent");
+      if (ref.current === 0) {
+        navigate(-1);
+        ref.current = 1;
+      }
     }
   }, [tempQuery]);
   return (
