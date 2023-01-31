@@ -6,21 +6,24 @@ import CommentItem from "./CommentItem";
 import informationIcon from "../../../assets/informationIcon.png";
 import NewComment from "./NewComment";
 export interface commentType {
-  id: number;
   commentId: number;
-  nickname: string;
+  nickName: string;
   comment: string;
 }
 interface commentAreaProps {
   contentId: number;
+  commentCount: number;
 }
 export default function CommentArea(props: commentAreaProps) {
+  const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
+  const { contentId, commentCount } = props;
   const [commentList, setCommentList] =
     useRecoilState<commentType[]>(commentListState);
   const getCommentList = useCallback(async () => {
     try {
       const { data } = await axios.get<commentType[]>(
-        `http://localhost:3001/comment`
+        `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/${contentId}/comment?page=0&size=5`,
+        { headers: { Authorization: token } }
       );
       setCommentList([...data]);
     } catch (err) {
@@ -53,13 +56,10 @@ export default function CommentArea(props: commentAreaProps) {
       <div className="flex items-center">
         <img className="mr-[12px]" src={informationIcon} alt="" />
         <p>댓글</p>
-        <p className="text-[#08BD9D]">&nbsp;{commentList.length}</p>
+        <p className="text-[#08BD9D]">&nbsp;{commentCount}</p>
       </div>
       {commentList.length === 0 ? renderingEmpty() : renderingComments()}
-      <NewComment
-        commentId={commentList.length + 1}
-        getCommentList={getCommentList}
-      />
+      <NewComment contentId={contentId} getCommentList={getCommentList} />
     </div>
   );
 }

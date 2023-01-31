@@ -84,7 +84,7 @@ export default function SpaceContentsList() {
 
   return (
     <>
-      {homeGym.map((item: homeGymInfo) => (
+      {/* {homeGym.map((item: homeGymInfo) => (
         <li className="flex flex-col w-[calc(50%-6px)]" key={item.spaceId}>
           <Link to={`/SpaceContent?id=${item.spaceId}`}>
             <div
@@ -92,14 +92,14 @@ export default function SpaceContentsList() {
                 backgroundImage: `url("${item.images[0]}")`,
               }}
               className={`w-full h-0 pb-[57%] bg-no-repeat bg-cover bg-center bg-gradient-to-b from-cyan-700 to-blue-400 rounded-[16px]`}
-            ></div>
+            ></div> */}
 
-            {/* <img
+      {/* <img
             className="aspect-[2/1] max-h-[120px] min-h-[92px] bg-pink-100"
             src={item.img}
           /> */}
 
-            <span className="text-base font-500 mt-1.5">{item.title}</span>
+      {/* <span className="text-base font-500 mt-1.5">{item.title}</span>
             <span className="flex gap-1 text-xs mt-1.5">
               {item.spaceTypes.map((spaceType: string) => (
                 <p key={spaceType}>#{spaceType}</p>
@@ -111,7 +111,7 @@ export default function SpaceContentsList() {
           </Link>
         </li>
       ))}
-      {location.pathname !== "/" && <InfinityScroll setScroll={setScroll} />}
+      {location.pathname !== "/" && <InfinityScroll setScroll={setScroll} />} */}
     </>
   );
 }

@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import CommunityContents from "./CommunityContents";
 import CommunitySearchBar from "./CommunitySearchBar";
 export interface contentType {
-  board_id: number;
-  nickname: string;
+  boardId: number;
+  nickName: string;
   title: string;
   content: string;
+  commentCount: number;
 }
 export default function CommunityPage() {
   const [searchActive, setSearchActive] = useState<boolean>(false);
