@@ -6,29 +6,30 @@ import { useRecoilState } from "recoil";
 import { spaceContentDetailState } from "../../common";
 import SpaceRentBtn from "../../components/spaceRent/SpaceRentBtn";
 
-import { homeGymInfo } from "../../interface/space";
+import { homeGymInfo, submitHomeGymInfo } from "../../interface/space";
 
 export default function SpaceContentPage() {
-  const [spaceContentDetail, setSpaceContentDetail] = useState<homeGymInfo>({
-    spaceId: 0,
-    memberId: "",
-    title: "",
-    content: "",
-    address: "",
-    addressDetail: "",
-    spaceTypes: [],
-    convenienceTypes: [],
-    notice: "",
-    rule: "",
-    price: 0,
-    images: [],
-    openTime: 0,
-    closeTime: 0,
-    discountAmount: 0,
-    amount: 0,
-    openDate: new Date(),
-    expiredDate: new Date(),
-  });
+  const [spaceContentDetail, setSpaceContentDetail] =
+    useState<submitHomeGymInfo>({
+      spaceId: 0,
+      memberId: "",
+      title: "",
+      content: "",
+      address: "",
+      addressDetail: "",
+      spaceTypes: [],
+      convenienceTypes: [],
+      notice: "",
+      rule: "",
+      price: 0,
+      images: [],
+      openTime: 0,
+      closeTime: 0,
+      discountAmount: 0,
+      amount: 0,
+      openDate: new Date(),
+      expiredDate: new Date(),
+    });
   const [spaceContentDetailInfo, setSpaceContentDetailInfo] = useRecoilState(
     spaceContentDetailState
   );
@@ -47,7 +48,7 @@ export default function SpaceContentPage() {
 
   return (
     <article className="w-full pb-14">
-      <SpaceContentDetail spaceContentDetail={spaceContentDetail} />
+      <SpaceContentDetail />
     </article>
   );
 }

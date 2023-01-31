@@ -3,12 +3,13 @@ import React, { Dispatch, SetStateAction } from "react";
 import { useSearchParams } from "react-router-dom";
 import { SetterOrUpdater, useRecoilState } from "recoil";
 import { spaceContentDetailState } from "../../common";
-import { homeGymInfo } from "../../interface/space";
+import { homeGymInfo, submitHomeGymInfo } from "../../interface/space";
+import { baseUrl } from "../common/common";
 
 interface GetSpaceContentDetailProps {
-  setSpaceContentDetail: Dispatch<SetStateAction<homeGymInfo>>;
+  setSpaceContentDetail: Dispatch<SetStateAction<submitHomeGymInfo>>;
   query: string;
-  setSpaceContentDetailInfo: SetterOrUpdater<homeGymInfo>;
+  setSpaceContentDetailInfo: SetterOrUpdater<submitHomeGymInfo>;
 }
 
 export default async function GetSpaceContentDetail({
@@ -16,9 +17,16 @@ export default async function GetSpaceContentDetail({
   query,
   setSpaceContentDetailInfo,
 }: GetSpaceContentDetailProps) {
-  const { data } = await axios.get<homeGymInfo>(
-    `http://localhost:3001/${query}`
+  const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
+  const { data } = await axios.get<submitHomeGymInfo>(
+    `${baseUrl}/spaces/${query}`,
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
   );
+  console.log(data);
 
   setSpaceContentDetailInfo(data);
 

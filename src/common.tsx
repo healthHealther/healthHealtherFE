@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { atom, selector } from "recoil";
 import { contentType } from "./page/community/CommunityPage";
 import { commentType } from "./page/community/comment/CommentArea";
@@ -36,7 +37,7 @@ export const reviewState = atom<review[]>({
   default: [], // default value (aka initial value)
 });
 
-export const spaceContentDetailState = atom<homeGymInfo>({
+export const spaceContentDetailState = atom<submitHomeGymInfo>({
   key: "spaceContentDetail",
   default: {
     spaceId: 0,
@@ -86,6 +87,26 @@ export const spaceContentDetailLabelState = selector({
 
     return spaceContentDetailInfo;
   },
+});
+
+const localStorageEffect =
+  (key: string) =>
+  ({ setSelf, onSet }: any) => {
+    const savedValue = localStorage.getItem(key);
+    if (savedValue !== null) {
+      setSelf(JSON.parse(savedValue));
+    }
+    onSet((newValue: any, _: any, isReset: boolean) => {
+      isReset
+        ? localStorage.removeItem(key)
+        : localStorage.setItem(key, JSON.stringify(newValue));
+    });
+  };
+
+export const spaceIdState = atom<number>({
+  key: "spaceIdState",
+  default: 0,
+  effects: [localStorageEffect("spaceIdState")],
 });
 
 export const couponLabelState = selector<couponType>({

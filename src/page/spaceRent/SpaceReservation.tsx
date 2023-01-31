@@ -9,7 +9,11 @@ import ReservationPrice from "../../components/spaceRent/reservation/Reservation
 import ReservationTimeSelect from "../../components/spaceRent/reservation/ReservationTimeSelect";
 import SpaceRentBtn from "../../components/spaceRent/SpaceRentBtn";
 
-import { couponType, homeGymInfo } from "../../interface/space";
+import {
+  couponType,
+  homeGymInfo,
+  submitHomeGymInfo,
+} from "../../interface/space";
 import axios from "axios";
 
 interface SpaceReservationForm {
@@ -24,7 +28,7 @@ export default function SpaceReservation() {
   const [couponInfo, setCouponInfo] = useRecoilState<couponType>(coupon);
 
   const navigate = useNavigate();
-  const spaceContentDetailLabel = useRecoilValue<homeGymInfo>(
+  const spaceContentDetailLabel = useRecoilValue<submitHomeGymInfo>(
     spaceContentDetailLabelState
   );
 
