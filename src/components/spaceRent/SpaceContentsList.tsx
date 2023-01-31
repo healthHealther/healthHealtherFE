@@ -8,17 +8,21 @@ import {
 import axios from "axios";
 import InfinityScroll from "../InfinityScroll";
 
-import { homeGymInfo } from "../../interface/space";
+import { homeGymInfo, submitHomeGymInfo } from "../../interface/space";
+import { baseUrl } from "../common/common";
 
 export default function SpaceContentsList() {
   const location = useLocation();
-  const [homeGym, setHomeGym] = useState<homeGymInfo[]>([]);
+  const [homeGym, setHomeGym] = useState<submitHomeGymInfo[]>([]);
   const [goNextPage, setGoNextPage] = useState<boolean>(false);
   const [scroll, setScroll] = useState<boolean>(false);
-  const page = useRef<number>(0);
+  const [page, setPage] = useState<number>(0);
   const dataFetchedRef = useRef(false);
   const [spaceRentParams] = useSearchParams();
   const query = spaceRentParams.get("spaceType");
+  const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
+
+  const text = "";
   useEffect(() => {
     return () => {
       localStorage.removeItem("selectedType");
@@ -31,32 +35,44 @@ export default function SpaceContentsList() {
         location.pathname !== "/"
         // JSON.parse(localStorage.getItem("selectedType") || "[]")?.length === 0
       ) {
+        console.log(page);
         if (goNextPage === true) {
-          page.current += 1;
+          setPage(page + 1);
         }
         localStorage.removeItem("selectedType");
-        const { data } = await axios.get<homeGymInfo[]>(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page.current}&size=10`
+        const { data } = await axios.get(
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchTexts=${text}&spaceType=${query}`,
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
         );
-        setHomeGym((prev) => [...prev, ...data]);
-        setGoNextPage(data.length === 10);
+        setHomeGym((prev) => [...prev, ...data.content]);
+        setGoNextPage(data.content.length === 10);
       }
       if (!query && location.pathname === "/") {
-        const { data } = await axios.get<homeGymInfo[]>(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=0&size=4`
+        const { data } = await axios.get<submitHomeGymInfo[]>(
+          `http://localhost:3001/space?_page=1&_limit=4`
         );
 
         setHomeGym(data);
       }
       if (query !== null) {
-        if (page.current === 0) console.log("g");
-        const { data } = await axios.get<homeGymInfo[]>(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?spaceType=${query}&size=10&page=${page.current}`
+        const { data } = await axios.get(
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchTexts=${text}&spaceType=${query}`,
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
         );
-        setHomeGym((prev) => [...prev, ...data]);
-        setGoNextPage(data.length === 10);
+        console.log(data);
+
+        setHomeGym((prev) => [...prev, ...data.content]);
+        setGoNextPage(data.content.length === 10);
         if (data.length) {
-          page.current += 1;
+          setPage(page + 1);
         }
       }
     } catch (err) {
@@ -72,7 +88,7 @@ export default function SpaceContentsList() {
   }, [scroll]);
 
   useEffect(() => {
-    page.current = 0;
+    setPage(0);
     setHomeGym([]);
     if (dataFetchedRef.current) return;
     dataFetchedRef.current = true;
@@ -84,7 +100,7 @@ export default function SpaceContentsList() {
 
   return (
     <>
-      {/* {homeGym.map((item: homeGymInfo) => (
+      {homeGym.map((item: submitHomeGymInfo) => (
         <li className="flex flex-col w-[calc(50%-6px)]" key={item.spaceId}>
           <Link to={`/SpaceContent?id=${item.spaceId}`}>
             <div
@@ -92,14 +108,14 @@ export default function SpaceContentsList() {
                 backgroundImage: `url("${item.images[0]}")`,
               }}
               className={`w-full h-0 pb-[57%] bg-no-repeat bg-cover bg-center bg-gradient-to-b from-cyan-700 to-blue-400 rounded-[16px]`}
-            ></div> */}
+            ></div>
 
-      {/* <img
+            {/* <img
             className="aspect-[2/1] max-h-[120px] min-h-[92px] bg-pink-100"
             src={item.img}
           /> */}
 
-      {/* <span className="text-base font-500 mt-1.5">{item.title}</span>
+            <span className="text-base font-500 mt-1.5">{item.title}</span>
             <span className="flex gap-1 text-xs mt-1.5">
               {item.spaceTypes.map((spaceType: string) => (
                 <p key={spaceType}>#{spaceType}</p>
@@ -111,7 +127,7 @@ export default function SpaceContentsList() {
           </Link>
         </li>
       ))}
-      {location.pathname !== "/" && <InfinityScroll setScroll={setScroll} />} */}
+      {location.pathname !== "/" && <InfinityScroll setScroll={setScroll} />}
     </>
   );
 }
