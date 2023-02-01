@@ -31,16 +31,6 @@ export default function SpaceContentDetail() {
       setSpaceId(Number(spaceIdParam.get("id")));
   }, []);
 
-  const getSpaceDetailData = async () => {
-    try {
-      await axios.get(`${baseUrl}/spaces/${spaceId}`).then((res) => {
-        setSpaceContentDetailInfo(res.data.content);
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   // useEffect(() => {
   //   getSpaceDetailData();
   // }, [spaceId]);
