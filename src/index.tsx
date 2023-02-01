@@ -21,6 +21,7 @@ import CommunityRegisterPage from "./page/community/CommunityRegisterPage";
 import SpaceReservation from "./page/spaceRent/SpaceReservation";
 import InputMemberInfo from "./page/login/InputMemberInfo";
 import Spinner from "./components/Spinner";
+import ChangeMemberInfo from "./page/myPage/myPageLink/ChangeMemberInfo";
 const LoginRedirect = lazy(() => import("./page/login/LoginRedirect"));
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/myPage",
         element: <MyPage />,
+      },
+      {
+        path: "/myPage/changeMemberInfo",
+        element: <ChangeMemberInfo />,
       },
       {
         path: "/myPage/notification",

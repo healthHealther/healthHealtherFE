@@ -85,6 +85,8 @@ export default function InputMemberInfo() {
           placeholder="000-0000-0000"
           type="text"
           {...register("phone", {
+            maxLength: 13,
+            minLength: 11,
             required: true,
           })}
           className="border border-[#d9d9d9] rounded-lg h-10 px-3"

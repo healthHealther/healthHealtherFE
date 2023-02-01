@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import randomProfileMan from "../../assets/randomProfileMan.png";
 import randomProfileWoman from "../../assets/randomProfileWoman.png";
@@ -7,11 +7,22 @@ import messageIcon from "../../assets/messageIcon.png";
 import rentIcon from "../../assets/rentIcon.png";
 import writeIcon from "../../assets/writeIcon.png";
 import axios from "axios";
-import { getCookie } from "../../components/login/cookie";
+import { baseUrl } from "../../components/common/common";
+export interface memberInfoType {
+  name: string;
+  nickName: string;
+  phone: string;
+}
 export default function MyPage() {
   interface buttonRenderingType {
     buttonType: "notification" | "myRent" | "myPost";
   }
+  const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
+  const [memberInfo, setMemberInfo] = useState<memberInfoType>({
+    name: "",
+    nickName: "",
+    phone: "",
+  });
   const navigate = useNavigate();
   const renderingArr: ["notification", "myRent", "myPost"] = [
     "notification",
@@ -45,10 +56,24 @@ export default function MyPage() {
       </Link>
     );
   };
-
+  const getMemberInfo = async () => {
+    try {
+      await axios
+        .get<memberInfoType>(`${baseUrl}/members`, {
+          headers: { Authorization: token },
+        })
+        .then((res) => {
+          setMemberInfo(res.data);
+        });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  useEffect(() => {
+    getMemberInfo();
+  }, []);
   const deleteHandler = async () => {
     if (window.confirm("정말로 탈퇴하시겠습니까?")) {
-      const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
       console.log(token);
       try {
         await axios
@@ -112,22 +137,36 @@ export default function MyPage() {
           />
         </div>
         <div className="w-[80px] h-[32px] flex items-end mb-[8px]">
-          <p className="font-[700] text-[20px] mr-[2px]">홍길동</p>
+          <p className="font-[700] text-[20px] mr-[2px]">
+            {memberInfo.nickName}
+          </p>
           <p className="font-[700] text-[16px]">님</p>
         </div>
-        <button
-          className="flex items-center text-[#a5a5a5]"
-          onClick={handleLogout}
-        >
-          <img className="mr-[4px]" src={logoutIcon} alt="" />
-          <p className="font-[500] text-[13px]">로그아웃</p>
-        </button>
-        <button
-          onClick={deleteHandler}
-          className="ml-5 mt-2 flex items-center text-[#a5a5a5] font-[500] text-[13px]"
-        >
-          회원 탈퇴
-        </button>
+        <div className="flex justify-between">
+          <div>
+            <button
+              className="flex items-center text-[#a5a5a5]"
+              onClick={handleLogout}
+            >
+              <img className="mr-[4px]" src={logoutIcon} alt="" />
+              <p className="font-[500] text-[13px]">로그아웃</p>
+            </button>
+          </div>
+          <div className="flex flex-col items-end pt-5">
+            <Link
+              to={"/myPage/changeMemberInfo"}
+              className="flex items-center text-[#a5a5a5] font-[500] text-[13px]"
+            >
+              회원정보 수정
+            </Link>
+            <button
+              onClick={deleteHandler}
+              className=" mt-2 flex items-center text-[#a5a5a5] font-[500] text-[13px]"
+            >
+              회원 탈퇴
+            </button>
+          </div>
+        </div>
       </div>
       {renderingArr.map((i) => {
         return <MyPageButtonRendering buttonType={i} key={i} />;
