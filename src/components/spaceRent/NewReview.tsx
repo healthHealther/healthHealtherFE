@@ -77,7 +77,6 @@ export default function NewReview({ spaceId }: NewReviewProps) {
       className="flex flex-col w-full mt-5"
     >
       <StarRating
-        unit="half"
         handleOnClick={handleRating}
         initialRating={rating}
         containerClassName="flex mb-2"

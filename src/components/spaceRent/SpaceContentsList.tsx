@@ -3,10 +3,11 @@ import { Link, useLocation, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import InfinityScroll from "../InfinityScroll";
 
-import { homeGymInfo, submitHomeGymInfo } from "../../interface/space";
+import { homeGymInfo, submitHomeGymInfo, review } from "../../interface/space";
 import { baseUrl } from "../common/common";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
+  reviewState,
   searchTitleLabelState,
   spaceContentDetailState,
   spaceContentListState,
@@ -36,30 +37,30 @@ export default function SpaceContentsList() {
   const searchTitleLabel = useRecoilValue<string>(searchTitleLabelState);
   const [spaceContentDetailInfo, setSpaceContentDetailInfo] =
     useRecoilState<submitHomeGymInfo>(spaceContentDetailState);
+  const [review, setReview] = useRecoilState<review[]>(reviewState);
   useEffect(() => {
-    return () => {
-      setSpaceContentDetailInfo({
-        spaceId: 0,
-        memberId: "",
-        title: "",
-        content: "",
-        address: "",
-        addressDetail: "",
-        spaceTypes: [],
-        convenienceTypes: [],
-        notice: "",
-        rule: "",
-        price: 0,
-        images: [],
-        openTime: 0,
-        closeTime: 0,
-        discountAmount: 0,
-        amount: 0,
-        openDate: new Date(),
-        expiredDate: new Date(),
-      });
-      localStorage.removeItem("selectedType");
-    };
+    setSpaceContentDetailInfo({
+      spaceId: 0,
+      memberId: "",
+      title: "",
+      content: "",
+      address: "",
+      addressDetail: "",
+      spaceTypes: [],
+      convenienceTypes: [],
+      notice: "",
+      rule: "",
+      price: 0,
+      images: [],
+      openTime: 0,
+      closeTime: 0,
+      discountAmount: 0,
+      amount: 0,
+      openDate: new Date(),
+      expiredDate: new Date(),
+    });
+    setReview([]);
+    localStorage.removeItem("selectedType");
   }, []);
   const getData = async () => {
     try {
