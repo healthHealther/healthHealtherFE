@@ -8,6 +8,7 @@ export default function SelectCoupon() {
   const { register, setValue, getValues } = useFormContext<homeGymInfo>();
   const [couponModal, setCouponModal] = useState<boolean>(false);
   const [couponText, setCouponText] = useState<string>("");
+  const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
     couponModal === true
@@ -24,7 +25,7 @@ export default function SelectCoupon() {
         )}원 할인 쿠폰 - ${getValues("amount")}매`
       );
     Number(getValues("discountAmount")) === 0 && setCouponText("");
-  }, [getValues("discountAmount")]);
+  }, [getValues("discountAmount"), getValues("amount")]);
 
   return (
     <div>
@@ -41,11 +42,9 @@ export default function SelectCoupon() {
         <button
           type="button"
           className="w-[20%] rounded-lg h-11 bg-homeGymPrice-green text-white"
-          onClick={() =>
-            getValues("amount") > 0 &&
-            getValues("discountAmount") > 0 &&
-            setCouponModal(!couponModal)
-          }
+          onClick={() => {
+            setCouponModal(!couponModal);
+          }}
         >
           등록
         </button>
@@ -60,7 +59,7 @@ export default function SelectCoupon() {
                 className={inputStyle}
                 placeholder="할인 가격을 입력해주세요."
                 type="number"
-                {...register("discountAmount", { valueAsNumber: true })}
+                {...register("discountAmount", { min: 1, valueAsNumber: true })}
               />
               <p className={`${subTitleStyle} mx-0`}>쿠폰수량</p>
               <input
@@ -69,12 +68,25 @@ export default function SelectCoupon() {
                 type="number"
                 {...register("amount", { min: 1, valueAsNumber: true })}
               />
-              <div className="mt-8">
+              {error && (
+                <p className="text-base text-red-500 mt-2">
+                  가격과 수량을 입력하세요
+                </p>
+              )}
+              <div className="mt-4">
                 <button
                   type="button"
                   className="w-[20%] rounded-lg h-11 bg-homeGymPrice-green text-white float-right"
                   onClick={() => {
-                    setCouponModal(!couponModal);
+                    if (
+                      getValues("amount") > 0 &&
+                      getValues("discountAmount") > 0
+                    ) {
+                      setError(false);
+                      setCouponModal(!couponModal);
+                    } else {
+                      setError(!error);
+                    }
                   }}
                 >
                   등록
