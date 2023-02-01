@@ -60,7 +60,11 @@ export default function SpaceContentsList() {
       expiredDate: new Date(),
     });
     setReview([]);
-    localStorage.removeItem("selectedType");
+  }, []);
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem("selectedType");
+    };
   }, []);
   const getData = async () => {
     try {
@@ -70,7 +74,7 @@ export default function SpaceContentsList() {
       if (!query && location.pathname !== "/") {
         localStorage.removeItem("selectedType");
         const { data } = await axios.get(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page.current}&size=10&searchText=${searchTitleLabel}&spaceType=${query}`,
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page.current}&size=10&searchText=${searchTitleLabel}`,
           {
             headers: {
               Authorization: token,
@@ -79,27 +83,29 @@ export default function SpaceContentsList() {
         );
         setSpaceContentList((prev) => [...prev, ...data.content]);
         setGoNextPage(data.content.length === 10);
-      }
-      if (!query && location.pathname === "/") {
-        const { data } = await axios.get<submitHomeGymInfo[]>(
-          `http://localhost:3001/space?_page=1&_limit=4`
-        );
-
-        setHomeGym(data);
-      }
-      if (query !== null) {
-        const { data } = await axios.get(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page.current}&size=10&searchText=${searchTitleLabel}&spaceType=${query}`,
-          {
-            headers: {
-              Authorization: token,
-            },
-          }
-        );
-
-        setSpaceContentList((prev) => [...prev, ...data.content]);
-
-        setGoNextPage(data.content.length === 10);
+      } else if (!query && location.pathname === "/") {
+        await axios
+          .get(
+            `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=0&size=4`,
+            { headers: { Authorization: token } }
+          )
+          .then((res) => {
+            setSpaceContentList(res.data.content);
+          });
+      } else if (query !== null) {
+        await axios
+          .get(
+            `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page.current}&size=10&searchText=${searchTitleLabel}&spaceType=${query}`,
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          )
+          .then((res) => {
+            setSpaceContentList((prev) => [...prev, ...res.data.content]);
+            setGoNextPage(res.data.content.length === 10);
+          });
       }
     } catch (err) {
       console.error(err);
