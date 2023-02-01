@@ -16,6 +16,8 @@ import { homeGymInfo, submitHomeGymInfo } from "../../../interface/space";
 import SelectCoupon from "./SelectCoupon";
 import OpenExpiredDate from "./OpenExpiredDate";
 import { baseUrl } from "../../common/common";
+import ConfirmPopUp from "../../ConfirmPopUp";
+import ConfirmPopUpPortal from "../../ConfirmPopUpPortal";
 
 export default function SpaceRegister() {
   const methods = useForm<submitHomeGymInfo>();
@@ -37,6 +39,8 @@ export default function SpaceRegister() {
     "images",
     "closeTime",
     "openTime",
+    "discountAmount",
+    "amount",
   ]);
 
   useEffect(() => {
@@ -46,6 +50,7 @@ export default function SpaceRegister() {
   }, [imgPreviewOnOff]);
 
   const [finish, setFinish] = useState<boolean>(false);
+  const [filled, setFilled] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -54,10 +59,23 @@ export default function SpaceRegister() {
       (item) =>
         item === "" ||
         item === undefined ||
+        item === Number(NaN) ||
         (item as Array<string>).length === 0
     ).length === 0
       ? setFinish(true)
       : setFinish(false);
+  }, [watchAllFields]);
+
+  useEffect(() => {
+    watchAllFields.filter(
+      (item) =>
+        item === "" ||
+        item === undefined ||
+        item === Number(NaN) ||
+        (item as Array<string>).length === 0
+    ).length < 12
+      ? setFilled(true)
+      : setFilled(false);
   }, [watchAllFields]);
 
   const onSubmit = async (data: submitHomeGymInfo) => {
@@ -124,6 +142,7 @@ export default function SpaceRegister() {
         imgPreviewOnOff ? "overflow-y-hidden" : ""
       }`}
     >
+      <ConfirmPopUpPortal active={filled} />
       <h1 className="text-xl mx-5 font-bold pt-8">홈짐 등록</h1>
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col ">
