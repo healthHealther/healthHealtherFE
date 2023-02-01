@@ -26,7 +26,8 @@ interface SpaceReservationForm {
 export default function SpaceReservation() {
   const { handleSubmit, control } = useForm<SpaceReservationForm>();
   const [selectedCoupon, setSelectedCoupon] = useState<string>("");
-  const [couponInfo, setCouponInfo] = useRecoilState<couponType>(coupon);
+  // const [couponInfo, setCouponInfo] = useRecoilState<couponType>(coupon);
+  const [couponInfo, setCouponInfo] = useState<couponType[]>([]);
 
   const navigate = useNavigate();
   const spaceContentDetailLabel = useRecoilValue<submitHomeGymInfo>(
@@ -47,20 +48,26 @@ export default function SpaceReservation() {
   const onSubmit = async (formData: any) => {
     console.log(formData.reservationTime.value);
     try {
-      await axios.post(
-        `${baseUrl}/reservations`,
-        {
-          spaceId: spaceContentDetailLabel.spaceId,
-          couponId: null,
-          reservationDate: formData.date.toISOString().split("T")[0] as string,
-          reservationTime: formData.reservationTime.value,
-        },
-        {
-          headers: { Authorization: token },
-        }
-      );
+      await axios
+        .post(
+          `${baseUrl}/reservations`,
+          {
+            spaceId: spaceContentDetailLabel.spaceId,
+            couponId: couponInfo[0].couponId,
+            reservationDate: formData.date
+              .toISOString()
+              .split("T")[0] as string,
+            reservationTime: formData.reservationTime.value,
+          },
+          {
+            headers: { Authorization: token },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+        });
       // const { data } = await axios.put(
-      //   `http://localhost:3001/coupon/${spaceContentDetailLabel.spaceId}`,
+      //   `${baseUrl}/coupon/${spaceContentDetailLabel.spaceId}`,
       //   {
       //     ...couponInfo,
       //     amount:
@@ -73,7 +80,7 @@ export default function SpaceReservation() {
       console.log(error);
     }
   };
-
+  console.log("selectedCoupon", selectedCoupon);
   return (
     <section className="w-full mt-[26px] pb-10 min-h-[214px]">
       <h1 className="text-xl font-bold pt-8 mx-5">홈짐 예약</h1>
@@ -92,12 +99,15 @@ export default function SpaceReservation() {
 
         {/* 구역 나눔 선 */}
         <div className="w-full h-1 bg-neutral-100 mt-8" />
-        {/* <ReservationCoupon
+        <ReservationCoupon
           control={control}
           spaceId={spaceContentDetailLabel.spaceId}
           setSelectedCoupon={setSelectedCoupon}
-        /> */}
+          couponInfo={couponInfo}
+          setCouponInfo={setCouponInfo}
+        />
         <ReservationPrice
+          couponInfo={couponInfo}
           price={spaceContentDetailLabel.price}
           selectedCoupon={selectedCoupon}
         />

@@ -19,12 +19,16 @@ interface ReservationCouponProps {
   control: Control<SpaceReservationForm>;
   spaceId: number;
   setSelectedCoupon: Dispatch<React.SetStateAction<string>>;
+  couponInfo: couponType[];
+  setCouponInfo: React.Dispatch<React.SetStateAction<couponType[]>>;
 }
 
 export default function ReservationCoupon({
   control,
   spaceId,
   setSelectedCoupon,
+  couponInfo,
+  setCouponInfo,
 }: ReservationCouponProps) {
   const [selectOption, setSelectOption] = useState<
     [
@@ -39,28 +43,21 @@ export default function ReservationCoupon({
       label: "",
     },
   ]);
-  const [couponInfo, setCouponInfo] = useState<couponType>({
-    spaceId: 0,
-    discountAmount: 0,
-    openDate: "",
-    expiredDate: "",
-    amount: 0,
-  });
 
   useEffect(() => {
     getCoupon({ spaceId, setCouponInfo });
   }, []);
 
   useEffect(() => {
-    couponInfo.spaceId !== 0 &&
+    couponInfo[0]?.couponId !== 0 &&
       setSelectOption([
         {
-          value: couponInfo.spaceId,
-          label: `${couponInfo.discountAmount}원 쿠폰`,
+          value: couponInfo[0]?.couponId,
+          label: `${couponInfo[0]?.discountAmount}원 쿠폰`,
         },
       ]);
   }, [couponInfo]);
-
+  console.log("couponinfo", couponInfo[0]);
   return (
     <article className="max-w-[435px] min-w-[280px] mx-5">
       <h4 className="mt-6 text-content-box-text-gray mb-2">쿠폰</h4>
@@ -69,10 +66,14 @@ export default function ReservationCoupon({
         control={control}
         render={({ field: { onChange, value } }) => (
           <Select
+            isDisabled={
+              couponInfo[0]?.discountAmount === undefined ? true : false
+            }
             options={selectOption}
-            value={selectOption.find(
-              (c: { value: number; label: string }) => c.value === value.spaceId
-            )}
+            value={selectOption.find((c: { value: number; label: string }) => {
+              console.log("c.value", c.value);
+              return c.value === spaceId;
+            })}
             onChange={(val) => {
               onChange(val);
               setSelectedCoupon(val?.label as string);

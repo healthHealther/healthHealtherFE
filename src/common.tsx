@@ -24,7 +24,7 @@ export const commentListState = atom<commentType[]>({
 export const coupon = atom<couponType>({
   key: "coupon", // unique ID (with respect to other atoms/selectors)
   default: {
-    spaceId: 0,
+    couponId: 0,
     discountAmount: 0,
     openDate: "",
     expiredDate: "",

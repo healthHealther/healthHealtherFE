@@ -46,7 +46,7 @@ export interface image {
 }
 
 export interface couponType {
-  spaceId: number;
+  couponId: number;
   discountAmount: number;
   openDate: string;
   expiredDate: string;

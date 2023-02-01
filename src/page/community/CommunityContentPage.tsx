@@ -68,7 +68,14 @@ export default function CommunityContentPage() {
       <div className="pb-[80px] border-b-4 border-[#efefef]">
         <p className="text-[16px]">{contentItem?.content}</p>
       </div>
-      <button onClick={handleDelete}>삭제</button>
+      <div className="flex justify-end">
+        <button
+          className="text-[white] bg-slate-300 py-1 px-2 rounded-lg text-[14px] font-light"
+          onClick={handleDelete}
+        >
+          삭제하기
+        </button>
+      </div>
       <LikeArea
         contentId={contentId}
         isLiked={isLiked}

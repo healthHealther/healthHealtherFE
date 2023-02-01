@@ -35,9 +35,14 @@ export default function CommentItem(props: commentTypeProps) {
       <div className="min-h-[24px]">
         <p className="text-[16px]">{comment.comment}</p>
       </div>
-      <button className="mt-2" onClick={handleDelete}>
-        삭제하기
-      </button>
+      <div className="flex justify-end">
+        <button
+          className="mt-2 bg-slate-300 text-white py-1 px-2 rounded-lg text-[14px] font-light"
+          onClick={handleDelete}
+        >
+          삭제하기
+        </button>
+      </div>
     </li>
   );
 }

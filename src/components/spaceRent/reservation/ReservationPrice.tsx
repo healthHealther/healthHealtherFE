@@ -6,11 +6,13 @@ import { couponType } from "../../../interface/space";
 interface ReservationPriceProps {
   price: number;
   selectedCoupon: string;
+  couponInfo: couponType[];
 }
 
 export default function ReservationPrice({
   price,
   selectedCoupon,
+  couponInfo,
 }: ReservationPriceProps) {
   const couponLabel = useRecoilValue<couponType>(couponLabelState);
 
@@ -21,9 +23,9 @@ export default function ReservationPrice({
         {selectedCoupon !== "" ? (
           <div className="flex items-center gap-2">
             <p className="text-content text-[#A5A5A5]">
-              {price}원 - {couponLabel.discountAmount}원(할인)
+              {price}원 - {couponInfo[0]?.discountAmount}원(할인)
             </p>
-            {price - couponLabel.discountAmount}원
+            {price - couponInfo[0]?.discountAmount}원
           </div>
         ) : (
           <p>{price}원</p>
