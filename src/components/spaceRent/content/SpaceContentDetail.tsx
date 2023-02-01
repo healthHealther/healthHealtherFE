@@ -7,7 +7,7 @@ import Coupon from "../SpaceCoupon";
 import SpaceRule from "./SpaceRule";
 import DetailInfo from "./SpaceDetailInfo";
 import ViewMap from "./SpaceMap";
-import Review from "../SpaceReview";
+import SpaceReview from "../SpaceReview";
 import NewReview from "../NewReview";
 import SpaceConvenience from "./SpaceConvenience";
 import SpaceRentBtn from "../SpaceRentBtn";
@@ -68,27 +68,27 @@ export default function SpaceContentDetail() {
           ))}
         </div>
         {/* 회원 아이디 */}
-        <div className="flex gap-1 text-m mt-4">
+        {/* <div className="flex gap-1 text-m mt-4">
           <span className="font-bold">{spaceContentDetailInfo.memberId}</span>
           <span>님의 홈짐</span>
-        </div>
+        </div> */}
         {/* 제목 */}
-        <div className="mt-1">
+        <div className="mt-4">
           <span className="text-xl font-bold">
             {spaceContentDetailInfo.title}
           </span>
         </div>
         {/* 가격 */}
-        <div>
-          <span className="text-sm font-bold mt-4 text-homeGymPrice-green">
+        <div className="mt-4">
+          <span className="text-lg font-bold text-homeGymPrice-green">
             {spaceContentDetailInfo.price}원
           </span>
         </div>
       </div>
       <div className="w-full h-1 bg-neutral-100 mt-8" />
-      <SpaceConvenience />
+      <SpaceConvenience convenience={spaceContentDetailInfo.convenienceTypes} />
       {/* 구역 나눔 선 */}
-      <div className="w-full h-1 bg-neutral-100 mt-8" />
+      <div className="w-full h-1 bg-neutral-100" />
       {/* 쿠폰 */}
       {spaceContentDetailInfo.spaceId && (
         <Coupon id={spaceContentDetailInfo.spaceId} />
@@ -122,7 +122,7 @@ export default function SpaceContentDetail() {
       <div className="w-full h-1 bg-neutral-100 mt-8" />
 
       {/* 리뷰 영역 */}
-      <Review spaceId={spaceContentDetailInfo.spaceId} />
+      <SpaceReview />
       {/* 구역 나눔 선 */}
       {/* <NewReview spaceId={spaceContentDetail.spaceId} /> */}
       <SpaceRentBtn />

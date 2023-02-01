@@ -25,7 +25,7 @@ export default function ViewMap({ address, addressDetail }: ViewMapProps) {
       };
 
       geocoder.addressSearch(
-        address + addressDetail,
+        address,
         function (
           result: {
             y: number;
