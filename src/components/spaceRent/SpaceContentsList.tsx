@@ -47,13 +47,12 @@ export default function SpaceContentsList() {
         location.pathname !== "/"
         // JSON.parse(localStorage.getItem("selectedType") || "[]")?.length === 0
       ) {
-        console.log(page);
         if (goNextPage === true) {
           setPage(page + 1);
         }
         localStorage.removeItem("selectedType");
         const { data } = await axios.get(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchText=${searchTitleLabel}&spaceType=${query}`,
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchText=${searchTitleLabel}&`,
           {
             headers: {
               Authorization: token,
@@ -62,15 +61,13 @@ export default function SpaceContentsList() {
         );
         setSpaceContentList((prev) => [...prev, ...data.content]);
         setGoNextPage(data.content.length === 10);
-      }
-      if (!query && location.pathname === "/") {
+      } else if (!query && location.pathname === "/") {
         const { data } = await axios.get<submitHomeGymInfo[]>(
-          `http://localhost:3001/space?_page=1&_limit=4`
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=0&size=4`
         );
 
         setHomeGym(data);
-      }
-      if (query !== null) {
+      } else if (query !== null) {
         const { data } = await axios.get(
           `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchText=${searchTitleLabel}&spaceType=${query}`,
           {
@@ -80,7 +77,6 @@ export default function SpaceContentsList() {
           }
         );
         console.log(data);
-
         setSpaceContentList((prev) => [...prev, ...data.content]);
         setGoNextPage(data.content.length === 10);
         if (data.length) {
