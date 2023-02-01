@@ -1,13 +1,13 @@
-import React, { Dispatch, useEffect, useState } from "react";
+import React, { Dispatch, useEffect } from "react";
 
-import { homeGymInfo, submitHomeGymInfo } from "../../../interface/space";
+import { homeGymInfo } from "../../../interface/space";
 
 import infomationIcon from "../../assets/infomationIcon.svg";
 import Coupon from "../SpaceCoupon";
 import SpaceRule from "./SpaceRule";
 import DetailInfo from "./SpaceDetailInfo";
 import ViewMap from "./SpaceMap";
-import Review from "../SpaceReview";
+import SpaceReview from "../SpaceReview";
 import NewReview from "../NewReview";
 import SpaceConvenience from "./SpaceConvenience";
 import SpaceRentBtn from "../SpaceRentBtn";
@@ -16,43 +16,20 @@ import { baseUrl } from "../../common/common";
 import { useRecoilState } from "recoil";
 import { spaceContentDetailState, spaceIdState } from "../../../common";
 import { useSearchParams } from "react-router-dom";
-import GetSpaceContentDetail from "../GetSpaceContentDetail";
 
 export default function SpaceContentDetail() {
   //   useEffect(() => {}, [spaceContentDetail]);
 
   const [spaceIdParam] = useSearchParams();
   const [spaceId, setSpaceId] = useRecoilState(spaceIdState);
-  // const [spaceContentDetailInfo, setSpaceContentDetailInfo] = useRecoilState(
-  //   spaceContentDetailState
-  // );
+  const [spaceContentDetailInfo, setSpaceContentDetailInfo] = useRecoilState(
+    spaceContentDetailState
+  );
 
-  const [spaceContentDetailInfo, setSpaceContentDetailInfo] =
-    useState<submitHomeGymInfo>({
-      spaceId: 0,
-      memberId: "",
-      title: "",
-      content: "",
-      address: "",
-      addressDetail: "",
-      spaceTypes: [],
-      convenienceTypes: [],
-      notice: "",
-      rule: "",
-      price: 0,
-      images: [],
-      openTime: 0,
-      closeTime: 0,
-      discountAmount: 0,
-      amount: 0,
-      openDate: new Date(),
-      expiredDate: new Date(),
-    });
-
-  useEffect(() => {
-    const query = spaceIdParam.get("id");
-    query && GetSpaceContentDetail({ query, setSpaceContentDetailInfo });
-  }, []);
+  // useEffect(() => {
+  //   spaceIdParam.get("id") !== null &&
+  //     setSpaceId(Number(spaceIdParam.get("id")));
+  // }, []);
 
   // const getSpaceDetailData = async () => {
   //   try {
@@ -145,7 +122,7 @@ export default function SpaceContentDetail() {
       <div className="w-full h-1 bg-neutral-100 mt-8" />
 
       {/* 리뷰 영역 */}
-      <Review spaceId={spaceContentDetailInfo.spaceId} />
+      <SpaceReview />
       {/* 구역 나눔 선 */}
       {/* <NewReview spaceId={spaceContentDetail.spaceId} /> */}
       <SpaceRentBtn />
