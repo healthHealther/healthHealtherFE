@@ -78,15 +78,6 @@ export default function SpaceRegister() {
       : setFilled(false);
   }, [watchAllFields]);
 
-  console.log(
-    watchAllFields.filter(
-      (item) =>
-        item === "" ||
-        item === undefined ||
-        item === Number(NaN) ||
-        (item as Array<string>).length === 0
-    )
-  );
   const onSubmit = async (data: submitHomeGymInfo) => {
     try {
       await axios
