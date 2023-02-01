@@ -94,8 +94,10 @@ export default function ReservationTimeSelect({
                 options={timeOption.filter((item) => {
                   return startAMPM === "오전"
                     ? item.value < 13 &&
-                        item.value >= spaceContentDetailLabel.openTime
+                        item.value >= spaceContentDetailLabel.openTime &&
+                        item.value < spaceContentDetailLabel.closeTime
                     : item.value > 12 &&
+                        item.value >= spaceContentDetailLabel.openTime &&
                         item.value < spaceContentDetailLabel.closeTime;
                 })}
                 value={timeOption.find(
