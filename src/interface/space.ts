@@ -54,7 +54,10 @@ export interface couponType {
 }
 
 export interface review {
-  reviewId: number;
+  spaceName: string;
+  nickName: string;
+  title: string;
   content: string;
-  star: number;
+  grade: number;
+  memberName: string;
 }

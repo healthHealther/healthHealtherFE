@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import StarRating from "react-svg-star-rating";
@@ -6,38 +6,64 @@ import { useRecoilState } from "recoil";
 import { reviewState } from "../../common";
 
 import { review } from "../../interface/space";
+import { baseUrl } from "../common/common";
 import GetSpaceReview from "./GetSpaceReview";
 
 interface NewReviewProps {
-  spaceId: number;
-  length: number;
+  spaceId: string;
 }
 
-export default function NewReview({ spaceId, length }: NewReviewProps) {
+interface responseData {
+  code: number;
+  errorSimpleName: string;
+  msg: string;
+  timestamp: string;
+}
+
+export default function NewReview({ spaceId }: NewReviewProps) {
   const { register, handleSubmit, setValue, watch, resetField } =
     useForm<review>();
   const [review, setReview] = useRecoilState<review[]>(reviewState);
   const [rating, setRating] = useState<number>(0);
   const watchAllFields = watch();
+  const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
+
   const onSubmit = async (data: review) => {
     try {
       await axios
-        .post(`http://localhost:3001/review`, {
-          id: length + 1,
-          content: data.content,
-          star: Number(data.star.toFixed(1)),
-        })
+        .post(
+          `${baseUrl}/review/`,
+          {
+            spaceId: spaceId,
+            title: "후기",
+            content: data.content,
+            grade: Number(data.grade.toFixed(1)),
+          },
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        )
         .then(() => {
           resetField("content");
-          GetSpaceReview({ setReview });
+          GetSpaceReview({ setReview, spaceId });
         });
       setRating(0);
     } catch (error) {
+      const { response } = error as unknown as AxiosError;
+      if (response) {
+        const responseInfo = response.data as responseData;
+        responseInfo.errorSimpleName === "AlreadyCreateReviewException" &&
+          alert(responseInfo.msg);
+
+        "AlreadySoldOutCouponException" && alert(responseInfo.msg);
+      }
       console.log(error);
     }
   };
   const handleRating = (rate: number) => {
-    setValue("star", rate);
+    setValue("grade", rate);
   };
 
   // 별점 최신화
@@ -51,7 +77,6 @@ export default function NewReview({ spaceId, length }: NewReviewProps) {
       className="flex flex-col w-full mt-5"
     >
       <StarRating
-        unit="half"
         handleOnClick={handleRating}
         initialRating={rating}
         containerClassName="flex mb-2"
