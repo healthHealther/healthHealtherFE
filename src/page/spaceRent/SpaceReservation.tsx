@@ -15,6 +15,7 @@ import {
   submitHomeGymInfo,
 } from "../../interface/space";
 import axios from "axios";
+import { baseUrl } from "../../components/common/common";
 
 interface SpaceReservationForm {
   date: Date;
@@ -42,23 +43,31 @@ export default function SpaceReservation() {
   useEffect(() => {
     spaceId === 0 && goback();
   }, []);
-
-  const onSubmit = async (formData: SpaceReservationForm) => {
+  const token = `Bearer ${sessionStorage.getItem("accessToken")}`;
+  const onSubmit = async (formData: any) => {
+    console.log(formData.reservationTime.value);
     try {
-      await axios.post("http://localhost:3001/reservations", {
-        spaceId: spaceContentDetailLabel.spaceId,
-        reservationDate: formData.date.toISOString().split("T")[0],
-        reservationTime: formData.reservationTime,
-      });
-      const { data } = await axios.put(
-        `http://localhost:3001/coupon/${spaceContentDetailLabel.spaceId}`,
+      await axios.post(
+        `${baseUrl}/reservations`,
         {
-          ...couponInfo,
-          amount:
-            selectedCoupon !== "" ? couponInfo.amount - 1 : couponInfo.amount,
+          spaceId: spaceContentDetailLabel.spaceId,
+          couponId: null,
+          reservationDate: formData.date.toISOString().split("T")[0] as string,
+          reservationTime: formData.reservationTime.value,
+        },
+        {
+          headers: { Authorization: token },
         }
       );
-      setCouponInfo(data);
+      // const { data } = await axios.put(
+      //   `http://localhost:3001/coupon/${spaceContentDetailLabel.spaceId}`,
+      //   {
+      //     ...couponInfo,
+      //     amount:
+      //       selectedCoupon !== "" ? couponInfo.amount - 1 : couponInfo.amount,
+      //   }
+      // );
+      // setCouponInfo(data);
       navigate(-1);
     } catch (error) {
       console.log(error);
@@ -83,11 +92,11 @@ export default function SpaceReservation() {
 
         {/* 구역 나눔 선 */}
         <div className="w-full h-1 bg-neutral-100 mt-8" />
-        <ReservationCoupon
+        {/* <ReservationCoupon
           control={control}
           spaceId={spaceContentDetailLabel.spaceId}
           setSelectedCoupon={setSelectedCoupon}
-        />
+        /> */}
         <ReservationPrice
           price={spaceContentDetailLabel.price}
           selectedCoupon={selectedCoupon}

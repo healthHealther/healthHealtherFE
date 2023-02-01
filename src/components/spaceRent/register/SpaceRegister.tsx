@@ -62,33 +62,36 @@ export default function SpaceRegister() {
 
   const onSubmit = async (data: submitHomeGymInfo) => {
     try {
-      await axios.post(
-        `${baseUrl}/spaces`,
-        {
-          title: data.title,
-          content: data.content,
-          address: data.address,
-          addressDetail: data.addressDetail,
-          convenienceTypes: data.convenienceTypes,
-          notice: data.notice,
-          rule: data.rule,
-          price: data.price,
-          images: data.images,
-          openTime: data.openTime,
-          closeTime: data.closeTime,
-          spaceTypes: data.spaceTypes,
-          discountAmount: data.discountAmount,
-          amount: data.amount,
-          openDate: data.openDate.toISOString().split("T")[0],
-          expiredDate: data.expiredDate.toISOString().split("T")[0],
-        },
-        {
-          headers: {
-            Authorization: token,
+      await axios
+        .post(
+          `${baseUrl}/spaces`,
+          {
+            title: data.title,
+            content: data.content,
+            address: data.address,
+            addressDetail: data.addressDetail,
+            convenienceTypes: data.convenienceTypes,
+            notice: data.notice,
+            rule: data.rule,
+            price: data.price,
+            images: data.images,
+            openTime: data.openTime,
+            closeTime: data.closeTime,
+            spaceTypes: data.spaceTypes,
+            discountAmount: data.discountAmount,
+            amount: data.amount,
+            openDate: data.openDate.toISOString().split("T")[0],
+            expiredDate: data.expiredDate.toISOString().split("T")[0],
           },
-        }
-      );
-      navigate("/spaceRent");
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        )
+        .then(() => {
+          navigate("/spaceRent");
+        });
       console.log(data);
     } catch (error) {
       console.log(error);

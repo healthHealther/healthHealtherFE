@@ -26,20 +26,20 @@ export default function SpaceContentDetail() {
     spaceContentDetailState
   );
 
-  // useEffect(() => {
-  //   spaceIdParam.get("id") !== null &&
-  //     setSpaceId(Number(spaceIdParam.get("id")));
-  // }, []);
+  useEffect(() => {
+    spaceIdParam.get("id") !== null &&
+      setSpaceId(Number(spaceIdParam.get("id")));
+  }, []);
 
-  // const getSpaceDetailData = async () => {
-  //   try {
-  //     await axios.get(`${baseUrl}/spaces/${spaceId}`).then((res) => {
-  //       setSpaceContentDetailInfo(res.data.content);
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const getSpaceDetailData = async () => {
+    try {
+      await axios.get(`${baseUrl}/spaces/${spaceId}`).then((res) => {
+        setSpaceContentDetailInfo(res.data.content);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   // useEffect(() => {
   //   getSpaceDetailData();
