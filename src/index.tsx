@@ -1,8 +1,8 @@
 import React, { Suspense, lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
 import ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
-import "./index.css";
 import HomePage from "./page/home/HomePage";
 import SpaceRentPage from "./page/spaceRent/SpaceRentPage";
 import CommunityPage from "./page/community/CommunityPage";

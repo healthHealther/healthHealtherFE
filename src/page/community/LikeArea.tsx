@@ -33,25 +33,29 @@ export default function LikeArea(props: LikeAreaProps) {
         console.error(error);
       }
     } else {
-      await axios
-        .delete(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/like/${contentId}`,
-          {
-            headers: {
-              Authorization: token,
-            },
-          }
-        )
-        .then(() => {
-          setIsLiked(false);
-        });
+      try {
+        await axios
+          .delete(
+            `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/like/${contentId}`,
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          )
+          .then(() => {
+            setIsLiked(false);
+          });
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
   const getLikeCount = useCallback(async () => {
     try {
       await axios
         .get(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/${contentId}/likecount`,
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/${contentId}/likeCount`,
           {
             headers: { Authorization: token },
           }
@@ -67,7 +71,8 @@ export default function LikeArea(props: LikeAreaProps) {
     try {
       await axios
         .get(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/like/${contentId}`
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/board/like/${contentId}`,
+          { headers: { Authorization: token } }
         )
         .then((res) => {
           setIsLiked(res.data.liked);
