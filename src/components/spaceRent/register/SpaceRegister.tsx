@@ -88,6 +88,7 @@ export default function SpaceRegister() {
           },
         }
       );
+      console.log(data);
       navigate("/spaceRent");
       console.log(data);
     } catch (error) {

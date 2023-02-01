@@ -1,6 +1,6 @@
-import React, { Dispatch, useEffect } from "react";
+import React, { Dispatch, useEffect, useState } from "react";
 
-import { homeGymInfo } from "../../../interface/space";
+import { homeGymInfo, submitHomeGymInfo } from "../../../interface/space";
 
 import infomationIcon from "../../assets/infomationIcon.svg";
 import Coupon from "../SpaceCoupon";
@@ -16,20 +16,43 @@ import { baseUrl } from "../../common/common";
 import { useRecoilState } from "recoil";
 import { spaceContentDetailState, spaceIdState } from "../../../common";
 import { useSearchParams } from "react-router-dom";
+import GetSpaceContentDetail from "../GetSpaceContentDetail";
 
 export default function SpaceContentDetail() {
   //   useEffect(() => {}, [spaceContentDetail]);
 
   const [spaceIdParam] = useSearchParams();
   const [spaceId, setSpaceId] = useRecoilState(spaceIdState);
-  const [spaceContentDetailInfo, setSpaceContentDetailInfo] = useRecoilState(
-    spaceContentDetailState
-  );
+  // const [spaceContentDetailInfo, setSpaceContentDetailInfo] = useRecoilState(
+  //   spaceContentDetailState
+  // );
 
-  // useEffect(() => {
-  //   spaceIdParam.get("id") !== null &&
-  //     setSpaceId(Number(spaceIdParam.get("id")));
-  // }, []);
+  const [spaceContentDetailInfo, setSpaceContentDetailInfo] =
+    useState<submitHomeGymInfo>({
+      spaceId: 0,
+      memberId: "",
+      title: "",
+      content: "",
+      address: "",
+      addressDetail: "",
+      spaceTypes: [],
+      convenienceTypes: [],
+      notice: "",
+      rule: "",
+      price: 0,
+      images: [],
+      openTime: 0,
+      closeTime: 0,
+      discountAmount: 0,
+      amount: 0,
+      openDate: new Date(),
+      expiredDate: new Date(),
+    });
+
+  useEffect(() => {
+    const query = spaceIdParam.get("id");
+    query && GetSpaceContentDetail({ query, setSpaceContentDetailInfo });
+  }, []);
 
   // const getSpaceDetailData = async () => {
   //   try {
@@ -68,27 +91,27 @@ export default function SpaceContentDetail() {
           ))}
         </div>
         {/* 회원 아이디 */}
-        <div className="flex gap-1 text-m mt-4">
+        {/* <div className="flex gap-1 text-m mt-4">
           <span className="font-bold">{spaceContentDetailInfo.memberId}</span>
           <span>님의 홈짐</span>
-        </div>
+        </div> */}
         {/* 제목 */}
-        <div className="mt-1">
+        <div className="mt-4">
           <span className="text-xl font-bold">
             {spaceContentDetailInfo.title}
           </span>
         </div>
         {/* 가격 */}
-        <div>
-          <span className="text-sm font-bold mt-4 text-homeGymPrice-green">
+        <div className="mt-4">
+          <span className="text-lg font-bold text-homeGymPrice-green">
             {spaceContentDetailInfo.price}원
           </span>
         </div>
       </div>
       <div className="w-full h-1 bg-neutral-100 mt-8" />
-      <SpaceConvenience />
+      <SpaceConvenience convenience={spaceContentDetailInfo.convenienceTypes} />
       {/* 구역 나눔 선 */}
-      <div className="w-full h-1 bg-neutral-100 mt-8" />
+      <div className="w-full h-1 bg-neutral-100" />
       {/* 쿠폰 */}
       {spaceContentDetailInfo.spaceId && (
         <Coupon id={spaceContentDetailInfo.spaceId} />

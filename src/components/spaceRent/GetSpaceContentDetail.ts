@@ -7,9 +7,9 @@ import { homeGymInfo, submitHomeGymInfo } from "../../interface/space";
 import { baseUrl } from "../common/common";
 
 interface GetSpaceContentDetailProps {
-  setSpaceContentDetail: Dispatch<SetStateAction<submitHomeGymInfo>>;
+  setSpaceContentDetail?: Dispatch<SetStateAction<submitHomeGymInfo>>;
   query: string;
-  setSpaceContentDetailInfo: SetterOrUpdater<submitHomeGymInfo>;
+  setSpaceContentDetailInfo?: SetterOrUpdater<submitHomeGymInfo>;
 }
 
 export default async function GetSpaceContentDetail({
@@ -28,26 +28,27 @@ export default async function GetSpaceContentDetail({
   );
   console.log(data);
 
-  setSpaceContentDetailInfo(data);
+  setSpaceContentDetailInfo && setSpaceContentDetailInfo(data);
 
-  setSpaceContentDetail({
-    spaceId: data.spaceId,
-    memberId: data.memberId,
-    title: data.title,
-    content: data.content,
-    address: data.address,
-    addressDetail: data.addressDetail,
-    spaceTypes: data.spaceTypes,
-    convenienceTypes: data.convenienceTypes,
-    notice: data.notice,
-    rule: data.rule,
-    price: data.price,
-    images: data.images,
-    openTime: data.openTime,
-    closeTime: data.closeTime,
-    discountAmount: data.discountAmount,
-    amount: data.amount,
-    openDate: data.openDate,
-    expiredDate: data.expiredDate,
-  });
+  setSpaceContentDetail &&
+    setSpaceContentDetail({
+      spaceId: data.spaceId,
+      memberId: data.memberId,
+      title: data.title,
+      content: data.content,
+      address: data.address,
+      addressDetail: data.addressDetail,
+      spaceTypes: data.spaceTypes,
+      convenienceTypes: data.convenienceTypes,
+      notice: data.notice,
+      rule: data.rule,
+      price: data.price,
+      images: data.images,
+      openTime: data.openTime,
+      closeTime: data.closeTime,
+      discountAmount: data.discountAmount,
+      amount: data.amount,
+      openDate: data.openDate,
+      expiredDate: data.expiredDate,
+    });
 }
