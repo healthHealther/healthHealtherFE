@@ -1,18 +1,16 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import {
-  Link,
-  parsePath,
-  useLocation,
-  useSearchParams,
-} from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import InfinityScroll from "../InfinityScroll";
 
 import { homeGymInfo, submitHomeGymInfo } from "../../interface/space";
 import { baseUrl } from "../common/common";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { searchTitleLabelState, spaceContentListState } from "../../common";
-import { useFormContext } from "react-hook-form";
+import {
+  searchTitleLabelState,
+  spaceContentDetailState,
+  spaceContentListState,
+} from "../../common";
 
 interface searchForm {
   search: string;
@@ -23,7 +21,8 @@ export default function SpaceContentsList() {
   const [homeGym, setHomeGym] = useState<submitHomeGymInfo[]>([]);
   const [goNextPage, setGoNextPage] = useState<boolean>(false);
   const [scroll, setScroll] = useState<boolean>(false);
-  const [page, setPage] = useState<number>(0);
+  // const [page, setPage] = useState<number>(0);
+  const page = useRef(0);
   const dataFetchedRef = useRef(false);
   const [spaceRentParams] = useSearchParams();
   const query =
@@ -35,24 +34,42 @@ export default function SpaceContentsList() {
     submitHomeGymInfo[]
   >(spaceContentListState);
   const searchTitleLabel = useRecoilValue<string>(searchTitleLabelState);
+  const [spaceContentDetailInfo, setSpaceContentDetailInfo] =
+    useRecoilState<submitHomeGymInfo>(spaceContentDetailState);
   useEffect(() => {
     return () => {
+      setSpaceContentDetailInfo({
+        spaceId: 0,
+        memberId: "",
+        title: "",
+        content: "",
+        address: "",
+        addressDetail: "",
+        spaceTypes: [],
+        convenienceTypes: [],
+        notice: "",
+        rule: "",
+        price: 0,
+        images: [],
+        openTime: 0,
+        closeTime: 0,
+        discountAmount: 0,
+        amount: 0,
+        openDate: new Date(),
+        expiredDate: new Date(),
+      });
       localStorage.removeItem("selectedType");
     };
   }, []);
   const getData = async () => {
     try {
-      if (
-        !query &&
-        location.pathname !== "/"
-        // JSON.parse(localStorage.getItem("selectedType") || "[]")?.length === 0
-      ) {
-        if (goNextPage === true) {
-          setPage(page + 1);
-        }
+      if (goNextPage === true) {
+        page.current += 1;
+      }
+      if (!query && location.pathname !== "/") {
         localStorage.removeItem("selectedType");
         const { data } = await axios.get(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchText=${searchTitleLabel}`,
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page.current}&size=10&searchText=${searchTitleLabel}&spaceType=${query}`,
           {
             headers: {
               Authorization: token,
@@ -61,32 +78,27 @@ export default function SpaceContentsList() {
         );
         setSpaceContentList((prev) => [...prev, ...data.content]);
         setGoNextPage(data.content.length === 10);
-      } else if (!query && location.pathname === "/") {
-        console.log("hi");
-        await axios
-          .get(
-            `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=0&size=4`,
-            { headers: { Authorizaiton: token } }
-          )
-          .then((res) => {
-            console.log(res.data.content);
-            setSpaceContentList(res.data.content);
-          });
-      } else if (query !== null) {
+      }
+      if (!query && location.pathname === "/") {
+        const { data } = await axios.get<submitHomeGymInfo[]>(
+          `http://localhost:3001/space?_page=1&_limit=4`
+        );
+
+        setHomeGym(data);
+      }
+      if (query !== null) {
         const { data } = await axios.get(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchText=${searchTitleLabel}&spaceType=${query}`,
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page.current}&size=10&searchText=${searchTitleLabel}&spaceType=${query}`,
           {
             headers: {
               Authorization: token,
             },
           }
         );
-        console.log(data);
+
         setSpaceContentList((prev) => [...prev, ...data.content]);
+
         setGoNextPage(data.content.length === 10);
-        if (data.length) {
-          setPage(page + 1);
-        }
       }
     } catch (err) {
       console.error(err);
@@ -101,7 +113,7 @@ export default function SpaceContentsList() {
   }, [scroll]);
 
   useEffect(() => {
-    setPage(0);
+    page.current = 0;
     setHomeGym([]);
     if (dataFetchedRef.current) return;
     dataFetchedRef.current = true;
