@@ -52,7 +52,7 @@ export default function SpaceContentsList() {
         }
         localStorage.removeItem("selectedType");
         const { data } = await axios.get(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchText=${searchTitleLabel}&`,
+          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchText=${searchTitleLabel}`,
           {
             headers: {
               Authorization: token,
@@ -62,11 +62,16 @@ export default function SpaceContentsList() {
         setSpaceContentList((prev) => [...prev, ...data.content]);
         setGoNextPage(data.content.length === 10);
       } else if (!query && location.pathname === "/") {
-        const { data } = await axios.get<submitHomeGymInfo[]>(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=0&size=4`
-        );
-
-        setHomeGym(data);
+        console.log("hi");
+        await axios
+          .get(
+            `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=0&size=4`,
+            { headers: { Authorizaiton: token } }
+          )
+          .then((res) => {
+            console.log(res.data.content);
+            setSpaceContentList(res.data.content);
+          });
       } else if (query !== null) {
         const { data } = await axios.get(
           `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page}&size=10&searchText=${searchTitleLabel}&spaceType=${query}`,
