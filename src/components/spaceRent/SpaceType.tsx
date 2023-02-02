@@ -6,17 +6,14 @@ import {
   useLocation,
 } from "react-router-dom";
 
-interface SpaceTypeProps {
-  setSpaceType?: Dispatch<React.SetStateAction<string>>;
-}
-
-export default function SpaceType({ setSpaceType }: SpaceTypeProps) {
+export default function SpaceType() {
   const ref = useRef(0);
   const location = useLocation();
   const spaceTypeList = ["유산소", "무산소", "필라테스", "GX"];
   const categoty = ["AEROBIC", "ANAEROBIC", "PILATES", "GX"];
   const [spaceRentParams] = useSearchParams();
   const query = spaceRentParams.get("spaceType");
+  localStorage.setItem("selectedType", JSON.stringify([query]));
   const [selectedType, setSelectedType] = useState<string[]>(() => {
     return JSON.parse(localStorage.getItem("selectedType") || "[]");
   });
