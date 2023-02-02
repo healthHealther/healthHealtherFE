@@ -1,5 +1,5 @@
-import React from "react";
-import { Control, Controller } from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import { Control, Controller, useFormContext } from "react-hook-form";
 import DatePicker, { registerLocale } from "react-datepicker";
 import ko from "date-fns/locale/ko";
 import dayjs from "dayjs";
@@ -11,6 +11,13 @@ interface OpenExpiredDateProps {
 }
 
 export default function OpenExpiredDate({ control }: OpenExpiredDateProps) {
+  const { getValues } = useFormContext();
+  const [minExpiredDate, setMinExpiredDate] = useState<Date>(new Date());
+
+  useEffect(() => {
+    minExpiredDate.setDate(minExpiredDate.getDate() + 1);
+  }, [getValues("openDate")]);
+
   registerLocale("ko", ko);
   return (
     <div className="w-full max-w-[435px] min-w-[280px] mx-5">
@@ -29,7 +36,10 @@ export default function OpenExpiredDate({ control }: OpenExpiredDateProps) {
               selected={value}
               minDate={new Date()} // 과거 날짜 disable
               popperPlacement="auto" // 화면 중앙에 팝업이 뜨도록
-              onChange={(data: Date) => onChange(data)}
+              onChange={(data: Date) => {
+                onChange(data);
+                setMinExpiredDate(data);
+              }}
               dayClassName={(date: Date): string | null =>
                 dayjs(date).day() === 6
                   ? "saturday"
@@ -55,7 +65,7 @@ export default function OpenExpiredDate({ control }: OpenExpiredDateProps) {
               locale="ko"
               placeholderText="예약일을 선택해주세요."
               selected={value}
-              minDate={new Date()} // 과거 날짜 disable
+              minDate={minExpiredDate} // 과거 날짜 disable
               popperPlacement="auto" // 화면 중앙에 팝업이 뜨도록
               onChange={(data: Date) => onChange(data)}
               dayClassName={(date: Date): string | null =>
