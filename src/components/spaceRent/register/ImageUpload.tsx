@@ -1,4 +1,10 @@
-import React, { Dispatch, useEffect, useRef, useState } from "react";
+import React, {
+  ChangeEvent,
+  Dispatch,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useFormContext } from "react-hook-form";
 import { image } from "../../../interface/space";
 import Portal from "../../../Portal";
@@ -21,9 +27,12 @@ export default function ImageUpload({
 
   const bodyTag = document.body;
 
-  const handleChange = (e: any) => {
-    if (e.target.files.length) {
-      setImages((prev) => [...prev, URL.createObjectURL(e.target.files[0])]);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if ((e.target.files as FileList).length) {
+      setImages((prev) => [
+        ...prev,
+        URL.createObjectURL((e.target.files as FileList)[0]),
+      ]);
     }
   };
 
