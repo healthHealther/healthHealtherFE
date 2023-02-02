@@ -65,6 +65,7 @@ export default function SpaceReservation() {
         )
         .then((res) => {
           console.log(res);
+          navigate("/spaceRent");
         });
       // const { data } = await axios.put(
       //   `${baseUrl}/coupon/${spaceContentDetailLabel.spaceId}`,
