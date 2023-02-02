@@ -9,7 +9,7 @@ import TopBar from "./components/TopBar";
 export default function Root() {
   return (
     <div className="relative max-w-[475px] min-w-[390px] sm:mx-auto mt-[48px] bg-white min-h-[90vh]">
-      {/* <TokenRefresh /> */}
+      <TokenRefresh />
       <ScrollTopWhenMovePage />
       <TopBar />
       <Outlet />
