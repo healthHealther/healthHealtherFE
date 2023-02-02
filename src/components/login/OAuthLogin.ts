@@ -17,7 +17,7 @@ export default async function kakaoLogin(
   try {
     await axios
       .post(
-        `http://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/members/login/callback/${loginType}?code=${authCode}`
+        `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/members/login/callback/${loginType}?code=${authCode}`
       )
       .then((res) => {
         console.log(res);
