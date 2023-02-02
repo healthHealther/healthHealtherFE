@@ -56,13 +56,12 @@ export default function SpaceContentDetail() {
         {/* 운동 타입 */}
         <div className="flex gap-1">
           {spaceContentDetailInfo.spaceTypes.map((item: string) => {
-            const type = spaceTypeArr.filter((data) => data.type === item);
             return (
               <p
                 className="flex p-2 h-[30px] bg-detail-spaceType-bg-green text-detail-spaceType-font-green items-center justify-center rounded-[8px] text-sm "
                 key={item}
               >
-                {type[0].value}
+                {item}
               </p>
             );
           })}
