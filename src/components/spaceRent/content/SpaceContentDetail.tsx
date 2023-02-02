@@ -35,6 +35,13 @@ export default function SpaceContentDetail() {
   //   getSpaceDetailData();
   // }, [spaceId]);
 
+  const spaceTypeArr = [
+    { value: "유산소", type: "AEROBIC" },
+    { value: "무산소", type: "ANAEROBIC" },
+    { value: "필라테스", type: "PLIATES" },
+    { value: "GX", type: "GX" },
+  ];
+
   return (
     <div className="">
       {/* 메인 사진 */}
@@ -48,14 +55,17 @@ export default function SpaceContentDetail() {
       <div className="ml-5 mt-8">
         {/* 운동 타입 */}
         <div className="flex gap-1">
-          {spaceContentDetailInfo.spaceTypes.map((item: string) => (
-            <p
-              className="flex w-[49px] h-[30px] bg-detail-spaceType-bg-green text-detail-spaceType-font-green items-center justify-center rounded-[8px] text-sm "
-              key={item}
-            >
-              {item}
-            </p>
-          ))}
+          {spaceContentDetailInfo.spaceTypes.map((item: string) => {
+            const type = spaceTypeArr.filter((data) => data.type === item);
+            return (
+              <p
+                className="flex p-2 h-[30px] bg-detail-spaceType-bg-green text-detail-spaceType-font-green items-center justify-center rounded-[8px] text-sm "
+                key={item}
+              >
+                {type[0].value}
+              </p>
+            );
+          })}
         </div>
         {/* 회원 아이디 */}
         {/* <div className="flex gap-1 text-m mt-4">
