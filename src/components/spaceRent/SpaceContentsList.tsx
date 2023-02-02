@@ -38,6 +38,7 @@ export default function SpaceContentsList() {
   const [spaceContentDetailInfo, setSpaceContentDetailInfo] =
     useRecoilState<submitHomeGymInfo>(spaceContentDetailState);
   const [review, setReview] = useRecoilState<review[]>(reviewState);
+  const [queryCheck, setQueryCheck] = useState<string>("");
   useEffect(() => {
     setSpaceContentDetailInfo({
       spaceId: 0,
@@ -67,35 +68,19 @@ export default function SpaceContentsList() {
     };
   }, []);
   const getData = async () => {
+    query && setQueryCheck(query);
+    console.log(query);
     try {
-      if (goNextPage === true) {
-        page.current += 1;
-      }
-      if (!query && location.pathname !== "/") {
-        localStorage.removeItem("selectedType");
-        const { data } = await axios.get(
-          `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page.current}&size=10&searchText=${searchTitleLabel}`,
-          {
-            headers: {
-              Authorization: token,
-            },
-          }
-        );
-        setSpaceContentList((prev) => [...prev, ...data.content]);
-        setGoNextPage(data.content.length === 10);
-      } else if (!query && location.pathname === "/") {
+      if (query === "" && location.pathname !== "/") {
+        console.log(query);
+        if (goNextPage === true) {
+          page.current += 1;
+        }
+        console.log("jh");
+        // localStorage.removeItem("selectedType");
         await axios
           .get(
-            `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=0&size=4`,
-            { headers: { Authorization: token } }
-          )
-          .then((res) => {
-            setSpaceContentList(res.data.content);
-          });
-      } else if (query !== null) {
-        await axios
-          .get(
-            `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page.current}&size=10&searchText=${searchTitleLabel}&spaceType=${query}`,
+            `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page.current}&size=10&searchText=${searchTitleLabel}`,
             {
               headers: {
                 Authorization: token,
@@ -103,8 +88,40 @@ export default function SpaceContentsList() {
             }
           )
           .then((res) => {
+            console.log(queryCheck);
             setSpaceContentList((prev) => [...prev, ...res.data.content]);
+            console.log(res.data.content.length);
             setGoNextPage(res.data.content.length === 10);
+          });
+      } else if (location.pathname !== "/") {
+        if (goNextPage === true) {
+          page.current += 1;
+        }
+        await axios
+          .get(
+            `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=${page.current}&size=10&searchText=${searchTitleLabel}&spaceType=${query}`,
+
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          )
+          .then((res) => {
+            console.log(page.current);
+            setSpaceContentList((prev) => [...prev, ...res.data.content]);
+            console.log(res);
+            setGoNextPage(res.data.content.length === 10);
+          });
+      }
+      if (location.pathname === "/") {
+        await axios
+          .get(
+            `https://port-0-healthhealtherbe-1b5xkk2fld9zjwzk.gksl2.cloudtype.app/spaces?page=0&size=4`,
+            { headers: { Authorization: token } }
+          )
+          .then((res) => {
+            setSpaceContentList(res.data.content);
           });
       }
     } catch (err) {
