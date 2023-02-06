@@ -39,9 +39,7 @@ https://health-healther-fe.vercel.app/
     - 홈짐에 대한 등록 기능을 제공합니다.
     - 홈짐 타입별로 조회가 가능합니다.
 
-<img src="https://user-images.githubusercontent.com/40460377/216905392-a14794d6-4621-422e-9063-b06ada46abbc.png" width="320" height="400">
-
-<img src="https://user-images.githubusercontent.com/40460377/216905759-de91ab7e-5539-459c-82c0-22bec963f53b.png" width="320" height="400">
+<img src="https://user-images.githubusercontent.com/40460377/216905392-a14794d6-4621-422e-9063-b06ada46abbc.png" width="320" height="400"><img src="https://user-images.githubusercontent.com/40460377/216905759-de91ab7e-5539-459c-82c0-22bec963f53b.png" width="320" height="400">
     
   4. **쿠폰 등록 기능**
   
