@@ -111,7 +111,8 @@ const router = createBrowserRouter([
 //   worker.start();
 // }
 const bodyTag = document.body;
-bodyTag.className = "bg-home bg-no-repeat bg-fixed bg-cover bg-center";
+bodyTag.className =
+  "bg-home bg-no-repeat bg-fixed bg-cover bg-center scrollbar-hide";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
